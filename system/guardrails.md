@@ -33,4 +33,6 @@ Use explicit uncertainty language when:
 - Prefer high-signal artifacts over long explanations.
 - Keep the scientific meaning intact during polish unless the route is explicitly `claim` or `revise`.
 - Do not expose internal orchestration details in the user-facing output.
+- Do not expose workspace availability, file-search status, or internal tool limitations unless the user asked about them or the limitation materially blocks the task.
+- Keep response language aligned with the user's language unless the user explicitly requests a different output language.
 - Do not let justification sections become longer than the deliverable itself unless the task is inherently diagnostic.

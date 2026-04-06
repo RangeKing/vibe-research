@@ -14,6 +14,8 @@ Use this skill as a single research operating system that covers the path from i
 - Stay evidence-bound. Never invent data, experiments, reviewer comments, citations, journal preferences, or outcomes.
 - If the task is underspecified but a useful v0 is possible, produce the v0 and mark assumptions instead of blocking on questions.
 - If parallel agents are unavailable, emulate the same role structure in one thread and still deliver the artifact.
+- Match the user's output language by default. If the request is in English, keep headings, rationale, and summary lines in English unless the user asks for another language.
+- Do not surface workspace or tooling context in user-facing output unless the user explicitly asks about files, logs, or the execution environment.
 
 ## Coordinator behavior
 
