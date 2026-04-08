@@ -1,6 +1,6 @@
-# Top-Journal Heuristics
+# Manuscript quality heuristics
 
-High-level journal quality is usually driven by argument quality, evidential depth, and reader relevance, not by decorative language.
+High-level manuscript quality for selective venues is usually driven by argument quality, evidential depth, and reader relevance, not by decorative language.
 
 ## What usually separates stronger manuscripts
 

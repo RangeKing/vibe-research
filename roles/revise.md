@@ -28,3 +28,4 @@ Handle feedback-driven modification after reviewer comments, editor letters, col
 - Distinguish between revise, soften, clarify, and defer.
 - If no new experiment exists, do not bluff. Narrow the claim and state the boundary honestly.
 - Keep tone professional, specific, and non-defensive.
+- For repeated review cycles, end with `what changed`, `what was ruled out`, `what should be reused later`, and `next checkpoint`, and distill reusable reviewer-response patterns into `templates/research_memory.md`.

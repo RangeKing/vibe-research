@@ -41,4 +41,5 @@ Use `vibe-research` for:
 
 - `polish` is not `revise`
 - `assess` should not silently turn into a rewrite unless the user asks
+- broad bundles should go through the coordinator's internal preflight and compaction rules before deep rewriting
 - the root skill logic remains platform-neutral

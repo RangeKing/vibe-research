@@ -28,3 +28,4 @@ Align what the manuscript says with what the evidence actually supports.
 - Preserve information density and value where possible.
 - Avoid replacing specific claims with empty hedging.
 - Never invent stronger support than the user has provided.
+- Record unsafe claims, killed interpretations, and missing falsifiers into `templates/campaign_checkpoint.md` or `templates/research_memory.md` when the task is part of an ongoing campaign.

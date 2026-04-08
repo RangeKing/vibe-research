@@ -2,6 +2,8 @@
 
 Route based on the user's immediate problem, not the full lifecycle of the paper.
 
+No new slash route is needed for evolution or memory work. Handle that through the coordinator, campaign mode, and reusable artifacts.
+
 ## Route table
 
 ### `framing`
@@ -14,6 +16,7 @@ Use when the user needs:
 - killer experiments
 - hypotheses and falsifiers
 - a two-week go/no-go plan
+- comparison among 3 or more candidate directions or storylines
 
 Aliases:
 
@@ -140,6 +143,25 @@ Aliases:
 - `/response`
 - `/resubmit`
 
+## Systematic reviews (PRISMA)
+
+Use when the user is doing a **PRISMA-style systematic review** (protocol, search/screening reporting, flow diagram, synthesis plan) or asks for **Methods/Results** structure aligned with PRISMA 2020.
+
+- **No new slash route** by default: combine existing routes with a clear handoff.
+- **First** use `templates/research_task_packet.md` when the work is multi-stage or mixes design + drafting + completeness checking (see `references/prisma-systematic-review.md` for fields to fill).
+- **Typical sequence**: `framing` (review question, eligibility, protocol outline) → `draft` (Methods, Results, captions for flow and screening) → `assess` (checklist completeness, number consistency across text and diagram).
+- If the bottleneck is overstated synthesis or generalization, add `claim` before or after `draft` as needed.
+
+## Campaign mode
+
+Use campaign mode when the work should continue across turns, phases, or failures rather than starting fresh.
+
+- Recover from the latest checkpoint or memory artifact when one exists.
+- Use `templates/research_task_packet.md` for the current step and `templates/campaign_checkpoint.md` for the next step.
+- Use `templates/research_memory.md` when the output should preserve durable lessons.
+- If the user presents 3 or more competing paths, run `framing` with `templates/direction_tournament.md` before converging.
+- Typical sequence: recover checkpoint -> one narrow route -> verify -> distill -> next checkpoint.
+
 ## Conflict rules
 
 - If the user asks for both assessment and rewriting, assess first unless they clearly want immediate text output.
@@ -147,3 +169,4 @@ Aliases:
 - If the user provides reviewer comments and also asks to rewrite text, route to `revise`, not `polish`.
 - If the user specifies a target journal and wants rewriting, route through `journal` judgment before `draft` or `polish`.
 - If the task spans three or more routes, split it into explicit subproblems instead of pretending one role can do everything cleanly.
+- If the task is a continuation of prior work, recover the frontier before choosing the route.

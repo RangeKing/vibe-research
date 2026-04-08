@@ -1,4 +1,4 @@
 interface:
   display_name: "Vibe Research"
-  short_description: "Research planning and top-journal writing workflows"
-  default_prompt: "Use $vibe-research to assess my manuscript and identify the highest-leverage next move."
+  short_description: "Evolving research harness for campaigns, manuscripts, and review cycles"
+  default_prompt: "Use $vibe-research to continue this project from the checkpoint below and identify the highest-leverage next move."

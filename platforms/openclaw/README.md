@@ -27,7 +27,9 @@ Use the root `SKILL.md` as the source of truth. This adapter explains how to app
 ## Suggested spawn behavior
 
 - Keep one coordinator thread responsible for final synthesis.
+- Let the coordinator build a compact task packet before spawning specialist threads on broad tasks.
 - Spawn narrow specialist threads only when they materially reduce ambiguity.
+- If the context is overloaded, compact first and parallelize second.
 - Use the same route names as the root skill: `framing`, `assess`, `de-risk`, `claim`, `draft`, `journal`, `polish`, `revise`.
 
 ## Fallback rule

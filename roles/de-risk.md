@@ -30,3 +30,4 @@ Find the fastest honest way to break the idea, expose the weakest link, or reduc
 - Prefer fast, decision-shaping experiments over large unfocused work.
 - Name at least one negative control or explain why one is not applicable.
 - If the idea survives only by broadening the story and weakening evaluation rigor, say so explicitly.
+- For campaign work, preserve killed hypotheses, failed rescue attempts, and surviving pivots in `templates/campaign_checkpoint.md` or `templates/research_memory.md`.
