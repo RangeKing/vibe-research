@@ -48,6 +48,7 @@ If there is no concrete artifact, assess the project status rather than pretendi
 
 - When the work product includes **figures** or the user asks whether **visuals match the claims**, use `references/figure-storytelling.md` for caption, integrity, and alignment checks.
 - For **PRISMA systematic reviews**, use `references/prisma-systematic-review.md` to judge reporting completeness and consistency (counts, flow, Methods).
+- When the user asks for **writing quality** rather than scientific readiness, redirect to `polish` and use `references/sentence-level-writing-audit.md` for sentence-level editorial checks.
 - Prioritize structural gaps over cosmetic issues.
 - Separate evidence problems from writing problems.
 - Make clear what is already strong enough to preserve.

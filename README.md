@@ -2,7 +2,7 @@
 
 [中文说明](./README_CN.md)
 
-Vibe Research is a cross-platform evolving research harness and manuscript-writing skill for Codex, Claude Code, and OpenClaw.
+Vibe Research is a cross-platform managed research harness and manuscript-writing skill for Codex, Claude Code, and OpenClaw.
 
 It is designed for work that sits between scientific judgment and writing execution: idea framing, project assessment, de-risking, claim calibration, journal fit, drafting, polish, and feedback-driven revision.
 
@@ -12,8 +12,9 @@ This repository is not a paper template and not a general writing prompt pack.
 
 It is a structured research harness with:
 
-- a coordinator that acts as the control plane
-- campaign stewardship and reusable memory artifacts
+- a coordinator brain that acts as the control plane
+- a harness layer for recovery, packetization, delegation, and merge
+- reusable durable session artifacts
 - specialist routes for narrow research-writing tasks
 - references for domain-specific judgment
 - templates for concrete deliverables
@@ -43,6 +44,7 @@ Use this skill when you need help with tasks such as:
 - rewriting titles, abstracts, introductions, results, or discussions
 - choosing a target journal or building a journal ladder
 - polishing text without changing the scientific position
+- making prose sound more like a strong journal manuscript and less like AI output
 - responding to reviewer, editor, or collaborator feedback
 - continuing a research campaign from a prior checkpoint
 - comparing several directions and preserving what was ruled out
@@ -50,12 +52,14 @@ Use this skill when you need help with tasks such as:
 
 ## Core Design
 
-The skill uses a two-layer model:
+The skill uses a four-part managed-harness model:
 
-- Control plane: preflight, routing, scope control, compaction, campaign continuity, verified distillation, recovery, and closeout
-- Execution plane: route-specific task handling such as `assess`, `claim`, `draft`, or `revise`
+- Brain: coordinator judgment, routing, verification, and final synthesis
+- Harness: preflight, packetization, compaction, delegation, wake, and merge
+- Hands: route-specific task handling such as `assess`, `claim`, `draft`, or `revise`
+- Session: durable artifacts that outlive the current context window
 
-This design helps the skill avoid a common failure mode in research assistance: mixing diagnosis, rewriting, journal fit, and rebuttal logic into one vague answer.
+This design helps the skill avoid a common failure mode in research assistance: mixing diagnosis, rewriting, journal fit, rebuttal logic, and campaign state into one vague answer.
 
 ## Routes
 
@@ -77,12 +81,14 @@ See the route files in [roles/](./roles/) for the narrow behavior of each role.
 By default, the coordinator follows this lifecycle:
 
 1. Internal preflight (`doctor`)
-2. Task packet creation when needed
-3. Route execution
-4. Verification against evidence and deliverable
-5. Distillation into reusable memory or checkpoint artifacts when useful
-6. Compaction or recovery if the task is overloaded
-7. Closeout with the next best move
+2. `wake` from durable artifacts when continuation state exists
+3. Task packet creation when needed
+4. Route execution
+5. Verification against evidence and deliverable
+6. Distillation into reusable memory artifacts when useful
+7. Checkpointing for resumable state
+8. Merge only when multiple independent hands contributed
+9. Closeout with the next best move
 
 This is especially useful for messy real-world inputs such as:
 
@@ -124,13 +130,18 @@ Key files:
 - [system/routing.md](./system/routing.md): route selection rules
 - [system/guardrails.md](./system/guardrails.md): academic-integrity boundaries
 - [references/harness-engineering.md](./references/harness-engineering.md): maintenance notes for evolving the skill itself
+- [references/managed-harness-patterns.md](./references/managed-harness-patterns.md): managed-agent design principles mapped into this skill
 - [references/evolution-loop.md](./references/evolution-loop.md): EvoScientist-inspired campaign logic and lightweight memory philosophy
 - [references/prisma-systematic-review.md](./references/prisma-systematic-review.md): PRISMA-oriented systematic review structure and task-packet use
 - [references/figure-storytelling.md](./references/figure-storytelling.md): figures, captions, and claim alignment
+- [references/high-journal-expression.md](./references/high-journal-expression.md): direct, non-AI-sounding journal expression rules for polish work
 - [templates/research_task_packet.md](./templates/research_task_packet.md): compact control object for broad or multi-stage work
 - [templates/campaign_checkpoint.md](./templates/campaign_checkpoint.md): resumable state for long-horizon work
 - [templates/research_memory.md](./templates/research_memory.md): distilled reusable lessons
+- [templates/research_session_log.md](./templates/research_session_log.md): append-only session state for long or multi-hand runs
 - [templates/direction_tournament.md](./templates/direction_tournament.md): ranked comparison of competing options
+- [templates/polish_pass.md](./templates/polish_pass.md): compact rewrite-oriented polish deliverable
+- [templates/writing_quality_review.md](./templates/writing_quality_review.md): structured writing-quality audit
 
 ## Platform Adapters
 
@@ -151,6 +162,9 @@ $vibe-research /assess this manuscript status
 $vibe-research continue this project from this checkpoint
 $vibe-research /polish this abstract without changing the claims
 $vibe-research /revise these reviewer comments
+$vibe-research 评估这篇稿子当前最关键的问题
+$vibe-research 从这个 checkpoint 继续，并找出下一步
+$vibe-research 回复这些审稿意见，并给出修改策略
 ```
 
 ### Claude Code
@@ -180,6 +194,8 @@ When updating the skill:
 5. Keep platform adapters synchronized, but thin.
 
 The repository now includes a lightweight harness-maintenance note in [references/harness-engineering.md](./references/harness-engineering.md), including suggested regression prompt shapes for future iteration.
+It also includes [references/managed-harness-patterns.md](./references/managed-harness-patterns.md) as the shortest interface-level summary of the managed-harness design.
+Use [scripts/quick_validate.py](./scripts/quick_validate.py) for repo-local structure checks after substantial edits.
 
 ## Who This Is For
 

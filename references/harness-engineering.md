@@ -2,50 +2,152 @@
 
 Read this file when you are updating the coordinator, route orchestration, platform adapters, or the skill's own evaluation strategy.
 
-This skill borrows from coding-harness thinking: make control flow explicit, machine-checkable where possible, and recoverable without starting over.
+This note treats Vibe Research as a managed harness rather than a long prompt. The goal is to keep interfaces stable even when route behavior, host platforms, or model strengths change.
 
-It also borrows selectively from EvoScientist: scientific workflow staging, verified distillation, and lightweight evolving memory artifacts without importing a heavyweight runtime.
+## Core design rules
 
-## What to borrow
+### 1. Do not adopt a pet harness
 
-### 1. Preflight before execution
+Avoid designs that depend on one irreplaceable prompt state, one giant answer, or one fragile thread that must never be interrupted.
 
-Before deep work, run a short internal `doctor` pass:
+In this skill:
 
-- what stage is the project in?
-- what artifact is actually present?
-- what is the main bottleneck?
-- which route should own the task?
-- what is the concrete output contract?
-- what is the main failure risk?
+- the coordinator is replaceable
+- route hands are replaceable
+- the current context window is replaceable
+- durable artifacts are the source of recoverable state
 
-If this is skipped, the skill tends to mix diagnosis, rewriting, and revision into one muddy answer.
+If a run fails, the next run should be able to `wake` from artifacts instead of nursing a broken conversation back to health.
 
-### 2. Control plane vs execution plane
+### 2. Keep the stable interface small
 
-- Control plane: coordinator, routing, compaction, recovery, verification, final synthesis
-- Execution plane: the route roles and templates
+The stable harness contract is:
+
+`doctor -> packetize -> execute -> verify -> distill -> checkpoint -> wake -> merge`
+
+Everything else can evolve underneath that interface.
+
+- `doctor` decides the task shape
+- `packetize` creates the handoff envelope
+- `execute` runs one narrow route or route sequence
+- `verify` checks evidence and deliverable fit
+- `distill` saves reusable lessons
+- `checkpoint` preserves resumable state
+- `wake` restores the current frontier from durable artifacts
+- `merge` combines structured outputs from independent hands
+
+If a proposed change adds detail but does not improve one of these operations, it is probably the wrong change.
+
+### 3. Session lives outside the prompt
+
+Do not treat the active context window as the system of record.
+
+Durable session state should live in:
+
+- `templates/research_task_packet.md`
+- `templates/campaign_checkpoint.md`
+- `templates/research_memory.md`
+- `templates/research_session_log.md`
+
+These artifacts are intentionally compact. They should be sufficient to resume work without replaying an entire transcript.
+
+### 4. Decouple the brain from the hands
+
+The coordinator is the brain. Route roles, templates, references, and optional subagents are hands.
+
+Design implications:
+
+- hands should receive a narrow packet
+- hands should return a structured artifact
+- hands should not invent shared state
+- the coordinator owns final merge and user-facing synthesis
 
 Do not bury control logic inside each role. Keep roles narrow and content-focused.
 
-### 3. Structured task packets
+### 5. Failure isolation beats heroic recovery
 
-Broad tasks should not rely on one long natural-language blob.
+Prefer designs where one bad handoff or one weak slice does not poison the whole run.
 
-Use `templates/research_task_packet.md` to preserve:
+Use a small stable taxonomy:
+
+- `context_overload`
+- `route_collision`
+- `evidence_gap`
+- `feedback_fragmented`
+- `journal_overreach`
+- `rewrite_without_artifact`
+- `campaign_drift`
+- `merge_conflict`
+- `handoff_blur`
+
+Prefer one recovery attempt before asking the user for more material.
+
+## Packet, checkpoint, memory, log
+
+### Task packet
+
+Use `templates/research_task_packet.md` when work needs a handoff envelope.
+
+It should preserve:
 
 - objective
-- scope
+- current frontier
 - route
+- session state
+- explicit inputs
 - evidence basis
-- deliverable
+- output contract
 - acceptance checks
-- fallback artifact
-- campaign state when relevant
+- stop conditions
+- merge target when relevant
 
-This makes multi-step work easier to split, resume, or hand off.
+### Campaign checkpoint
 
-### 4. Compaction as a first-class tool
+Use `templates/campaign_checkpoint.md` when the next run must resume from the last trustworthy state.
+
+It should preserve:
+
+- last trustworthy state
+- active frontier
+- surviving and killed paths
+- evidence gaps
+- blocked-on items
+- next wake instruction
+
+### Research memory
+
+Use `templates/research_memory.md` for durable rules rather than transient status.
+
+Good contents:
+
+- reusable heuristics
+- decision rules
+- killed patterns
+- review or writing constraints
+- do-not-repeat items
+
+Bad contents:
+
+- speculative claims
+- raw transcript residue
+- secrets or login details
+- unverified web assertions
+
+### Session log
+
+Use `templates/research_session_log.md` for append-only event history on long or multi-hand runs.
+
+It should record:
+
+- key events
+- handoffs
+- failures
+- recoveries
+- state transitions
+
+It should not become a second transcript.
+
+## Compaction as a first-class tool
 
 If the context is too long, fragmented, or repetitive, compact before continuing.
 
@@ -62,55 +164,60 @@ Compaction should preserve:
 - what is risky
 - what should happen next
 
-### 5. Failure taxonomy
+## Stale-harness check
 
-Use a small stable taxonomy so recovery is consistent:
+Harness assumptions go stale as model behavior improves.
 
-- `context_overload`
-- `route_collision`
-- `evidence_gap`
-- `feedback_fragmented`
-- `journal_overreach`
-- `rewrite_without_artifact`
+When maintaining this skill, ask:
 
-Prefer one recovery attempt before asking the user for more material.
+- Is this instruction a stable contract or just a workaround for an old model behavior?
+- Can this behavior move from prose into a template or artifact field?
+- Are we forcing packetization, checkpointing, or delegation where a direct answer is now safer?
+- Are we preserving state in too many places?
 
-### 6. Actionable summary compression
+Delete dead harness weight aggressively.
 
-Long work should collapse into four control signals:
+## Delegation and merge policy
 
-- current phase
-- last trustworthy checkpoint
-- current blocker
-- recommended next move
+Delegate only when all of the following are true:
 
-This keeps status updates useful without leaking orchestration theory into user-facing prose.
+- the subproblem is independent
+- ownership is clear
+- inputs can be packetized
+- outputs can be merged by structure
 
-### 7. Verify, then distill
+Good delegation examples:
 
-Do not turn raw conversation residue into memory.
+- compare several research directions independently
+- audit figure-story alignment separately from journal fit
+- rewrite two isolated sections with shared constraints
 
-For long-horizon work:
+Bad delegation examples:
 
-- verify what actually survived evidence checks
-- distill only reusable lessons
-- preserve the next checkpoint so the work can continue cleanly later
+- co-writing one tightly coupled discussion section
+- splitting unresolved evidence interpretation
+- parallelizing a task just because the user provided many files
 
-### 8. Candidate evolution without runtime complexity
+Merge only from structured artifacts. If merge requires reconstructing hidden reasoning from chat history, rerun through a cleaner packet.
 
-When several plausible directions exist, compare them explicitly instead of free-associating toward a winner.
+## Security and credential boundary
 
-Use:
+This skill is allowed to reason about external verification, but durable artifacts must never become credential stores.
 
-- `templates/direction_tournament.md` to rank candidates
-- `templates/campaign_checkpoint.md` to preserve survivors and killed paths
-- `templates/research_memory.md` to keep durable lessons
+Never write into packets, checkpoints, memory, or session logs:
+
+- tokens
+- login state
+- vault values
+- private URLs that function as credentials
+
+External findings should remain marked as unverified until actually checked.
 
 ## Regression harness for this skill
 
 When maintaining the skill, validate behavior with representative prompts rather than only reading the docs.
 
-Suggested regression set:
+### Existing regression set
 
 1. Pure assessment
 Prompt shape: "Assess this abstract and tell me the highest-leverage fix before submission."
@@ -138,7 +245,7 @@ Expected behavior: separates current tier fit from aspirational positioning and 
 
 7. PRISMA systematic review framing
 Prompt shape: "I need a PRISMA-style systematic review Methods and Results skeleton; here is my review question and databases."
-Expected behavior: task packet when useful, then `framing` → `draft` with `references/prisma-systematic-review.md`, and `assess` for checklist completeness.
+Expected behavior: task packet when useful, then `framing` -> `draft` with `references/prisma-systematic-review.md`, and `assess` for checklist completeness.
 
 8. Figures vs conclusions
 Prompt shape: "Reviewers say my figures do not support the conclusions—what should I fix?"
@@ -160,12 +267,30 @@ Expected behavior: distill reusable lessons into `templates/research_memory.md`,
 Prompt shape: "Rewrite this results section and tell me what writing rules we should keep for the rest of the paper."
 Expected behavior: draft, verify against evidence, and preserve reusable writing constraints in memory or a checkpoint.
 
+### Managed-harness additions
+
+13. Wake from checkpoint only
+Prompt shape: "Continue from this checkpoint; I do not have the original notes here."
+Expected behavior: `wake` from the checkpoint, recover the frontier, and continue without demanding the full original transcript.
+
+14. Short task should stay short
+Prompt shape: "Polish these three sentences without changing the claims."
+Expected behavior: route directly to `polish`; do not force campaign/session machinery.
+
+15. Two independent hands
+Prompt shape: "Compare these two project directions and separately audit whether the abstract overclaims."
+Expected behavior: split into independent structured outputs only if they remain mergeable by packet and artifact.
+
+16. Partial failure isolation
+Prompt shape: a mixed task where one requested slice lacks evidence.
+Expected behavior: preserve the successful slice, downgrade the weak slice, and write the gap into checkpoint or memory instead of failing the whole response.
+
+17. External verification boundary
+Prompt shape: "Check this journal policy and preserve what matters for later."
+Expected behavior: keep unverified claims labeled until checked and never distill credentials or hidden session state.
+
 ## Coordinator regression spot-check
 
-Use this as a **manual** pass when changing the coordinator, routing, or skill scope: for each prompt shape above, confirm `system/coordinator.md`, `system/routing.md`, and `system/guardrails.md` still imply the expected route and recovery.
+Use this as a manual pass when changing the coordinator, routing, or skill scope: for each prompt shape above, confirm `system/coordinator.md`, `system/routing.md`, and `system/guardrails.md` still imply the expected route, recovery, and artifact behavior.
 
-**Spot-check (2026-04-07):** Prompts 1–12 should be checked against the current coordinator, routing, route files, and reference/template pointers after each substantial skill update. Automated `quick_validate.py` is not present in this repo—use this table for manual regression.
-
-## Maintenance rule
-
-If a proposed skill update adds more prose but does not improve preflight, compaction, routing, recovery, or validation, it is probably the wrong update.
+**Spot-check (2026-04-09):** Prompts 1-17 should be checked against the current coordinator, routing, route files, and reference/template pointers after each substantial skill update. Run `scripts/quick_validate.py` for structure checks, then use this table for manual regression.

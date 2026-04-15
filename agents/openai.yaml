@@ -1,4 +1,4 @@
 interface:
   display_name: "Vibe Research"
-  short_description: "Evolving research harness for campaigns, manuscripts, and review cycles"
-  default_prompt: "Use $vibe-research to continue this project from the checkpoint below and identify the highest-leverage next move."
+  short_description: "Managed research harness for manuscript work, with English and Chinese entry prompts"
+  default_prompt: "Use $vibe-research to wake from the checkpoint or task packet below, recover the active frontier, and execute the highest-leverage next step. 也可直接用中文发起，例如：从这个 checkpoint 继续，并给出下一步。"

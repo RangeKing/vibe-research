@@ -2,7 +2,15 @@
 
 Route based on the user's immediate problem, not the full lifecycle of the paper.
 
-No new slash route is needed for evolution or memory work. Handle that through the coordinator, campaign mode, and reusable artifacts.
+No new slash route is needed for session, recovery, or memory work. Handle that through the coordinator, the stable control operations, and durable artifacts.
+
+## Stable control interface
+
+The harness should be expressible as:
+
+`doctor -> packetize -> execute -> verify -> distill -> checkpoint -> wake -> merge`
+
+These are not slash commands. They are the stable orchestration interface around the existing routes.
 
 ## Route table
 
@@ -118,6 +126,14 @@ Use when the user needs:
 - style cleanup
 - tighter flow
 - cleaner academic English
+- writing-quality review
+- clutter reduction
+- passive-voice cleanup
+- terminology consistency
+- sentence-level clarity audit
+- higher-level journal expression
+- less AI-sounding prose
+- more direct, mature manuscript tone
 
 Aliases:
 
@@ -159,14 +175,33 @@ Use campaign mode when the work should continue across turns, phases, or failure
 - Recover from the latest checkpoint or memory artifact when one exists.
 - Use `templates/research_task_packet.md` for the current step and `templates/campaign_checkpoint.md` for the next step.
 - Use `templates/research_memory.md` when the output should preserve durable lessons.
+- Use `templates/research_session_log.md` when the run spans multiple hands or needs append-only recovery state.
 - If the user presents 3 or more competing paths, run `framing` with `templates/direction_tournament.md` before converging.
-- Typical sequence: recover checkpoint -> one narrow route -> verify -> distill -> next checkpoint.
+- Typical sequence: wake checkpoint -> packetize frontier -> one narrow route -> verify -> distill -> next checkpoint.
+
+## Many-hands rules
+
+- Parallel hands are allowed only when their tasks are independent and mergeable by structure.
+- Each hand must receive a narrow packet with explicit scope, inputs, and stop conditions.
+- Each hand must return a structured artifact rather than a long narrative summary.
+- Keep one coordinator responsible for merge and final user-facing synthesis.
+- If hands depend on each other's intermediate reasoning, do not parallelize them.
+
+## Merge contract
+
+- Merge from task packets, evidence registers, checkpoints, claim maps, or other structured artifacts.
+- Prefer explicit fields over inferred prose when combining outputs.
+- If one hand fails, preserve surviving artifacts and note the missing slice in the checkpoint instead of collapsing the whole run.
+- If merge would require reconstructing hidden reasoning from chat history, rerun the work through a cleaner packet instead.
 
 ## Conflict rules
 
 - If the user asks for both assessment and rewriting, assess first unless they clearly want immediate text output.
 - If the user asks for style polish but the real problem is overclaim, route to `claim` before `polish`.
+- If the user asks for writing-quality review, clutter cleanup, passive voice cleanup, or terminology consistency without asking for conceptual judgment, route to `polish`.
+- If the user asks for "top-journal tone", "less AI-sounding", or "more natural directness" without asking for new scientific positioning, route to `polish`.
 - If the user provides reviewer comments and also asks to rewrite text, route to `revise`, not `polish`.
 - If the user specifies a target journal and wants rewriting, route through `journal` judgment before `draft` or `polish`.
 - If the task spans three or more routes, split it into explicit subproblems instead of pretending one role can do everything cleanly.
 - If the task is a continuation of prior work, recover the frontier before choosing the route.
+- If the task is tiny and self-contained, do not force packetization, checkpointing, or multi-hand structure.

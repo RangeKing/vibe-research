@@ -25,3 +25,16 @@ High-level manuscript quality for selective venues is usually driven by argument
 - significance is stated in terms of who should care and why
 - the title, abstract, figures, captions, and cover letter agree on the same contribution
 - limitation language signals maturity rather than weakness
+
+## Sentence-level signs of stronger manuscripts
+
+- clutter is cut before diction is upgraded
+- actors and actions are visible when accountability matters
+- predicates arrive early enough that the sentence can be parsed on first read
+- technical terms stay stable across sections, figures, and captions
+- numbers, units, and cited factual claims agree across the manuscript
+- key claims are stated directly instead of through negation-based contrast scaffolding
+- paragraphs end on the actual implication rather than a summary label
+
+For sentence-level editorial review, load `references/sentence-level-writing-audit.md`.
+For direct, mature, non-AI-sounding expression, also load `references/high-journal-expression.md`.

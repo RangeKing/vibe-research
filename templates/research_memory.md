@@ -1,17 +1,25 @@
 # Research Memory
 
-## Ideation Memory
-- 
-- 
+## Reusable heuristics
+-
+-
 
-## Evidence / Execution Memory
-- 
-- 
+## Decision rules
+-
+-
 
-## Writing / Review Memory
-- 
-- 
+## Evidence / execution memory
+-
+-
 
-## Do Not Repeat
-- 
-- 
+## Writing / review memory
+-
+-
+
+## Killed patterns
+-
+-
+
+## Do not repeat
+-
+-

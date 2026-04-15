@@ -18,6 +18,9 @@ Example prompts:
 - `/assess evaluate this abstract and tell me what is missing before submission`
 - `/polish make this paragraph cleaner without changing the scientific meaning`
 - `/revise turn these reviewer comments into a response strategy`
+- `评估这篇摘要，告诉我投稿前最该补什么`
+- `从这个 checkpoint 继续，先恢复当前 frontier`
+- `这些审稿意见该怎么回复，顺便给我修改策略`
 
 ## Suggested routing snippet for `CLAUDE.md`
 
@@ -42,4 +45,6 @@ Use `vibe-research` for:
 - `polish` is not `revise`
 - `assess` should not silently turn into a rewrite unless the user asks
 - broad bundles should go through the coordinator's internal preflight and compaction rules before deep rewriting
+- checkpoint or memory-driven continuations should wake from durable artifacts before route execution
+- if multiple specialist hands are used, merge from their returned artifacts rather than their free-form summaries
 - the root skill logic remains platform-neutral
