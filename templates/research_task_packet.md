@@ -9,6 +9,7 @@ task:
   route: framing | assess | de-risk | claim | draft | journal | polish | revise
   session_state: none | packet | checkpoint | memory | session_log | mixed
   recovery_mode: none | wake_first | compact_first | salvage_partial | ask_for_anchor_artifact
+  target_journal: ""
   bottleneck: ""
   inputs:
     artifacts:
@@ -32,6 +33,12 @@ task:
     missing:
       - ""
   evidence_basis: strong | partial | weak | unknown
+  reference_state: adequate | thin | uneven | unknown
+  citation_plan:
+    needed: true | false
+    artifact: none | reference_coverage_map
+    priority_buckets:
+      - ""
   deliverable: ""
   merge_target: none | coordinator_synthesis | checkpoint_update | memory_update
   acceptance_checks:

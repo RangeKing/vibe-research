@@ -4,6 +4,7 @@
 - Best current target:
 - Safer fallback target:
 - Overreach risk: High / Medium / Low
+- Reference adequacy: Adequate / Thin / Uneven / Unknown
 
 ## Five-axis assessment
 ### 1. Novelty

@@ -14,13 +14,28 @@ EXPECTED_FILES = [
     "system/routing.md",
     "system/guardrails.md",
     "references/high-journal-expression.md",
+    "references/reference-adequacy-audit.md",
     "references/sentence-level-writing-audit.md",
     "templates/research_task_packet.md",
+    "templates/reference_coverage_map.md",
     "templates/campaign_checkpoint.md",
     "templates/research_memory.md",
     "templates/polish_pass.md",
     "templates/writing_quality_review.md",
 ]
+
+
+SOURCE_ONLY_DOCS = [
+    "README.md",
+    "README_CN.md",
+    "platforms/codex/README.md",
+    "platforms/claude-code/README.md",
+    "platforms/openclaw/README.md",
+]
+
+RESOURCE_PATH_RE = re.compile(
+    r"`((?:agents|platforms|references|roles|scripts|system|templates)/[^`]+)`"
+)
 
 
 def fail(message: str) -> None:
@@ -114,11 +129,54 @@ def validate_openai_yaml(root: Path) -> None:
     if missing:
         fail(f"agents/openai.yaml is missing non-empty interface fields: {', '.join(missing)}")
 
+    short_description = interface["short_description"]
+    if not 25 <= len(short_description) <= 64:
+        fail("agents/openai.yaml interface.short_description must be 25-64 characters")
+
+    default_prompt = interface["default_prompt"]
+    skill_name = parse_frontmatter(root / "SKILL.md")["name"]
+    if f"${skill_name}" not in default_prompt:
+        fail(f"agents/openai.yaml interface.default_prompt must mention `${skill_name}`")
+
 
 def validate_required_files(root: Path) -> None:
     missing = [rel for rel in EXPECTED_FILES if not (root / rel).exists()]
     if missing:
         fail(f"missing required repository files: {', '.join(missing)}")
+
+
+def validate_referenced_paths(root: Path) -> None:
+    skill_text = load_text(root / "SKILL.md")
+    missing: list[str] = []
+    for match in RESOURCE_PATH_RE.finditer(skill_text):
+        rel = match.group(1)
+        if not (root / rel).exists():
+            missing.append(rel)
+    if missing:
+        fail(f"SKILL.md references missing resource paths: {', '.join(sorted(set(missing)))}")
+
+
+def validate_long_markdown_navigation(root: Path) -> None:
+    missing: list[str] = []
+    for base in ["references", "system"]:
+        for path in (root / base).glob("*.md"):
+            text = load_text(path)
+            if len(text.splitlines()) > 100 and "## Navigation" not in text[:1000]:
+                missing.append(str(path.relative_to(root)))
+    if missing:
+        fail(f"long reference/system files need early `## Navigation` sections: {', '.join(missing)}")
+
+
+def validate_source_packaging_note(root: Path) -> None:
+    existing = [rel for rel in SOURCE_ONLY_DOCS if (root / rel).exists()]
+    if not existing:
+        return
+
+    skill_text = load_text(root / "SKILL.md")
+    if "runtime installation/export should omit source-only documentation" not in skill_text:
+        fail("source README files are allowed, but SKILL.md must document that runtime installs omit source-only docs")
+
+    print("NOTE: README/platform docs are source-only; runtime install/export should omit them.")
 
 
 def validate_managed_harness_surface(root: Path) -> None:
@@ -132,6 +190,7 @@ def validate_managed_harness_surface(root: Path) -> None:
         "checkpoint",
         "wake",
         "merge",
+        "reference-adequacy",
     ]
     missing = [term for term in required_terms if term not in skill_text]
     if missing:
@@ -146,10 +205,18 @@ def validate_managed_harness_surface(root: Path) -> None:
     if not any(term in skill_text for term in chinese_triggers):
         fail("SKILL.md is missing Chinese trigger phrases")
 
+    if skill_text.count("- failure risks such as") != 1:
+        fail("SKILL.md must contain one consolidated `failure risks such as` bullet")
+
     packet_text = load_text(root / "templates/research_task_packet.md")
-    for field in ["session_state", "frontier", "inputs", "recovery_mode", "merge_target", "stop_conditions"]:
+    for field in ["session_state", "frontier", "inputs", "recovery_mode", "merge_target", "stop_conditions", "reference_state", "citation_plan"]:
         if field not in packet_text:
             fail(f"templates/research_task_packet.md is missing `{field}`")
+
+    coverage_text = load_text(root / "templates/reference_coverage_map.md")
+    for field in ["Reference state", "Claim buckets", "Priority insertion plan", "Sequence and formatting checks", "Stop condition before polish"]:
+        if field not in coverage_text:
+            fail(f"templates/reference_coverage_map.md is missing `{field}`")
 
     checkpoint_text = load_text(root / "templates/campaign_checkpoint.md")
     for field in ["Last trustworthy state", "Active frontier", "Open loops", "Blocked on", "Next wake instruction"]:
@@ -170,6 +237,9 @@ def main() -> None:
     validate_required_files(root)
     validate_skill_md(root)
     validate_openai_yaml(root)
+    validate_referenced_paths(root)
+    validate_long_markdown_navigation(root)
+    validate_source_packaging_note(root)
     validate_managed_harness_surface(root)
     print(f"OK: {root}")
 

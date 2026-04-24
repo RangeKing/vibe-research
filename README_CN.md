@@ -5,6 +5,7 @@
 Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 managed research harness 与论文写作 skill。
 
 它覆盖的是“科研判断 + 写作执行”之间的工作带：研究方向梳理、项目评估、去风险、claim 校准、期刊匹配、正文改写、语言润色，以及基于审稿意见的修改。
+对接近投稿的任务，它还默认要求做一次**参考文献充分性审查**，避免只润色文字和图，却放过 citation coverage、格式顺序和关键 claim 无支撑的问题。
 
 ## 这个仓库是什么
 
@@ -39,6 +40,7 @@ Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 mana
 - 选择或重构研究方向
 - 判断一个 idea 是否值得继续做
 - 评估稿件当前是否接近投稿
+- 检查参考文献数量、覆盖面和期刊适配是否达标
 - 找出最关键的证据缺口
 - 降低 overclaim 或因果表述过强的问题
 - 重写标题、摘要、引言、结果、讨论等部分
@@ -135,7 +137,9 @@ Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 mana
 - [references/prisma-systematic-review.md](./references/prisma-systematic-review.md)：PRISMA 向系统综述结构与 task packet 配合方式
 - [references/figure-storytelling.md](./references/figure-storytelling.md)：图表、图注与正文 claim 对齐
 - [references/high-journal-expression.md](./references/high-journal-expression.md)：面向润色任务的高水平期刊表达规则
+- [references/reference-adequacy-audit.md](./references/reference-adequacy-audit.md)：面向投稿前任务的参考文献数量、覆盖面与编号顺序检查
 - [templates/research_task_packet.md](./templates/research_task_packet.md)：复杂任务的紧凑控制对象
+- [templates/reference_coverage_map.md](./templates/reference_coverage_map.md)：当 citation 太少或覆盖不均时的 claim-bucket / 插入计划模板
 - [templates/campaign_checkpoint.md](./templates/campaign_checkpoint.md)：长期任务的可续接状态
 - [templates/research_memory.md](./templates/research_memory.md)：可复用经验蒸馏
 - [templates/research_session_log.md](./templates/research_session_log.md)：长程或多 hand 任务的 append-only session 状态

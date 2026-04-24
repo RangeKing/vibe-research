@@ -19,6 +19,8 @@ Use this reference when **figures, panels, or captions** must support the manusc
 - Every **strong claim** in the Results that references a figure should have a **matching panel** and **no contradictory** error bars or labels.
 - Summary plots (bar charts, heatmaps) should match **supplementary** or **raw** descriptions where applicable; avoid “cherry-picked” exemplars without a defined rule.
 - Statistics in the figure (tests, multiple comparisons, exclusion counts) should match **Methods** and **Results** wording.
+- When a figure mixes **map, histogram, table, and captioned totals**, verify that every panel uses the **same accounting basis** unless the caption explicitly justifies a different one.
+- If marginal plots are meant to correspond to a map or image panel, check that the **bin edges, shared axes, and source-data totals** truly align with the visual panel rather than only sounding aligned in the legend.
 
 ## Integrity and common pitfalls
 

@@ -18,6 +18,7 @@ Turn user-provided ideas, results, notes, or rough text into strong research wri
 - `references/prisma-systematic-review.md` for PRISMA-style reporting structure and alignment with `templates/research_task_packet.md`.
 - `references/figure-storytelling.md` for captions, panel logic, and figure–claim consistency.
 - `references/sentence-level-writing-audit.md` when the user wants the rewritten text to also eliminate clutter, passive voice, or terminology drift.
+- `references/reference-adequacy-audit.md` and `templates/reference_coverage_map.md` when the rewrite is journal-targeted, near-submission, or package-oriented.
 
 ## Standard output
 
@@ -34,6 +35,7 @@ For substantial work, use a `draft -> verify -> distill` loop and preserve reusa
 - Fix the argumentative structure before polishing sentences.
 - Keep the prose restrained and specific.
 - If the target journal is named, calibrate breadth, density, and mechanism emphasis to that journal tier.
+- If the target journal is named and citation support is thin or uneven, stop and build the reference coverage map before performing venue-specific rewriting.
 - If the evidence is incomplete, label the text as a structure, placeholder draft, or example wording instead of final copy.
 - If the user explicitly asks for sentence-level cleanup after the structural rewrite, run a light editorial pass instead of only smoothing tone.
 - After a substantial rewrite, note reusable writing constraints or review patterns in `templates/research_memory.md` or the next checkpoint.

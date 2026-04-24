@@ -5,6 +5,7 @@
 Vibe Research is a cross-platform managed research harness and manuscript-writing skill for Codex, Claude Code, and OpenClaw.
 
 It is designed for work that sits between scientific judgment and writing execution: idea framing, project assessment, de-risking, claim calibration, journal fit, drafting, polish, and feedback-driven revision.
+For near-submission work, it also defaults to a **reference adequacy and coverage check**, so journal-specific rewriting does not proceed on top of thin or uneven citation support.
 
 ## What This Repository Is
 
@@ -39,6 +40,7 @@ Use this skill when you need help with tasks such as:
 - selecting or reframing a research direction
 - deciding whether an idea is worth pursuing
 - assessing manuscript readiness
+- checking whether citation count, coverage and formatting plausibly match the target journal
 - identifying the highest-risk evidence gap
 - softening overclaim or causality overreach
 - rewriting titles, abstracts, introductions, results, or discussions
@@ -135,7 +137,9 @@ Key files:
 - [references/prisma-systematic-review.md](./references/prisma-systematic-review.md): PRISMA-oriented systematic review structure and task-packet use
 - [references/figure-storytelling.md](./references/figure-storytelling.md): figures, captions, and claim alignment
 - [references/high-journal-expression.md](./references/high-journal-expression.md): direct, non-AI-sounding journal expression rules for polish work
+- [references/reference-adequacy-audit.md](./references/reference-adequacy-audit.md): citation-count, coverage, and sequence checks for journal-targeted work
 - [templates/research_task_packet.md](./templates/research_task_packet.md): compact control object for broad or multi-stage work
+- [templates/reference_coverage_map.md](./templates/reference_coverage_map.md): claim-bucket and insertion-plan artifact for citation-thin or coverage-uneven drafts
 - [templates/campaign_checkpoint.md](./templates/campaign_checkpoint.md): resumable state for long-horizon work
 - [templates/research_memory.md](./templates/research_memory.md): distilled reusable lessons
 - [templates/research_session_log.md](./templates/research_session_log.md): append-only session state for long or multi-hand runs

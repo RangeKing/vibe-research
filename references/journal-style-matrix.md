@@ -19,6 +19,21 @@ This matrix is heuristic guidance, not an author-guideline substitute.
 - avoid dressing up a narrow technical increment as a paradigm shift
 - keep the final significance sentence bold but bounded
 
+## Nature-family selective field journals
+
+### Typical preference
+
+- strong bridge to the journal's discourse, not only the field's internal discourse
+- concise but fully journal-ready abstract and opening
+- figures, abstract, discussion and cover letter pointing to the same bounded contribution
+- citation support that looks editorially credible for a near-submission manuscript
+
+### Writing implication
+
+- do not leave the abstract as a mini-review or a citation dump; many journals in this family want an unreferenced abstract
+- avoid under-cited introductions that rely on one report plus one methods paper
+- if the paper is being retargeted, re-check reference count, coverage and numbering after every major rewrite
+
 ## Nature Communications or Science Advances
 
 ### Typical preference

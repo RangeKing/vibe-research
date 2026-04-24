@@ -4,6 +4,13 @@ Read this file when you are updating the coordinator, route orchestration, platf
 
 This note treats Vibe Research as a managed harness rather than a long prompt. The goal is to keep interfaces stable even when route behavior, host platforms, or model strengths change.
 
+## Navigation
+
+- Core design rules
+- Packet, checkpoint, memory, log
+- Compaction, stale-harness checks, delegation, and security
+- Regression harness and coordinator spot-check
+
 ## Core design rules
 
 ### 1. Do not adopt a pet harness

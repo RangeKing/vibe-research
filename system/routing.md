@@ -4,6 +4,13 @@ Route based on the user's immediate problem, not the full lifecycle of the paper
 
 No new slash route is needed for session, recovery, or memory work. Handle that through the coordinator, the stable control operations, and durable artifacts.
 
+## Navigation
+
+- Stable control interface
+- Route table
+- PRISMA and campaign routing
+- Many-hands, merge, and conflict rules
+
 ## Stable control interface
 
 The harness should be expressible as:
@@ -201,7 +208,8 @@ Use campaign mode when the work should continue across turns, phases, or failure
 - If the user asks for writing-quality review, clutter cleanup, passive voice cleanup, or terminology consistency without asking for conceptual judgment, route to `polish`.
 - If the user asks for "top-journal tone", "less AI-sounding", or "more natural directness" without asking for new scientific positioning, route to `polish`.
 - If the user provides reviewer comments and also asks to rewrite text, route to `revise`, not `polish`.
-- If the user specifies a target journal and wants rewriting, route through `journal` judgment before `draft` or `polish`.
+- If the user specifies a target journal and wants rewriting, route through `journal` judgment and a reference-adequacy audit before `draft` or `polish`.
+- If the user asks what is missing before submission, include reference adequacy even if the visible problem first appears to be wording or figure polish.
 - If the task spans three or more routes, split it into explicit subproblems instead of pretending one role can do everything cleanly.
 - If the task is a continuation of prior work, recover the frontier before choosing the route.
 - If the task is tiny and self-contained, do not force packetization, checkpointing, or multi-hand structure.

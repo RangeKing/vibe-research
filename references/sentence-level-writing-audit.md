@@ -6,6 +6,14 @@ This reference is for delivery quality, not scientific truth claims. Use it afte
 
 Load `references/high-journal-expression.md` alongside this file when the user wants the prose to sound more like a mature journal manuscript and less like AI output, translation residue, or explanatory over-scaffolding.
 
+## Navigation
+
+- Review modes
+- The five editorial passes
+- Severity guidance
+- Output pattern
+- Boundary
+
 ## Review modes
 
 Choose the lightest mode that matches the request:

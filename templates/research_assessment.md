@@ -4,6 +4,7 @@
 - Stage:
 - Core artifact assessed:
 - Evidence provided:
+- Reference state:
 
 ## Strengths worth preserving
 - 
@@ -14,6 +15,12 @@
 1. 
 2. 
 3. 
+
+## Citation coverage
+- Current count / plausible band:
+- Strong buckets:
+- Missing or weak buckets:
+- Formatting or sequence risks:
 
 ## Readiness verdict
 - Not ready / Directionally promising / Close with focused fixes / Submission-ready

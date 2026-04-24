@@ -4,6 +4,14 @@ Use this reference when the user wants the writing to sound more like a strong j
 
 This reference adapts "talk-normal" style constraints to manuscript polishing. The goal is not informality. The goal is directness, proportion, and mature control.
 
+## Navigation
+
+- Core principle
+- What to remove
+- What to prefer
+- Section-specific guidance
+- Boundary
+
 ## Core principle
 
 State the claim cleanly, then add only the context that earns its place.
