@@ -24,7 +24,7 @@ Judge where the work fits, why it fits, why it may fail there, and how to positi
 ## Rules
 
 - Judge fit based on problem importance, evidential depth, scope, audience, and presentation.
-- Before recommending a selective venue or journal-specific rewrite, check whether the manuscript has plausible citation coverage and reference formatting for that venue; use `references/reference-adequacy-audit.md`.
+- Before recommending a selective venue or journal-specific rewrite, check whether the manuscript has plausible citation coverage, reference formatting, section structure, heading policy and display-format readiness for that venue; use `references/reference-adequacy-audit.md` and `references/journal-structure-audit.md`.
 - Do not confuse polish problems with scientific fit problems.
 - Provide at least one safer fallback venue when the main target looks over-ambitious.
 - If the evidence is too thin for a precise recommendation, say what is missing.

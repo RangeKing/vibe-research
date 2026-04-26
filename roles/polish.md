@@ -45,6 +45,8 @@ For writing-review requests, use:
 Load `references/sentence-level-writing-audit.md` when the user asks for prose review, clutter cleanup, passive voice cleanup, terminology consistency, or sentence-level audit.
 Load `references/high-journal-expression.md` when the user asks for stronger journal expression, lower AI tone, or more natural directness.
 Load `references/reference-adequacy-audit.md` and `templates/reference_coverage_map.md` when the polish request is tied to a named journal, submission readiness, or a package-level pass.
+Load `references/submission-cleanliness-audit.md` when the polish request is tied to a named journal, submission readiness, package-level pass, cover letter, figure legends, Methods, Supplementary Information, or availability statements.
+Load `references/journal-structure-audit.md` when the polish request is tied to a named journal, submission readiness, package-level pass, headings/subheadings, equations, tables, figure legends, or Word/PDF deliverables.
 Use `templates/writing_quality_review.md` when the review artifact itself is the main deliverable.
 Use `templates/polish_pass.md` when the deliverable is a direct rewrite plus a compact list of the main editorial moves.
 
@@ -62,3 +64,5 @@ Use `templates/polish_pass.md` when the deliverable is a direct rewrite plus a c
 - If the user asks for one named problem, run the targeted pass instead of simulating a full audit.
 - If the root problem is actually unsupported claims, say that `claim` should come first.
 - If the root problem is thin or uneven citation support, say that reference coverage repair should come before polish.
+- If the text contains internal paths, filenames, code variables, commands, script/tool names, or draft-management residue, fix those before style polishing and treat them as submission blockers.
+- If headings are overlong or sentence-like for the target venue, shorten them before polishing body prose; if formulas are plain text in a Word/PDF deliverable, treat that as display-format drift.

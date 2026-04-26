@@ -25,6 +25,7 @@ Chinese entry is first-class. Chinese task requests should trigger the same harn
 - Stay evidence-bound. Never invent data, experiments, reviewer comments, citations, journal preferences, or outcomes.
 - Run a short preflight before substantial work: identify stage, artifact type, bottleneck, evidence basis, route, requested deliverable, context risk, and reference state.
 - For journal-targeted, near-submission, or submission-package work, run a reference-adequacy audit before deep rewriting: citation count, coverage by claim type, unsupported factual statements, citation density, and numbering/format risks.
+- For journal-targeted, near-submission, or submission-package work, run final readiness audits before delivery: check submission cleanliness by removing internal paths, filenames, code variables, tool/script names, lab-notebook phrasing, and project-management residue from editor/reviewer-facing text; check journal structure by verifying target-journal section rules, heading/subheading style, Discussion heading policy, and formal equation/table/figure formatting. Treat internal-trace leakage and structure/display-format drift as submission blockers, not cosmetic issues.
 - For journal-targeted or submission-package work with figures, audit whether figure panels, legends, source-data tables, methods equations, and headline numbers use the same accounting basis. Treat figure-accounting drift as a submission blocker, not a cosmetic issue.
 - When the reference state is `thin` or `uneven`, produce a reference coverage map and insertion plan before venue-specific drafting or polish.
 - Coverage is not density. In journal-facing prose, prefer the fewest citations needed to anchor a claim, avoid long citation stacks, and move completeness-oriented support into Methods, SI, or a reference coverage artifact when possible.
@@ -79,7 +80,7 @@ Run the work in this order unless the user clearly overrides it:
 
 1. `doctor` preflight: classify the task, spot route collisions, and detect evidence/context risks.
 2. `wake` if durable state exists: recover the latest trustworthy frontier before generating new work.
-3. Run a reference-adequacy audit when the task is near-submission, journal-specific, or package-oriented.
+3. Run reference-adequacy, submission-cleanliness and journal-structure audits when the task is near-submission, journal-specific, or package-oriented.
 4. `packetize` when the task is broad, multi-stage, or handed to another hand.
 5. `execute`: hand the task to the narrowest role or a small ordered sequence of roles.
 6. `verify`: check that the output stayed evidence-bound, solved the stated bottleneck, and matched the requested deliverable.
@@ -98,7 +99,7 @@ The `doctor` pass is an internal control step, not a user-facing heading require
 - best route
 - requested output contract
 - mode: `normal` or `campaign`
-- failure risks such as `context_overload`, `route_collision`, `evidence_gap`, `feedback_fragmented`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `campaign_drift`, or `merge_conflict`
+- failure risks such as `context_overload`, `route_collision`, `evidence_gap`, `feedback_fragmented`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, or `merge_conflict`
 
 Use `templates/research_task_packet.md` when the work needs a compact control object.
 
@@ -119,7 +120,7 @@ See `roles/framing.md`.
 Use for evaluating an existing manuscript, abstract, figure set, experiment package, claim package, response draft, or project status without defaulting into rewrite mode.
 
 See `roles/assess.md`. For figure–text alignment and PRISMA reporting checks, load `references/figure-storytelling.md` and `references/prisma-systematic-review.md` when relevant.
-For near-submission or journal-targeted assessments, also load `references/reference-adequacy-audit.md`.
+For near-submission or journal-targeted assessments, also load `references/reference-adequacy-audit.md`, `references/submission-cleanliness-audit.md` and `references/journal-structure-audit.md`.
 
 ### `/de-risk`
 
@@ -144,7 +145,7 @@ See `roles/draft.md`.
 Use for journal fit, target venue selection, audience fit, journal ladder design, and pre-submission positioning.
 
 See `roles/journal.md`.
-For selective-journal targeting or package retargeting, also load `references/reference-adequacy-audit.md`.
+For selective-journal targeting or package retargeting, also load `references/reference-adequacy-audit.md`, `references/submission-cleanliness-audit.md` and `references/journal-structure-audit.md`.
 
 ### `/polish`
 
@@ -210,6 +211,9 @@ When the task becomes tangled, recover with the smallest reliable move:
 - `figure_accounting_drift`: reconcile the statistical basis across figure panels, captions, source data, methods, and headline text before styling or journal retargeting.
 - `coverage_uneven`: identify the unsupported claim buckets, insert the missing literature, and only then resume manuscript-level rewriting.
 - `citation_dense`: reduce redundant citation stacks, keep anchor citations in main-text claims, and migrate completeness citations to Methods, SI, or a coverage map.
+- `internal_trace_leak`: scan editor- or reviewer-facing text for internal paths, filenames, code variables, local commands, tool/script names, draft-management notes, and provenance phrases such as "workspace materials"; rewrite them into formal data/provenance language or remove them before finalizing.
+- `heading_style_drift`: compare all headings/subheadings against the target journal's structure rules; shorten overlong or sentence-like subheadings into topical labels, and remove prohibited Discussion subheadings.
+- `equation_format_drift`: verify formulas are delivered as proper equations for the target output format, such as Word Office Math objects in `.docx`, not plain-text arithmetic lines.
 - `rewrite_without_artifact`: provide a scaffold, outline, or example paragraph instead of pretending to revise unseen text.
 - `campaign_drift`: wake from the latest checkpoint, restate the frontier, and reject historical residue that no longer matters.
 - `merge_conflict`: fall back to one coordinating pass, restate the source-of-truth artifact, and re-run only the conflicting slice.
@@ -223,6 +227,8 @@ Before finalizing, check these invariants:
 - the route matches the real bottleneck
 - all strong claims are tied to user-provided evidence or clearly labeled heuristics
 - journal-targeted outputs have plausible citation coverage, selective citation density, and reference formatting for the venue
+- editor- or reviewer-facing outputs contain no internal workspace paths, local filenames, code variables, commands, script/tool names, or project-management residue unless the user explicitly requests a technical appendix that names them
+- journal-targeted outputs follow the target venue's section and subheading rules; formulas, tables and figures use formal display formats appropriate to the delivered file type
 - the deliverable is concrete and immediately usable
 - incomplete inputs are reflected as assumptions, not hidden inside confident prose
 - reused memory is distilled, not copied forward as raw transcript residue
@@ -238,6 +244,8 @@ Before finalizing, check these invariants:
 - Use `references/adjudication.md` and `references/paradigm-audit.md` for research-direction convergence and risk scanning.
 - Use `references/manuscript-heuristics.md`, `references/journal-style-matrix.md`, and `references/abstract-workflow.md` when the task depends on journal-aware or high-standard manuscript writing decisions.
 - Use `references/reference-adequacy-audit.md` when the task is near submission, asks what is missing before submission, targets a named journal, or requires package-level rewriting.
+- Use `references/submission-cleanliness-audit.md` when the task is near submission, journal-targeted, package-oriented, or asks for an editor/reviewer-style check.
+- Use `references/journal-structure-audit.md` when the task is near submission, journal-targeted, package-oriented, asks about headings/subheadings, or produces Word/PDF submission files with equations, figures or tables.
 - Use `templates/reference_coverage_map.md` whenever reference adequacy is part of the deliverable or a gating check for submission-oriented work.
 - Use `references/high-journal-expression.md` when the task is to make the prose more direct, natural, non-AI-sounding, and closer to high-level journal expression without changing the scientific position.
 - Use `references/sentence-level-writing-audit.md` when the task is primarily about prose review, clutter reduction, passive voice, sentence architecture, terminology consistency, or numerical/citation consistency inside the writing itself.
