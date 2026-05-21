@@ -55,8 +55,10 @@ If there is no concrete artifact, assess the project status rather than pretendi
 - When the user asks for **writing quality** rather than scientific readiness, redirect to `polish` and use `references/sentence-level-writing-audit.md` for sentence-level editorial checks.
 - Prioritize structural gaps over cosmetic issues.
 - Separate evidence problems from writing problems.
+- Trace each high-severity gap to a likely root cause before recommending fixes: missing experiment, overclaim, weak comparison, method opacity, citation gap, figure/SI inconsistency, or prose/structure.
 - Make clear what is already strong enough to preserve.
 - Give the next move that creates the largest improvement per unit effort.
 - Do not silently rewrite; if a small wording example helps, label it as an example.
+- Before calling an artifact ready, run a fresh verification pass against the provided source, target-journal constraints, and any task packet coverage items.
 - When the task is diagnostic or campaign-based, distill reusable failure patterns into `templates/research_memory.md` or `templates/campaign_checkpoint.md`.
 - For figure-heavy or PRISMA-heavy work, capture recurring audit rules worth reusing later, not only the current gaps.

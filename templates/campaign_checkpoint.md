@@ -36,6 +36,7 @@
 -
 
 ## Gate status
+- root_cause:
 - quality:
 - coverage:
 - safety:
@@ -45,6 +46,9 @@
 -
 
 ## Context budget note
+-
+
+## Rationalization pressure note
 -
 
 ## What changed

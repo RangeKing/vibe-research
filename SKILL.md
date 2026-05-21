@@ -25,6 +25,8 @@ Chinese entry is first-class. Chinese task requests should trigger the same harn
 - Stay evidence-bound. Never invent data, experiments, reviewer comments, citations, journal preferences, or outcomes.
 - Run a short preflight before substantial work: identify stage, artifact type, bottleneck, evidence basis, route, requested deliverable, context risk, and reference state.
 - Preserve source-to-deliverable traceability. For broad, continuation, reviewer-driven, or submission-facing work, track which user requirements, reviewer comments, journal constraints, figure claims, and SI pointers must survive into the delivered artifact.
+- Investigate root cause before fixing symptoms. When a reviewer, editor, collaborator, failed experiment, or figure mismatch exposes a problem, identify whether the real issue is evidence, claim strength, framing, method detail, citation coverage, or prose before drafting a fix.
+- Treat external feedback as material to evaluate, not orders to obey. Verify each comment against the manuscript, data, journal rules, and prior decisions before accepting, revising, deferring, or pushing back.
 - For journal-targeted, near-submission, or submission-package work, run a reference-adequacy audit before deep rewriting: citation count, coverage by claim type, unsupported factual statements, citation density, and numbering/format risks.
 - For journal-targeted, near-submission, or submission-package work, run final readiness audits before delivery: check submission cleanliness by removing internal paths, filenames, code variables, tool/script names, lab-notebook phrasing, and project-management residue from editor/reviewer-facing text; check journal structure by verifying target-journal section rules, heading/subheading style, Discussion heading policy, and formal equation/table/figure formatting. Treat internal-trace leakage and structure/display-format drift as submission blockers, not cosmetic issues.
 - For journal-targeted, near-submission, or submission-package work that creates, edits, or cites Supplementary Information, run a supplementary-information adequacy audit before delivery. Every main-text pointer to a supplementary note, table, figure, formula, threshold, dataset, sensitivity analysis, or validation result must resolve to actual supplementary content with matching terminology, numbering, variables, and formal equation/table formatting. Treat missing or thinned-out SI content as a submission blocker.
@@ -36,7 +38,9 @@ Chinese entry is first-class. Chinese task requests should trigger the same harn
 - If the task spans multiple routes or arrives as a messy bundle, create a compact task packet before deep execution.
 - Compact context before escalating. Convert long or fragmented input into an evidence register, action table, or narrow packet instead of asking the user to resend everything.
 - Watch context budget as a quality signal. When the source bundle is large, prefer frontmatter, summaries, evidence registers, and packets over rereading full drafts; checkpoint before the answer becomes vague or starts dropping constraints.
+- Watch for rationalization pressure. Deadlines, sunk-cost drafts, reviewer anxiety, target-journal ambition, or "just polish it" phrasing are signals to run stricter evidence and coverage checks, not shortcuts.
 - Verify before distilling. Only carry forward lessons that are grounded in user-provided evidence, transparent reasoning, or explicitly labeled heuristics.
+- Do not claim readiness, completeness, or successful revision without fresh verification against the relevant packet, source artifact, or audit checklist.
 - Distill reusable memory for substantial work. Preserve what changed, what was ruled out, what should be reused later, and the next checkpoint.
 - Keep the harness stable even if route behavior evolves. Prefer stable interfaces and artifacts over brittle prompt tricks.
 - Prefer recovery recipes over generic blocking questions. When possible, salvage the task by softening claims, narrowing scope, splitting steps, or switching the output contract.
@@ -53,7 +57,7 @@ Use these control operations as the stable harness interface:
 1. `doctor`: classify stage, bottleneck, evidence quality, context risk, and likely route.
 2. `packetize`: create a compact execution envelope when the task is broad, messy, or headed to another hand.
 3. `execute`: run the narrowest route or ordered route pair that solves the current frontier.
-4. `verify`: check that the output is evidence-bound, route-aligned, source-covered, and actually satisfies the deliverable.
+4. `verify`: check that the output is evidence-bound, route-aligned, source-covered, freshly checked, and actually satisfies the deliverable.
 5. `distill`: save reusable lessons that survived verification.
 6. `checkpoint`: write resumable state for the next session.
 7. `wake`: resume from durable artifacts instead of replaying the whole transcript.
@@ -84,10 +88,10 @@ Run the work in this order unless the user clearly overrides it:
 1. `doctor` preflight: classify the task, spot route collisions, and detect evidence/context risks.
 2. `wake` if durable state exists: recover the latest trustworthy frontier before generating new work.
 3. Run reference-adequacy, submission-cleanliness, journal-structure, and supplementary-information adequacy audits when the task is near-submission, journal-specific, or package-oriented.
-4. Classify gates when they matter: `quality` for automated checks, `coverage` for source-to-output traceability, `safety` for blockers such as unsupported claims or leakage, and `transition` for explicit next-step handoffs.
+4. Classify gates when they matter: `root_cause` for tracing the underlying issue before fixes, `quality` for automated checks, `coverage` for source-to-output traceability, `safety` for blockers such as unsupported claims or leakage, and `transition` for explicit next-step handoffs.
 5. `packetize` when the task is broad, multi-stage, or handed to another hand.
 6. `execute`: hand the task to the narrowest role or a small ordered sequence of roles.
-7. `verify`: check that the output stayed evidence-bound, solved the stated bottleneck, covered the packet's required source items, and matched the requested deliverable.
+7. `verify`: check that the output stayed evidence-bound, solved the stated bottleneck, covered the packet's required source items, passed any required fresh-eye review, and matched the requested deliverable.
 8. `distill`: when the task is substantial, capture reusable lessons in a memory artifact.
 9. `checkpoint`: preserve compact state when future continuation is likely.
 10. `merge` only when multiple hands produced independent structured artifacts.
@@ -103,8 +107,8 @@ The `doctor` pass is an internal control step, not a user-facing heading require
 - best route
 - requested output contract
 - mode: `normal` or `campaign`
-- gates required: `quality`, `coverage`, `safety`, `transition`, or `none`
-- failure risks such as `context_overload`, `budget_pressure`, `route_collision`, `evidence_gap`, `source_coverage_gap`, `feedback_fragmented`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `supplement_drift`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, `checkpoint_stale`, or `merge_conflict`
+- gates required: `root_cause`, `quality`, `coverage`, `safety`, `transition`, or `none`
+- failure risks such as `context_overload`, `budget_pressure`, `route_collision`, `evidence_gap`, `symptom_fix`, `source_coverage_gap`, `feedback_fragmented`, `reviewer_overcompliance`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `supplement_drift`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, `checkpoint_stale`, or `merge_conflict`
 
 Use `templates/research_task_packet.md` when the work needs a compact control object.
 
@@ -210,8 +214,10 @@ When the task becomes tangled, recover with the smallest reliable move:
 - `context_overload`: compact into `templates/evidence_register.md`, then assess or claim-review the highest-risk slice first.
 - `route_collision`: split explicitly, usually `assess -> claim -> draft` or `journal -> draft/polish`.
 - `evidence_gap`: preserve the structure, soften conclusions, and label placeholders instead of fabricating support.
+- `symptom_fix`: stop drafting and trace the problem backward to its source: missing evidence, overclaim, weak method, bad figure accounting, citation gap, or unclear prose.
 - `source_coverage_gap`: map required source items to output sections before rewriting; do not finalize until required reviewer comments, claim constraints, figure/SI pointers, or journal rules are either covered or explicitly deferred.
 - `feedback_fragmented`: normalize comments into an action table before entering `revise`.
+- `reviewer_overcompliance`: verify whether the requested change is scientifically correct, journal-appropriate, and compatible with prior decisions before implementing; push back or narrow the response when the comment is wrong or overreaching.
 - `journal_overreach`: judge the current evidence tier first, then discuss the stretch target separately.
 - `citation_thin`: build a reference coverage map and insertion plan before doing more journal-specific polish.
 - `figure_accounting_drift`: reconcile the statistical basis across figure panels, captions, source data, methods, and headline text before styling or journal retargeting.
@@ -233,6 +239,7 @@ Prefer one recovery attempt before asking the user for more material.
 Before finalizing, check these invariants:
 
 - the route matches the real bottleneck
+- the output fixes the underlying cause, not only the visible symptom, when the task involves criticism, failed checks, or mismatched evidence
 - required source items from the task packet are covered, deferred with reason, or marked impossible under current evidence
 - all strong claims are tied to user-provided evidence or clearly labeled heuristics
 - journal-targeted outputs have plausible citation coverage, selective citation density, and reference formatting for the venue

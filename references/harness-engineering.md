@@ -108,14 +108,27 @@ Use `source_coverage` in `templates/research_task_packet.md` when the task is br
 
 ### 7. Keep gates small and typed
 
-Use four gate types:
+Use five gate types:
 
+- `root_cause`: the visible problem has been traced to evidence, claim, method, citation, figure/SI accounting, structure, or prose before drafting fixes.
 - `quality`: route-specific checks passed.
 - `coverage`: required source items survived into the output.
 - `safety`: blockers such as unsupported claims, internal-trace leakage, missing SI support, or journal-format drift are absent.
 - `transition`: the next checkpoint or next action is explicit.
 
 Small tasks can run gates silently. Submission packages, reviewer responses, and long campaign continuations should record gate status in the packet, checkpoint, or session log.
+
+### 8. Pressure-proof the harness
+
+Skill-like instructions fail when the model can rationalize around them. In research work, the common pressures are deadlines, sunk-cost drafts, reviewer anxiety, target-journal ambition, and requests that sound like "just polish this."
+
+When pressure is high, tighten the workflow instead of relaxing it:
+
+- ask one blocking clarifying question rather than guessing
+- run root-cause and coverage gates before writing polished prose
+- compare alternatives before locking a story
+- require fresh verification before claiming readiness
+- preserve pushback when external feedback is wrong or overreaching
 
 ## Packet, checkpoint, memory, log
 
@@ -133,6 +146,7 @@ It should preserve:
 - evidence basis
 - source coverage requirements
 - gates and blockers
+- rationalization pressure
 - output contract
 - acceptance checks
 - stop conditions
@@ -213,6 +227,16 @@ Use these tiers:
 
 If the user provides a manuscript, response letter, SI, figures, and old checkpoints together, start with a packet or evidence register. Do not try to keep every raw source in active context.
 
+## Fresh-eye review loop
+
+Borrow the useful structure of two-stage review without making it software-specific:
+
+1. Coverage review: did the artifact satisfy the task packet and source items?
+2. Quality review: is the artifact scientifically and rhetorically sound?
+3. Safety review when needed: are unsupported claims, leakage, SI gaps, and journal-format issues absent?
+
+Run this locally for small tasks. Use optional subagents only when the host environment and active instructions allow them, and merge from structured artifacts rather than chat history.
+
 ## Stale-harness check
 
 Harness assumptions go stale as model behavior improves.
@@ -225,6 +249,7 @@ When maintaining this skill, ask:
 - Are we preserving state in too many places?
 - Are coverage gates blocking the right failures, or just adding ceremony?
 - Are context-budget warnings producing better checkpoints?
+- Are pressure/rationalization notes preventing real failures, or adding noise?
 
 Delete dead harness weight aggressively.
 

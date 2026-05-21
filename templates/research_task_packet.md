@@ -13,6 +13,10 @@ task:
     pressure: low | medium | high
     read_depth: full | summaries_only | packet_only
     checkpoint_before_expanding: true | false
+  rationalization_pressure:
+    level: low | medium | high
+    triggers:
+      - deadline | sunk_cost | reviewer_anxiety | journal_ambition | just_polish | external_feedback | other
   target_journal: ""
   bottleneck: ""
   inputs:
@@ -50,6 +54,11 @@ task:
   evidence_basis: strong | partial | weak | unknown
   reference_state: adequate | thin | uneven | unknown
   gates:
+    root_cause:
+      required: true | false
+      issue: ""
+      likely_source: evidence | claim | framing | method | citation | figure_si_accounting | prose | unknown
+      checked_before_drafting: true | false
     quality:
       required: true | false
       checks:

@@ -30,6 +30,8 @@ If key information is missing, do not stall unless the gap blocks a useful v0. P
 
 If the user presents 3 or more plausible directions, storylines, or strategy options, use `templates/direction_tournament.md` first.
 
+If the idea is still underspecified but consequential, ask one clarifying question at a time before locking the framing. Focus questions on purpose, resource constraints, success criteria, and the fastest falsifier.
+
 ## Standard output
 
 1. `One-liner`
@@ -52,3 +54,4 @@ For 3 or more candidates, the output should also include:
 - At least one proposed experiment should be a real kill test, not a comfort-zone extension.
 - Keep the plan close to the user's actual resource constraints whenever they are known.
 - Keep one winner, at most two viable backups, and move the rest into an explicit graveyard with reasons.
+- Before committing to one storyline, compare at least two plausible approaches when the evidence permits: conservative evidence-first framing, ambitious journal-positioning framing, and falsifier-first framing. State the recommendation and trade-off.
