@@ -9,6 +9,12 @@
 ## Active frontier
 -
 
+## Source of truth
+-
+
+## Required source coverage
+-
+
 ## Active hypotheses or objectives
 -
 -
@@ -29,7 +35,16 @@
 -
 -
 
+## Gate status
+- quality:
+- coverage:
+- safety:
+- transition:
+
 ## Blocked on
+-
+
+## Context budget note
 -
 
 ## What changed

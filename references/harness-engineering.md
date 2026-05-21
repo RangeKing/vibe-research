@@ -8,7 +8,8 @@ This note treats Vibe Research as a managed harness rather than a long prompt. T
 
 - Core design rules
 - Packet, checkpoint, memory, log
-- Compaction, stale-harness checks, delegation, and security
+- Gates, coverage, context budget, delegation, and security
+- Compaction and stale-harness checks
 - Regression harness and coordinator spot-check
 
 ## Core design rules
@@ -89,6 +90,33 @@ Use a small stable taxonomy:
 
 Prefer one recovery attempt before asking the user for more material.
 
+### 6. Make source coverage explicit
+
+Research work fails quietly when important constraints disappear during a rewrite. Borrow the useful part of spec-driven workflows: preserve the source-to-output chain.
+
+For Vibe Research, "source items" can be:
+
+- user decisions about the scientific position
+- reviewer or editor comments
+- target-journal rules
+- claim boundaries and limitations
+- figure panels, headline numbers, and legends
+- Supplementary Information pointers
+- required citation buckets
+
+Use `source_coverage` in `templates/research_task_packet.md` when the task is broad, revision-facing, or near submission. The final artifact should cover required items, defer them with a reason, or mark them impossible under current evidence.
+
+### 7. Keep gates small and typed
+
+Use four gate types:
+
+- `quality`: route-specific checks passed.
+- `coverage`: required source items survived into the output.
+- `safety`: blockers such as unsupported claims, internal-trace leakage, missing SI support, or journal-format drift are absent.
+- `transition`: the next checkpoint or next action is explicit.
+
+Small tasks can run gates silently. Submission packages, reviewer responses, and long campaign continuations should record gate status in the packet, checkpoint, or session log.
+
 ## Packet, checkpoint, memory, log
 
 ### Task packet
@@ -103,6 +131,8 @@ It should preserve:
 - session state
 - explicit inputs
 - evidence basis
+- source coverage requirements
+- gates and blockers
 - output contract
 - acceptance checks
 - stop conditions
@@ -171,6 +201,18 @@ Compaction should preserve:
 - what is risky
 - what should happen next
 
+## Context budget as a quality control
+
+Context budget is not only a capacity limit; it predicts errors such as dropped constraints, vague rewriting, stale assumptions, and incomplete coverage.
+
+Use these tiers:
+
+- `low`: read the supplied source normally.
+- `medium`: compact into an evidence register, action table, or task packet before deep execution.
+- `high`: checkpoint immediately, pick one narrow slice, and avoid new broad reads.
+
+If the user provides a manuscript, response letter, SI, figures, and old checkpoints together, start with a packet or evidence register. Do not try to keep every raw source in active context.
+
 ## Stale-harness check
 
 Harness assumptions go stale as model behavior improves.
@@ -181,6 +223,8 @@ When maintaining this skill, ask:
 - Can this behavior move from prose into a template or artifact field?
 - Are we forcing packetization, checkpointing, or delegation where a direct answer is now safer?
 - Are we preserving state in too many places?
+- Are coverage gates blocking the right failures, or just adding ceremony?
+- Are context-budget warnings producing better checkpoints?
 
 Delete dead harness weight aggressively.
 

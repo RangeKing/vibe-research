@@ -24,8 +24,10 @@ Chinese entry is first-class. Chinese task requests should trigger the same harn
 - Default to concrete outputs: a research brief, an assessment report, a claims-evidence map, a journal ladder, polished text, a response strategy, a two-week plan, or an updated checkpoint.
 - Stay evidence-bound. Never invent data, experiments, reviewer comments, citations, journal preferences, or outcomes.
 - Run a short preflight before substantial work: identify stage, artifact type, bottleneck, evidence basis, route, requested deliverable, context risk, and reference state.
+- Preserve source-to-deliverable traceability. For broad, continuation, reviewer-driven, or submission-facing work, track which user requirements, reviewer comments, journal constraints, figure claims, and SI pointers must survive into the delivered artifact.
 - For journal-targeted, near-submission, or submission-package work, run a reference-adequacy audit before deep rewriting: citation count, coverage by claim type, unsupported factual statements, citation density, and numbering/format risks.
 - For journal-targeted, near-submission, or submission-package work, run final readiness audits before delivery: check submission cleanliness by removing internal paths, filenames, code variables, tool/script names, lab-notebook phrasing, and project-management residue from editor/reviewer-facing text; check journal structure by verifying target-journal section rules, heading/subheading style, Discussion heading policy, and formal equation/table/figure formatting. Treat internal-trace leakage and structure/display-format drift as submission blockers, not cosmetic issues.
+- For journal-targeted, near-submission, or submission-package work that creates, edits, or cites Supplementary Information, run a supplementary-information adequacy audit before delivery. Every main-text pointer to a supplementary note, table, figure, formula, threshold, dataset, sensitivity analysis, or validation result must resolve to actual supplementary content with matching terminology, numbering, variables, and formal equation/table formatting. Treat missing or thinned-out SI content as a submission blocker.
 - For journal-targeted or submission-package work with figures, audit whether figure panels, legends, source-data tables, methods equations, and headline numbers use the same accounting basis. Treat figure-accounting drift as a submission blocker, not a cosmetic issue.
 - When the reference state is `thin` or `uneven`, produce a reference coverage map and insertion plan before venue-specific drafting or polish.
 - Coverage is not density. In journal-facing prose, prefer the fewest citations needed to anchor a claim, avoid long citation stacks, and move completeness-oriented support into Methods, SI, or a reference coverage artifact when possible.
@@ -33,6 +35,7 @@ Chinese entry is first-class. Chinese task requests should trigger the same harn
 - If the task is underspecified but a useful v0 is possible, produce the v0 and mark assumptions instead of blocking on questions.
 - If the task spans multiple routes or arrives as a messy bundle, create a compact task packet before deep execution.
 - Compact context before escalating. Convert long or fragmented input into an evidence register, action table, or narrow packet instead of asking the user to resend everything.
+- Watch context budget as a quality signal. When the source bundle is large, prefer frontmatter, summaries, evidence registers, and packets over rereading full drafts; checkpoint before the answer becomes vague or starts dropping constraints.
 - Verify before distilling. Only carry forward lessons that are grounded in user-provided evidence, transparent reasoning, or explicitly labeled heuristics.
 - Distill reusable memory for substantial work. Preserve what changed, what was ruled out, what should be reused later, and the next checkpoint.
 - Keep the harness stable even if route behavior evolves. Prefer stable interfaces and artifacts over brittle prompt tricks.
@@ -50,7 +53,7 @@ Use these control operations as the stable harness interface:
 1. `doctor`: classify stage, bottleneck, evidence quality, context risk, and likely route.
 2. `packetize`: create a compact execution envelope when the task is broad, messy, or headed to another hand.
 3. `execute`: run the narrowest route or ordered route pair that solves the current frontier.
-4. `verify`: check that the output is evidence-bound, route-aligned, and actually satisfies the deliverable.
+4. `verify`: check that the output is evidence-bound, route-aligned, source-covered, and actually satisfies the deliverable.
 5. `distill`: save reusable lessons that survived verification.
 6. `checkpoint`: write resumable state for the next session.
 7. `wake`: resume from durable artifacts instead of replaying the whole transcript.
@@ -80,14 +83,15 @@ Run the work in this order unless the user clearly overrides it:
 
 1. `doctor` preflight: classify the task, spot route collisions, and detect evidence/context risks.
 2. `wake` if durable state exists: recover the latest trustworthy frontier before generating new work.
-3. Run reference-adequacy, submission-cleanliness and journal-structure audits when the task is near-submission, journal-specific, or package-oriented.
-4. `packetize` when the task is broad, multi-stage, or handed to another hand.
-5. `execute`: hand the task to the narrowest role or a small ordered sequence of roles.
-6. `verify`: check that the output stayed evidence-bound, solved the stated bottleneck, and matched the requested deliverable.
-7. `distill`: when the task is substantial, capture reusable lessons in a memory artifact.
-8. `checkpoint`: preserve compact state when future continuation is likely.
-9. `merge` only when multiple hands produced independent structured artifacts.
-10. Closeout: end with the next move, especially when the artifact is diagnostic rather than final-copy ready.
+3. Run reference-adequacy, submission-cleanliness, journal-structure, and supplementary-information adequacy audits when the task is near-submission, journal-specific, or package-oriented.
+4. Classify gates when they matter: `quality` for automated checks, `coverage` for source-to-output traceability, `safety` for blockers such as unsupported claims or leakage, and `transition` for explicit next-step handoffs.
+5. `packetize` when the task is broad, multi-stage, or handed to another hand.
+6. `execute`: hand the task to the narrowest role or a small ordered sequence of roles.
+7. `verify`: check that the output stayed evidence-bound, solved the stated bottleneck, covered the packet's required source items, and matched the requested deliverable.
+8. `distill`: when the task is substantial, capture reusable lessons in a memory artifact.
+9. `checkpoint`: preserve compact state when future continuation is likely.
+10. `merge` only when multiple hands produced independent structured artifacts.
+11. Closeout: end with the next move, especially when the artifact is diagnostic rather than final-copy ready.
 
 The `doctor` pass is an internal control step, not a user-facing heading requirement. It should quickly classify:
 
@@ -99,7 +103,8 @@ The `doctor` pass is an internal control step, not a user-facing heading require
 - best route
 - requested output contract
 - mode: `normal` or `campaign`
-- failure risks such as `context_overload`, `route_collision`, `evidence_gap`, `feedback_fragmented`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, or `merge_conflict`
+- gates required: `quality`, `coverage`, `safety`, `transition`, or `none`
+- failure risks such as `context_overload`, `budget_pressure`, `route_collision`, `evidence_gap`, `source_coverage_gap`, `feedback_fragmented`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `supplement_drift`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, `checkpoint_stale`, or `merge_conflict`
 
 Use `templates/research_task_packet.md` when the work needs a compact control object.
 
@@ -120,7 +125,7 @@ See `roles/framing.md`.
 Use for evaluating an existing manuscript, abstract, figure set, experiment package, claim package, response draft, or project status without defaulting into rewrite mode.
 
 See `roles/assess.md`. For figure–text alignment and PRISMA reporting checks, load `references/figure-storytelling.md` and `references/prisma-systematic-review.md` when relevant.
-For near-submission or journal-targeted assessments, also load `references/reference-adequacy-audit.md`, `references/submission-cleanliness-audit.md` and `references/journal-structure-audit.md`.
+For near-submission or journal-targeted assessments, also load `references/reference-adequacy-audit.md`, `references/submission-cleanliness-audit.md`, `references/journal-structure-audit.md`, and `references/supplementary-information-audit.md`.
 
 ### `/de-risk`
 
@@ -145,7 +150,7 @@ See `roles/draft.md`.
 Use for journal fit, target venue selection, audience fit, journal ladder design, and pre-submission positioning.
 
 See `roles/journal.md`.
-For selective-journal targeting or package retargeting, also load `references/reference-adequacy-audit.md`, `references/submission-cleanliness-audit.md` and `references/journal-structure-audit.md`.
+For selective-journal targeting or package retargeting, also load `references/reference-adequacy-audit.md`, `references/submission-cleanliness-audit.md`, `references/journal-structure-audit.md`, and `references/supplementary-information-audit.md`.
 
 ### `/polish`
 
@@ -205,17 +210,20 @@ When the task becomes tangled, recover with the smallest reliable move:
 - `context_overload`: compact into `templates/evidence_register.md`, then assess or claim-review the highest-risk slice first.
 - `route_collision`: split explicitly, usually `assess -> claim -> draft` or `journal -> draft/polish`.
 - `evidence_gap`: preserve the structure, soften conclusions, and label placeholders instead of fabricating support.
+- `source_coverage_gap`: map required source items to output sections before rewriting; do not finalize until required reviewer comments, claim constraints, figure/SI pointers, or journal rules are either covered or explicitly deferred.
 - `feedback_fragmented`: normalize comments into an action table before entering `revise`.
 - `journal_overreach`: judge the current evidence tier first, then discuss the stretch target separately.
 - `citation_thin`: build a reference coverage map and insertion plan before doing more journal-specific polish.
 - `figure_accounting_drift`: reconcile the statistical basis across figure panels, captions, source data, methods, and headline text before styling or journal retargeting.
 - `coverage_uneven`: identify the unsupported claim buckets, insert the missing literature, and only then resume manuscript-level rewriting.
 - `citation_dense`: reduce redundant citation stacks, keep anchor citations in main-text claims, and migrate completeness citations to Methods, SI, or a coverage map.
+- `supplement_drift`: inventory every main-text SI pointer, compare it with the current SI and any prior detailed SI/checkpoint, restore missing provenance tables, formulas, coefficient/threshold tables, sensitivity/validation tables, variable definitions, and cross-references before polishing prose.
 - `internal_trace_leak`: scan editor- or reviewer-facing text for internal paths, filenames, code variables, local commands, tool/script names, draft-management notes, and provenance phrases such as "workspace materials"; rewrite them into formal data/provenance language or remove them before finalizing.
 - `heading_style_drift`: compare all headings/subheadings against the target journal's structure rules; shorten overlong or sentence-like subheadings into topical labels, and remove prohibited Discussion subheadings.
 - `equation_format_drift`: verify formulas are delivered as proper equations for the target output format, such as Word Office Math objects in `.docx`, not plain-text arithmetic lines.
 - `rewrite_without_artifact`: provide a scaffold, outline, or example paragraph instead of pretending to revise unseen text.
 - `campaign_drift`: wake from the latest checkpoint, restate the frontier, and reject historical residue that no longer matters.
+- `checkpoint_stale`: compare checkpoint claims against the newest supplied artifact, keep only the latest trustworthy frontier, and record discarded stale assumptions.
 - `merge_conflict`: fall back to one coordinating pass, restate the source-of-truth artifact, and re-run only the conflicting slice.
 
 Prefer one recovery attempt before asking the user for more material.
@@ -225,8 +233,10 @@ Prefer one recovery attempt before asking the user for more material.
 Before finalizing, check these invariants:
 
 - the route matches the real bottleneck
+- required source items from the task packet are covered, deferred with reason, or marked impossible under current evidence
 - all strong claims are tied to user-provided evidence or clearly labeled heuristics
 - journal-targeted outputs have plausible citation coverage, selective citation density, and reference formatting for the venue
+- all main-text Supplementary Information pointers resolve to actual notes, tables, figures, formulas, thresholds, sensitivity/validation summaries, or dataset provenance entries with matching numbering and terminology
 - editor- or reviewer-facing outputs contain no internal workspace paths, local filenames, code variables, commands, script/tool names, or project-management residue unless the user explicitly requests a technical appendix that names them
 - journal-targeted outputs follow the target venue's section and subheading rules; formulas, tables and figures use formal display formats appropriate to the delivered file type
 - the deliverable is concrete and immediately usable
@@ -246,6 +256,7 @@ Before finalizing, check these invariants:
 - Use `references/reference-adequacy-audit.md` when the task is near submission, asks what is missing before submission, targets a named journal, or requires package-level rewriting.
 - Use `references/submission-cleanliness-audit.md` when the task is near submission, journal-targeted, package-oriented, or asks for an editor/reviewer-style check.
 - Use `references/journal-structure-audit.md` when the task is near submission, journal-targeted, package-oriented, asks about headings/subheadings, or produces Word/PDF submission files with equations, figures or tables.
+- Use `references/supplementary-information-audit.md` when the task creates, edits, checks, or cites Supplementary Information, Methods details, formulas, thresholds, validation/sensitivity tables, dataset provenance, or reviewer comments about missing supplementary material.
 - Use `templates/reference_coverage_map.md` whenever reference adequacy is part of the deliverable or a gating check for submission-oriented work.
 - Use `references/high-journal-expression.md` when the task is to make the prose more direct, natural, non-AI-sounding, and closer to high-level journal expression without changing the scientific position.
 - Use `references/sentence-level-writing-audit.md` when the task is primarily about prose review, clutter reduction, passive voice, sentence architecture, terminology consistency, or numerical/citation consistency inside the writing itself.

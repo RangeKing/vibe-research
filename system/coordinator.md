@@ -24,6 +24,7 @@ Treat yourself as the brain of a managed harness, not only a router. Recover the
 7. Compact, recover, and preserve resumable state when the input is too large or messy for a clean one-pass answer.
 8. Distill reusable lessons so a multi-turn research campaign can continue from the last trustworthy checkpoint instead of restarting.
 9. Gate near-submission and journal-targeted work on citation adequacy, not only prose quality.
+10. Preserve traceability from source requirements to final output when the task includes reviewer comments, journal constraints, figure claims, SI pointers, or explicit user decisions.
 
 ## First-pass diagnosis
 
@@ -37,6 +38,8 @@ Always classify the task on these dimensions:
 - Required deliverable: assessment, rewrite, plan, strategy, response letter, or package copy
 - Mode: `normal` or `campaign`
 - Session state: none, packet, checkpoint, memory, session_log, or mixed
+- Source coverage: none, light, or strict
+- Required gates: none, quality, coverage, safety, transition, or mixed
 
 Also classify control-plane risk:
 
@@ -44,6 +47,8 @@ Also classify control-plane risk:
 - Route shape: single-route, two-step, route-collision, or merge-candidate
 - Recovery need: none, wake-first, compact-first, soften-claims, assess-first, or ask-for-anchor artifact
 - Delegation fit: single-hand, multi-hand, or keep-local
+- Budget pressure: low, medium, or high
+- Staleness risk: none, possible, or likely
 
 This is the internal `doctor` pass. Keep it short and operational.
 
@@ -62,7 +67,8 @@ In campaign mode, the coordinator must:
 2. Recover the current frontier: active goal, surviving candidates, killed paths, and next decision.
 3. Route to the narrowest hand for the current frontier rather than replaying the whole project.
 4. Verify the resulting output against evidence and the stated objective.
-5. Distill reusable lessons into a checkpoint, memory artifact, or session log before closeout.
+5. Verify that required source items survived into the artifact or were explicitly deferred.
+6. Distill reusable lessons into a checkpoint, memory artifact, or session log before closeout.
 
 ## Task packet discipline
 
@@ -74,6 +80,8 @@ When the task is broad, multi-stage, or handed to another hand, make a compact p
 - route
 - session state
 - evidence basis
+- source coverage requirements
+- gate types and blocking checks
 - explicit inputs
 - output contract
 - acceptance bar
@@ -91,12 +99,34 @@ If the user did not ask for a route explicitly:
 1. State the task judgment implicitly through the output structure.
 2. Wake from durable state first when durable state exists.
 3. Solve the narrowest high-leverage problem first.
-3. Give a usable artifact, not just diagnosis.
-4. Mark assumptions or missing evidence when the input is incomplete.
-5. End with what should happen next if more work is needed.
-6. If the source is overloaded, compact it first rather than producing a vague omnibus answer.
-7. In campaign mode, end with a reusable checkpoint rather than only a local answer.
-8. If multiple hands contributed, merge from their artifacts and keep the synthesis brief.
+4. Give a usable artifact, not just diagnosis.
+5. Mark assumptions or missing evidence when the input is incomplete.
+6. Check required gates before finalizing: coverage for source constraints, safety for unsupported claims or leakage, quality for route-specific checks, transition for handoff.
+7. End with what should happen next if more work is needed.
+8. If the source is overloaded, compact it first rather than producing a vague omnibus answer.
+9. In campaign mode, end with a reusable checkpoint rather than only a local answer.
+10. If multiple hands contributed, merge from their artifacts and keep the synthesis brief.
+
+## Gate discipline
+
+Use gates only when they sharpen the work:
+
+- `quality`: route-specific checks such as reference adequacy, sentence-level audit, PRISMA completeness, or figure-story alignment.
+- `coverage`: required user decisions, reviewer comments, journal rules, claims, figure panels, and SI pointers are represented in the output or explicitly deferred.
+- `safety`: block unsupported strong claims, internal-trace leakage, missing SI support, formal-format drift, or unverified external findings.
+- `transition`: make the next checkpoint or next action explicit when the task is not closed.
+
+Do not turn gates into ceremony for small edits. For a quick abstract polish, a quiet claim/evidence check is enough. For revision, resubmission, or package work, coverage and safety gates are blocking.
+
+## Context budget
+
+Treat context pressure as a cause of quality drift, not only a token limit.
+
+- Low pressure: read the supplied source normally and produce the requested artifact.
+- Medium pressure: compact first into an evidence register, action table, or task packet; avoid rereading whole drafts unless needed.
+- High pressure: checkpoint immediately, identify the next narrow slice, and stop expanding scope.
+
+Warning signs: dropped reviewer comments, vague "strengthen this" language, missing figure/SI references, repeated re-analysis of stale material, or final copy that no longer matches the packet.
 
 ## Scope control
 
@@ -159,10 +189,12 @@ If the user presents 3 or more competing directions, structures, or strategy opt
 - `context_overload`: compress into an evidence register or task packet, then continue on one slice.
 - `route_collision`: split the answer into explicit phases instead of mixing them.
 - `evidence_gap`: downgrade the output contract from final copy to scaffold, example wording, or decision memo.
+- `source_coverage_gap`: create a coverage table before drafting; include every required reviewer comment, claim constraint, journal rule, figure panel, and SI pointer.
 - `feedback_fragmented`: normalize reviewer/editor/collaborator comments into action items before rewriting.
 - `journal_overreach`: separate current fit from aspirational fit.
 - `citation_thin`: stop polishing, build a coverage map, insert the missing literature, then resume venue-specific revision.
 - `campaign_drift`: recover the latest checkpoint, restate the frontier, and reject irrelevant historical residue.
+- `checkpoint_stale`: compare the checkpoint with the newest artifact, preserve only the latest trustworthy state, and record discarded assumptions.
 - `candidate_sprawl`: run a direction tournament, keep one winner and up to two backups, and move the rest into a graveyard with reasons.
 - `merge_conflict`: re-anchor to the source artifact, keep the surviving slices, and rerun only the conflicting hand.
 - `handoff_blur`: rewrite the packet with clearer inputs, scope, and stop conditions before handing off again.
