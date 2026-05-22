@@ -64,5 +64,7 @@ Use `templates/polish_pass.md` when the deliverable is a direct rewrite plus a c
 - If the user asks for one named problem, run the targeted pass instead of simulating a full audit.
 - If the root problem is actually unsupported claims, say that `claim` should come first.
 - If the root problem is thin or uneven citation support, say that reference coverage repair should come before polish.
+- For selective-journal polish, enforce section-aware sentence logic: Results report observations with quantitative support; Discussion interprets with calibrated hedging and boundaries.
+- Keep polished sentences generally within 10-30 words, and split any sentence over 30 words unless the scientific structure requires it.
 - If the text contains internal paths, filenames, code variables, commands, script/tool names, or draft-management residue, fix those before style polishing and treat them as submission blockers.
 - If headings are overlong or sentence-like for the target venue, shorten them before polishing body prose; if formulas are plain text in a Word/PDF deliverable, treat that as display-format drift.

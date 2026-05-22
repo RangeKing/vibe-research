@@ -24,6 +24,17 @@ Flag and remove or formalize:
 - Replace workspace provenance with citable provenance: "remote-sensing validation information", "official statistical comparison" or "processed geospatial baseline".
 - Keep deposited dataset names only in Data availability, Code availability, SI data descriptions, or repository metadata, and only when those names are stable public artifacts.
 
+## Availability statements
+
+For Data Availability, Code Availability, materials, protocols, or source-data statements:
+
+- Inventory every dataset behind main and supplementary results: raw data, processed data, figure source data, model outputs, images, tables, and statistical-analysis files.
+- Classify each access route: public repository, controlled access, within paper/SI, reused public source, third-party restricted, justified request, or not applicable.
+- Prefer stable identifiers such as DOI, accession number, repository record, Handle, or ARK when the user provides them.
+- Treat "available upon reasonable request" as weak unless the statement names the restriction, controller, review route, and available metadata.
+- Separate data, code, materials, and protocols unless the target journal requires a combined statement.
+- Never invent DOIs, accession numbers, repositories, licences, embargo dates, access committees, or approvals.
+
 ## Audit Procedure
 
 1. Scan main text, Methods, figure legends, tables, SI, cover letter and availability statements.

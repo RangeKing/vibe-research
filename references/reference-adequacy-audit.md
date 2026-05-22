@@ -2,6 +2,17 @@
 
 Use this audit before journal-specific rewriting, submission-package prep, resubmission planning, or any "what is missing before submission?" assessment.
 
+## Navigation
+
+- Why this exists
+- Mandatory triggers
+- Quick classification
+- Heuristic bands
+- Coverage buckets
+- Support grading
+- Frequent failure patterns
+- Output contract
+
 ## Why this exists
 
 Selective journals often reject manuscripts that are conceptually interesting but under-cited, unevenly cited, or citation-thin in exactly the places editors check first:
@@ -64,6 +75,18 @@ Check whether the manuscript has enough support in each relevant bucket:
    Are visibility limits, uncertainty sources, and known sector constraints grounded in literature rather than only author assertion?
 7. **Methods and validation**
    Are named methods, accuracy claims, data-fusion logic, and comparator approaches anchored to prior literature where appropriate?
+
+## Support grading
+
+For citation-facing or selective-journal work, grade candidate support rather than treating all relevant papers as equivalent:
+
+- `strong`: directly supports the specific claim, scope, population/system, and mechanism or method.
+- `partial`: supports part of the claim but misses scope, context, mechanism, geography, or evidence strength.
+- `background`: useful for context but not direct evidence for the manuscript's claim.
+- `limiting/contradictory`: qualifies, narrows, or conflicts with the claim and should shape wording.
+- `metadata-only`: title, abstract, citation count, or database record suggests relevance but the source has not been read enough to support the claim.
+
+Do not use title similarity, citation count, or a broad review article as direct support for an experimental, causal, clinical, or methodological claim. If support is only `partial` or `background`, soften the claim or mark a reference gap.
 
 ## Frequent failure patterns
 

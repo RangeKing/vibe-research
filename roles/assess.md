@@ -56,6 +56,7 @@ If there is no concrete artifact, assess the project status rather than pretendi
 - Prioritize structural gaps over cosmetic issues.
 - Separate evidence problems from writing problems.
 - Trace each high-severity gap to a likely root cause before recommending fixes: missing experiment, overclaim, weak comparison, method opacity, citation gap, figure/SI inconsistency, or prose/structure.
+- When assessing citations, classify support as strong, partial, background, limiting/contradictory, or metadata-only rather than treating all relevant papers as equal support.
 - Make clear what is already strong enough to preserve.
 - Give the next move that creates the largest improvement per unit effort.
 - Do not silently rewrite; if a small wording example helps, label it as an example.

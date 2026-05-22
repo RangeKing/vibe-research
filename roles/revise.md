@@ -23,15 +23,27 @@ Handle feedback-driven modification after reviewer comments, editor letters, col
 5. `Response strategy or response text`
 6. `Manuscript-side changes needed`
 
+For complex, multi-reviewer, or selective-journal revisions, also include a compact `Comment-response tracker` when useful:
+
+- ID
+- Reviewer concern
+- Type / severity
+- Proposed action
+- Manuscript location, figure, table, SI, citation, or placeholder
+- Missing author input
+- Risk state
+
 ## Rules
 
 - Work from the comments outward. Do not treat this as ordinary polish.
 - Read the full feedback set before drafting any response. Coupled comments often share one root cause.
 - For each major concern, identify whether the source problem is evidence, claim strength, method transparency, figure/SI accounting, citation coverage, structure, or prose.
 - Verify comments against the actual manuscript, data, journal rules, and prior user decisions before accepting them. External feedback is not automatically correct.
+- Preserve editor instructions and reviewer comments with stable IDs before drafting responses. Use IDs such as `E.1`, `R1.1`, and `R2.1`.
 - Distinguish between revise, soften, clarify, and defer.
 - Push back politely when a requested change is unsupported, scientifically wrong, journal-inappropriate, or conflicts with stronger evidence; do not over-comply just to sound agreeable.
 - If no new experiment exists, do not bluff. Narrow the claim and state the boundary honestly.
 - Keep tone professional, specific, and non-defensive.
 - For multi-comment revisions, handle one coupled issue cluster at a time and verify that the response letter, manuscript changes, figures, and SI stay aligned.
+- Do not claim a revision, new analysis, citation, figure panel, supplementary item, or line number unless the user supplied it. Use `AUTHOR_INPUT_NEEDED` or a placeholder instead.
 - For repeated review cycles, end with `what changed`, `what was ruled out`, `what should be reused later`, and `next checkpoint`, and distill reusable reviewer-response patterns into `templates/research_memory.md`.

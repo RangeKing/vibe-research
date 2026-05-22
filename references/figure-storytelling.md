@@ -8,6 +8,18 @@ Use this reference when **figures, panels, or captions** must support the manusc
 - Panels (a–d) should be **ordered** to match the argument, not lab notebook order.
 - The **title** (if used) and **caption** should state what is shown and what conclusion is **not** implied.
 
+## Figure contract
+
+Before polishing a figure set or caption package, define:
+
+- the one-sentence conclusion the figure must defend
+- the evidence chain from each panel to that conclusion
+- the unique scientific job of each panel
+- source data, `n`, error bars, statistical tests, and image-integrity notes
+- export or production needs, including editable text and journal format constraints when known
+
+Panels that repeat the same scientific question should be combined, moved to supplementary material, or dropped.
+
 ## Captions
 
 - **What**: experimental setup, sample, n, units, scale bars, statistical test names (not just “p < 0.05” without context).

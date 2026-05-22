@@ -139,6 +139,26 @@ If a concrete recommendation or next step belongs at the end, state it directly 
 
 ## Section-specific guidance
 
+### Selective-journal section logic
+
+Before rewriting, identify the manuscript type: mechanism, method, resource, device, model, clinical, materials, computational, systematic review, or interdisciplinary. Do not force the same narrative arc onto all paper types.
+
+Default section jobs:
+
+- Abstract: problem or finding -> gap/objective -> approach -> key result -> implication -> boundary.
+- Introduction: field scale -> bottleneck -> prior attempts -> unresolved gap -> present study.
+- Results: evidence ladder, not lab chronology; open paragraphs with the supported result.
+- Discussion: central interpretation -> relation to prior work -> constraints -> future use.
+- Conclusion: contribution -> decisive evidence -> implication -> boundary, with no new data.
+- Methods: reproducibility details, controls, datasets, software versions, ethics, statistics, and parameters.
+
+Sentence control:
+
+- Prefer 10-30 words per sentence for polished journal-facing prose.
+- Split sentences over 30 words unless the technical structure truly requires the length.
+- Check paragraph-final sentences carefully; they often become overbroad or slogan-like.
+- Keep one controlling idea per paragraph.
+
 ### Abstract
 
 - open with the problem or finding, not scene-setting

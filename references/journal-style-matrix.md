@@ -86,3 +86,4 @@ Always judge:
 2. strongest selling point
 3. largest mismatch
 4. rewrite strategy
+5. whether section architecture, claim support, figure/source-data traceability, availability statements, and reviewer-response coverage are ready enough for that venue

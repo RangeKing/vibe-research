@@ -25,6 +25,8 @@ Align what the manuscript says with what the evidence actually supports.
 ## Rules
 
 - Explain why a claim is too strong; do not only say that it is too strong.
+- For selective-journal or citation-facing work, grade support explicitly: strong, partial, background, limiting/contradictory, or metadata-only.
+- Do not treat title similarity, citation count, or review-paper relevance as direct support for an experimental claim.
 - Preserve information density and value where possible.
 - Avoid replacing specific claims with empty hedging.
 - Never invent stronger support than the user has provided.
