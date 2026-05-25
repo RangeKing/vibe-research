@@ -229,6 +229,47 @@ def validate_managed_harness_surface(root: Path) -> None:
             fail(f"templates/research_memory.md is missing `{field}`")
 
 
+def validate_parameter_provenance_surface(root: Path) -> None:
+    required_terms = {
+        "SKILL.md": [
+            "parameter provenance",
+            "parameter_guessing",
+            "parameter_provenance_gap",
+        ],
+        "system/guardrails.md": [
+            "parameters, coefficients, thresholds, conversion factors, priors, scenario assumptions",
+        ],
+        "references/reference-adequacy-audit.md": [
+            "Parameter provenance",
+            "Do not use self-estimated values",
+        ],
+        "roles/assess.md": [
+            "parameter provenance",
+        ],
+        "roles/claim.md": [
+            "parameter provenance",
+        ],
+        "roles/draft.md": [
+            "parameter provenance",
+        ],
+        "templates/claims_evidence_map.md": [
+            "parameter_provenance",
+        ],
+        "templates/reference_coverage_map.md": [
+            "Parameter and assumption support",
+        ],
+        "templates/evidence_register.md": [
+            "Parameter / assumption",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing parameter provenance terms: {', '.join(missing)}")
+
+
 def main() -> None:
     root = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     if not root.exists() or not root.is_dir():
@@ -241,6 +282,7 @@ def main() -> None:
     validate_long_markdown_navigation(root)
     validate_source_packaging_note(root)
     validate_managed_harness_surface(root)
+    validate_parameter_provenance_surface(root)
     print(f"OK: {root}")
 
 

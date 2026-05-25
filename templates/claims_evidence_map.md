@@ -4,6 +4,14 @@
 claims:
   - id: C1
     text: ""
+    parameter_provenance:
+      - parameter: ""
+        value: ""
+        unit: ""
+        role_in_claim: ""
+        source_or_derivation: ""
+        support_grade: strong | partial | background | limiting/contradictory | metadata-only | missing
+        sensitivity_needed: yes | no | unclear
     evidence:
       - id: E1
         type: experiment | ablation | case_study | theorem | user_study

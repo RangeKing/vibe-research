@@ -37,6 +37,15 @@
 - Missing support:
 - Insert at:
 
+### 7. Parameter and assumption support
+- Parameter / assumption:
+- Value and unit:
+- Current source or derivation:
+- Support grade:
+- Sensitivity-test need:
+- Missing support:
+- Insert at:
+
 ## Priority insertion plan
 1. 
 2. 

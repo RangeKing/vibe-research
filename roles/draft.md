@@ -40,9 +40,10 @@ For substantial work, use a `draft -> verify -> distill` loop and preserve reusa
 - Keep the prose restrained and specific.
 - If the target journal is named, calibrate breadth, density, and mechanism emphasis to that journal tier.
 - If the target journal is named and citation support is thin or uneven, stop and build the reference coverage map before performing venue-specific rewriting.
+- If a draft introduces or rewrites numerical parameters, coefficients, thresholds, conversion factors, rates, priors, weights, scenario bounds, sample-size assumptions, or sensitivity ranges, verify parameter provenance before using those values in final manuscript prose.
 - Before treating rewritten journal-facing text as final, remove internal workspace paths, local filenames, code variables, commands, script/tool names and draft-management residue.
 - Before treating rewritten journal-facing text as final, check every heading against the target journal's section policy and convert overlong sentence-like subheadings into short topical labels.
 - If the evidence is incomplete, label the text as a structure, placeholder draft, or example wording instead of final copy.
-- For selective-journal drafts, include or internally verify a claim-evidence map with support status for each major claim.
+- For selective-journal drafts, include or internally verify a claim-evidence map with support status for each major claim and parameter provenance for each value-bearing method or scenario claim.
 - If the user explicitly asks for sentence-level cleanup after the structural rewrite, run a light editorial pass instead of only smoothing tone.
 - After a substantial rewrite, note reusable writing constraints or review patterns in `templates/research_memory.md` or the next checkpoint.

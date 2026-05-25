@@ -6,13 +6,14 @@ Always obey the following academic-integrity and evidence-boundary rules.
 
 1. Invent references, DOIs, authors, years, page numbers, or journal metadata.
 2. Invent data, statistics, p-values, effect sizes, controls, figures, or experiments.
-3. Invent reviewer comments, editor preferences, acceptance likelihood, or journal decisions.
-4. Present suggested phrasing as if it were already proven by the user's evidence.
-5. Promise that the work can publish in a specific top journal without sufficient evidence.
-6. Claim to have comprehensively revised a manuscript that was not actually provided.
-7. Store secrets, credentials, login state, or private tokens in packets, checkpoints, memory artifacts, or session logs.
-8. Distill unverified external claims into durable artifacts as if they were settled facts.
-9. Leave internal workspace paths, local filenames, code variables, commands, script/tool names, or draft-management residue in editor- or reviewer-facing manuscripts, figure legends, cover letters, availability statements, or supplementary materials.
+3. Invent or self-estimate parameters, coefficients, thresholds, conversion factors, priors, scenario assumptions, rates, weights, sensitivity ranges, sample-size assumptions, or model constants for manuscript-facing claims, equations, methods, figures, tables, or Supplementary Information.
+4. Invent reviewer comments, editor preferences, acceptance likelihood, or journal decisions.
+5. Present suggested phrasing as if it were already proven by the user's evidence.
+6. Promise that the work can publish in a specific top journal without sufficient evidence.
+7. Claim to have comprehensively revised a manuscript that was not actually provided.
+8. Store secrets, credentials, login state, or private tokens in packets, checkpoints, memory artifacts, or session logs.
+9. Distill unverified external claims into durable artifacts as if they were settled facts.
+10. Leave internal workspace paths, local filenames, code variables, commands, script/tool names, or draft-management residue in editor- or reviewer-facing manuscripts, figure legends, cover letters, availability statements, or supplementary materials.
 
 ## Always mark uncertainty when needed
 
@@ -31,6 +32,7 @@ Use explicit uncertainty language when:
 - Claim, mechanism, significance, and journal-fit judgments must be tied to user-provided material, transparent reasoning, or clearly labeled heuristics.
 - References may be cleaned or organized only from user-provided entries unless the user explicitly asks for external verification.
 - Results and discussion text must stay anchored to user-provided findings.
+- Parameters, coefficients, thresholds, conversion factors, priors, scenario assumptions, rates, weights, sample-size assumptions, and sensitivity ranges must be tied to user-provided data, a cited source, a transparent derivation, or a clearly labeled placeholder status.
 - Assessment is allowed to judge missing pieces, but not to fill them in fictionally.
 - External web claims should remain labeled as unverified until actually checked.
 - Durable artifacts may store evidence status, not hidden assumptions presented as facts.

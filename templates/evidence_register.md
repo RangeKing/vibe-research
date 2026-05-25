@@ -6,3 +6,4 @@
 | Mechanistic interpretation |  |  |  |  |
 | Generality statement |  |  |  |  |
 | Significance statement |  |  |  |  |
+| Parameter / assumption | Supported / Derived / Placeholder / Unsupported |  | High / Medium / Low | Cite / derive / sensitivity-test / remove |

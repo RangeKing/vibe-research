@@ -22,6 +22,7 @@ Selective journals often reject manuscripts that are conceptually interesting bu
 - key sector statistics
 - closest methodological precedents
 - comparison against adjacent datasets or mapping papers
+- numerical parameters, thresholds, coefficients, conversion factors, priors, rates, weights, scenario bounds, and sensitivity ranges
 - limitation and risk framing
 - region-specific or livelihood claims
 
@@ -37,6 +38,7 @@ Run this audit when any of the following is true:
 - the user asks what is missing before submission
 - the manuscript is being rewritten for a selective journal
 - the task includes supplement construction or figure-story alignment for a journal submission
+- the task drafts or revises Methods, equations, models, scenario analysis, sensitivity analysis, or any text that introduces numerical parameters
 
 ## Quick classification
 
@@ -46,6 +48,13 @@ Classify reference state as one of:
 - `thin`: total count is obviously too low for a full manuscript or major section
 - `uneven`: count may be acceptable, but one or more key claim buckets lack support
 - `unknown`: citation format or source text is too incomplete to judge reliably
+
+Also classify parameter provenance:
+
+- `complete`: every manuscript-facing parameter has a source, derivation, unit, and role in the analysis.
+- `partial`: most parameters are grounded, but some values, units, or sensitivity bounds still need verification.
+- `missing`: one or more parameters appear self-estimated, uncited, or detached from the dataset/method.
+- `not_applicable`: the artifact does not use numerical parameters or scenario assumptions.
 
 ## Heuristic bands
 
@@ -75,6 +84,8 @@ Check whether the manuscript has enough support in each relevant bucket:
    Are visibility limits, uncertainty sources, and known sector constraints grounded in literature rather than only author assertion?
 7. **Methods and validation**
    Are named methods, accuracy claims, data-fusion logic, and comparator approaches anchored to prior literature where appropriate?
+8. **Parameter provenance**
+   Are numerical parameters, coefficients, thresholds, conversion factors, priors, scenario bounds, weights, sample-size assumptions, and sensitivity ranges supported by literature, user-provided data, transparent derivation, or clearly labeled placeholder status?
 
 ## Support grading
 
@@ -88,6 +99,13 @@ For citation-facing or selective-journal work, grade candidate support rather th
 
 Do not use title similarity, citation count, or a broad review article as direct support for an experimental, causal, clinical, or methodological claim. If support is only `partial` or `background`, soften the claim or mark a reference gap.
 
+Do not use self-estimated values as manuscript evidence. A parameter can enter final text only when its value, unit, scope, and uncertainty or sensitivity role are tied to one of:
+
+- a user-provided dataset or calculation that can be described transparently
+- a cited literature source that directly matches the parameter's system and scope
+- a formal method, standard, protocol, or validated model
+- a clearly marked placeholder status for planning text, not final manuscript claims
+
 ## Frequent failure patterns
 
 - only citing global reports and almost no peer-reviewed literature
@@ -97,6 +115,8 @@ Do not use title similarity, citation count, or a broad review article as direct
 - using one citation to support several distinct claims with different scopes
 - strong discussion claims that are not matched by literature in the introduction
 - figures making comparative or contextual claims that the reference list does not support
+- Methods or SI text that contains plausible-looking values without parameter provenance
+- sensitivity ranges that are chosen because they "look reasonable" rather than because literature, data, or a stated design rationale supports them
 - reference formatting that is clearly off for the target journal
 
 ## Output contract
@@ -106,6 +126,7 @@ When this audit is triggered, return at least:
 - `Reference state`
 - `Current count / plausible band`
 - `Coverage map`
+- `Parameter provenance`
 - `Top missing buckets`
 - `Insertion plan`
 - `Formatting / sequence risks`

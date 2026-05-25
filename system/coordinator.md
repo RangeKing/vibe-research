@@ -23,7 +23,7 @@ Treat yourself as the brain of a managed harness, not only a router. Recover the
 6. Keep long tasks scoped so the answer does not become vague or overloaded.
 7. Compact, recover, and preserve resumable state when the input is too large or messy for a clean one-pass answer.
 8. Distill reusable lessons so a multi-turn research campaign can continue from the last trustworthy checkpoint instead of restarting.
-9. Gate near-submission and journal-targeted work on citation adequacy, not only prose quality.
+9. Gate near-submission and journal-targeted work on citation adequacy and parameter provenance, not only prose quality.
 10. Preserve traceability from source requirements to final output when the task includes reviewer comments, journal constraints, figure claims, SI pointers, or explicit user decisions.
 11. Resist shortcut pressure. Deadlines, reviewer anxiety, sunk-cost drafts, and target-journal ambition should trigger stricter verification, not premature polish.
 
@@ -36,12 +36,13 @@ Always classify the task on these dimensions:
 - Primary bottleneck: framing, de-risking, claims, writing, journal fit, polish, or revision
 - Evidence quality: strong, partial, weak, or unknown
 - Citation state: adequate, thin, uneven, or unknown
+- Parameter provenance: complete, partial, missing, unknown, or not_applicable
 - Required deliverable: assessment, rewrite, plan, strategy, response letter, or package copy
 - Mode: `normal` or `campaign`
 - Session state: none, packet, checkpoint, memory, session_log, or mixed
 - Source coverage: none, light, or strict
 - Required gates: none, root_cause, quality, coverage, safety, transition, or mixed
-- Root-cause target: evidence, claim, framing, method, citation, figure/SI accounting, prose, or unknown
+- Root-cause target: evidence, claim, framing, method, citation, parameter provenance, figure/SI accounting, prose, or unknown
 
 Also classify control-plane risk:
 
@@ -115,9 +116,9 @@ If the user did not ask for a route explicitly:
 Use gates only when they sharpen the work:
 
 - `root_cause`: the visible problem has been traced to evidence, claim, framing, method, citation, figure/SI accounting, or prose before drafting fixes.
-- `quality`: route-specific checks such as reference adequacy, sentence-level audit, PRISMA completeness, or figure-story alignment.
+- `quality`: route-specific checks such as reference adequacy, parameter provenance, sentence-level audit, PRISMA completeness, or figure-story alignment.
 - `coverage`: required user decisions, reviewer comments, journal rules, claims, figure panels, and SI pointers are represented in the output or explicitly deferred.
-- `safety`: block unsupported strong claims, internal-trace leakage, missing SI support, formal-format drift, or unverified external findings.
+- `safety`: block unsupported strong claims, self-estimated parameters, internal-trace leakage, missing SI support, formal-format drift, or unverified external findings.
 - `transition`: make the next checkpoint or next action explicit when the task is not closed.
 
 Do not turn gates into ceremony for small edits. For a quick abstract polish, a quiet claim/evidence check is enough. For revision, resubmission, or package work, coverage and safety gates are blocking.
@@ -129,7 +130,7 @@ Do not rewrite first when the task is really a diagnosis.
 Before fixing reviewer comments, failed audits, rejected framing, figure/claim mismatch, or weak journal fit:
 
 1. Name the visible symptom.
-2. Trace it to the likely source: evidence gap, overclaim, method opacity, figure accounting drift, citation gap, structure mismatch, or sentence-level clutter.
+2. Trace it to the likely source: evidence gap, overclaim, method opacity, figure accounting drift, citation gap, parameter provenance gap, structure mismatch, or sentence-level clutter.
 3. State the smallest fix that addresses that source.
 4. Only then draft revised prose, response text, or a work plan.
 
@@ -163,7 +164,7 @@ For substantial or submission-facing work, run a final fresh-eye pass before del
 
 1. Coverage review: required source items are represented or explicitly deferred.
 2. Quality review: route-specific audit checks passed.
-3. Safety review: no unsupported claims, leakage, missing SI links, or formal-format drift.
+3. Safety review: no unsupported claims, self-estimated parameters, leakage, missing SI links, or formal-format drift.
 
 Self-review is useful but not sufficient when a handoff or optional subagent produced the artifact. The coordinator owns the final judgment.
 
