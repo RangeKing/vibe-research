@@ -1,6 +1,6 @@
 ---
 name: vibe-research
-description: Managed research and manuscript skill for assessing drafts, target-journal scorecards, Codex Goal-compatible submission gap tracking, continuing from checkpoints, comparing directions, de-risking ideas, rewriting abstracts or sections, choosing journals, checking figure-claim alignment, planning PRISMA-style reviews, handling reviewer feedback or resubmission, and polishing prose toward direct, high-level journal expression. Also triggers on Chinese requests such as "评估这篇稿子", "目标期刊差距评分", "继续这个项目", "重写摘要", "润色这段文字", "检查术语是否一致", "推荐投稿期刊", and "回复审稿意见".
+description: Use when assessing or improving research manuscripts, journal fit, target-journal scorecards, submission-package readiness, claim/evidence alignment, reference coverage, figure/SI consistency, reviewer responses, resubmissions, PRISMA-style reviews, or Chinese requests such as "评估这篇稿子", "继续这个项目", "重写摘要", "润色这段文字", "目标期刊差距评分", and "回复审稿意见".
 ---
 
 # Vibe Research

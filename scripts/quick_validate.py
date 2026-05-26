@@ -114,6 +114,10 @@ def validate_skill_md(root: Path) -> None:
         fail(f"SKILL.md name `{name}` does not match folder name `{root.name}`")
     if not isinstance(description, str) or not description.strip():
         fail("SKILL.md `description` must be a non-empty string")
+    if not description.startswith("Use when "):
+        fail("SKILL.md `description` must start with `Use when ` per skill-creator guidance")
+    if len(description) > 500:
+        fail("SKILL.md `description` should stay at or below 500 characters")
 
 
 def validate_openai_yaml(root: Path) -> None:
