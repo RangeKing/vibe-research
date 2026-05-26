@@ -15,8 +15,10 @@ EXPECTED_FILES = [
     "system/guardrails.md",
     "references/high-journal-expression.md",
     "references/reference-adequacy-audit.md",
+    "references/target-journal-scorecard.md",
     "references/sentence-level-writing-audit.md",
     "templates/research_task_packet.md",
+    "templates/target_journal_scorecard.md",
     "templates/reference_coverage_map.md",
     "templates/campaign_checkpoint.md",
     "templates/research_memory.md",
@@ -270,6 +272,89 @@ def validate_parameter_provenance_surface(root: Path) -> None:
             fail(f"{rel} is missing parameter provenance terms: {', '.join(missing)}")
 
 
+def validate_target_journal_scorecard_surface(root: Path) -> None:
+    required_terms = {
+        "SKILL.md": [
+            "target-journal scorecard",
+            "Codex Goal context",
+            "journal_score_gap",
+        ],
+        "system/coordinator.md": [
+            "Codex Goal context",
+            "target-journal scorecard",
+            "Do not create a separate internal goal mode",
+        ],
+        "system/routing.md": [
+            "scorecard",
+            "journal_score_gap",
+            "Codex Goal",
+        ],
+        "roles/assess.md": [
+            "target-journal scorecard",
+        ],
+        "roles/journal.md": [
+            "target-journal scorecard",
+        ],
+        "references/target-journal-scorecard.md": [
+            "This score is not an acceptance probability",
+            "Blocking caps",
+            "Codex Goal compatibility",
+        ],
+        "templates/target_journal_scorecard.md": [
+            "Overall score",
+            "Gap to target",
+            "Blocking caps",
+            "Codex Goal next actions",
+        ],
+        "templates/research_task_packet.md": [
+            "codex_goal_context",
+            "scorecard_plan",
+        ],
+        "templates/journal_fit_report.md": [
+            "Target-journal scorecard",
+        ],
+        "templates/research_assessment.md": [
+            "Target-journal scorecard",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing target-journal scorecard terms: {', '.join(missing)}")
+
+    forbidden_terms = [
+        "goal_mode",
+        "goal-mode",
+        "Goal mode is active",
+        "In Goal mode",
+        "Goal-mode loop",
+        "Goal-mode next actions",
+    ]
+    forbidden_hits: list[str] = []
+    for rel in [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "system/coordinator.md",
+        "system/routing.md",
+        "roles/assess.md",
+        "roles/journal.md",
+        "roles/draft.md",
+        "roles/polish.md",
+        "roles/revise.md",
+        "references/target-journal-scorecard.md",
+        "templates/target_journal_scorecard.md",
+        "templates/research_task_packet.md",
+    ]:
+        text = load_text(root / rel)
+        for term in forbidden_terms:
+            if term in text:
+                forbidden_hits.append(f"{rel}: {term}")
+    if forbidden_hits:
+        fail("target-journal scorecard must not define an internal goal mode: " + "; ".join(forbidden_hits))
+
+
 def main() -> None:
     root = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     if not root.exists() or not root.is_dir():
@@ -283,6 +368,7 @@ def main() -> None:
     validate_source_packaging_note(root)
     validate_managed_harness_surface(root)
     validate_parameter_provenance_surface(root)
+    validate_target_journal_scorecard_surface(root)
     print(f"OK: {root}")
 
 

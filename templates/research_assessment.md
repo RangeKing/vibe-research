@@ -26,6 +26,14 @@
 - Not ready / Directionally promising / Close with focused fixes / Submission-ready
 - Why:
 
+## Target-journal scorecard
+- Current score:
+- Target bar:
+- Gap to target:
+- Score confidence:
+- Blocking caps:
+- Next rescore condition:
+
 ## Best next move
 1. 
 2. 

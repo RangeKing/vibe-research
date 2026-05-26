@@ -9,6 +9,7 @@ No new slash route is needed for session, recovery, or memory work. Handle that 
 - Stable control interface
 - Route table
 - PRISMA and campaign routing
+- Codex Goal scorecard routing
 - Many-hands, merge, and conflict rules
 
 ## Stable control interface
@@ -46,6 +47,7 @@ Use when the user needs:
 
 - a current-state evaluation of a manuscript or project
 - readiness judgment
+- target-journal scorecard or publication gap diagnosis
 - strengths and weaknesses analysis
 - figure-set or evidence-package review
 - "what is missing before submission?"
@@ -113,6 +115,7 @@ Use when the user needs:
 
 - target journal selection
 - journal ladder design
+- scorecard interpretation for target-journal fit
 - audience fit analysis
 - submission positioning
 - pre-submission cover-letter framing
@@ -186,6 +189,16 @@ Use campaign mode when the work should continue across turns, phases, or failure
 - If the user presents 3 or more competing paths, run `framing` with `templates/direction_tournament.md` before converging.
 - Typical sequence: wake checkpoint -> packetize frontier -> one narrow route -> verify -> distill -> next checkpoint.
 
+## Codex Goal scorecard routing
+
+Use this when Codex Goal context, a target score, a score request, a publication gap, or distance to a target journal is present.
+
+- Do not create a separate slash route. Use `assess` for the artifact diagnosis and `journal` for target fit, then merge through `templates/target_journal_scorecard.md`.
+- Set failure risk `journal_score_gap` when the score gap is the main bottleneck.
+- If a target journal is named but no manuscript artifact is available, deliver a provisional scorecard with low confidence and cap the score.
+- If the user asks to improve the score, convert the top score-limiting dimensions into a Codex Goal-compatible repair loop and checkpoint the rescore conditions.
+- If the score gap is driven by evidence, methods, parameter provenance, figures, SI, references or package blockers, fix those before `draft` or `polish`.
+
 ## Many-hands rules
 
 - Parallel hands are allowed only when their tasks are independent and mergeable by structure.
@@ -209,6 +222,7 @@ Use campaign mode when the work should continue across turns, phases, or failure
 - If the user asks for "top-journal tone", "less AI-sounding", or "more natural directness" without asking for new scientific positioning, route to `polish`.
 - If the user provides reviewer comments and also asks to rewrite text, route to `revise`, not `polish`.
 - If the user specifies a target journal and wants rewriting, route through `journal` judgment and a reference-adequacy audit before `draft` or `polish`.
+- If the user asks for scoring, distance to target, or Codex Goal progress, produce a scorecard before rewriting and do not treat the score as an acceptance probability.
 - If the user asks what is missing before submission, include reference adequacy even if the visible problem first appears to be wording or figure polish.
 - If the task spans three or more routes, split it into explicit subproblems instead of pretending one role can do everything cleanly.
 - If the task is a continuation of prior work, recover the frontier before choosing the route.

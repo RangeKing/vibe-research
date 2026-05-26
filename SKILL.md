@@ -1,6 +1,6 @@
 ---
 name: vibe-research
-description: Managed research and manuscript skill for assessing drafts, continuing from checkpoints, comparing directions, de-risking ideas, rewriting abstracts or sections, choosing journals, checking figure-claim alignment, planning PRISMA-style reviews, handling reviewer feedback or resubmission, and polishing prose toward direct, high-level journal expression. Also triggers on Chinese requests such as "评估这篇稿子", "继续这个项目", "重写摘要", "润色这段文字", "清理赘词", "改掉被动语态", "检查术语是否一致", "推荐投稿期刊", and "回复审稿意见".
+description: Managed research and manuscript skill for assessing drafts, target-journal scorecards, Codex Goal-compatible submission gap tracking, continuing from checkpoints, comparing directions, de-risking ideas, rewriting abstracts or sections, choosing journals, checking figure-claim alignment, planning PRISMA-style reviews, handling reviewer feedback or resubmission, and polishing prose toward direct, high-level journal expression. Also triggers on Chinese requests such as "评估这篇稿子", "目标期刊差距评分", "继续这个项目", "重写摘要", "润色这段文字", "检查术语是否一致", "推荐投稿期刊", and "回复审稿意见".
 ---
 
 # Vibe Research
@@ -32,6 +32,7 @@ Chinese entry is first-class. Chinese task requests should trigger the same harn
 - For journal-targeted, near-submission, or submission-package work, run final readiness audits before delivery: check submission cleanliness by removing internal paths, filenames, code variables, tool/script names, lab-notebook phrasing, and project-management residue from editor/reviewer-facing text; check journal structure by verifying target-journal section rules, heading/subheading style, Discussion heading policy, and formal equation/table/figure formatting. Treat internal-trace leakage and structure/display-format drift as submission blockers, not cosmetic issues.
 - For journal-targeted, near-submission, or submission-package work that creates, edits, or cites Supplementary Information, run a supplementary-information adequacy audit before delivery. Every main-text pointer to a supplementary note, table, figure, formula, threshold, dataset, sensitivity analysis, or validation result must resolve to actual supplementary content with matching terminology, numbering, variables, and formal equation/table formatting. Treat missing or thinned-out SI content as a submission blocker.
 - For journal-targeted or submission-package work with figures, audit whether figure panels, legends, source-data tables, methods equations, and headline numbers use the same accounting basis. Treat figure-accounting drift as a submission blocker, not a cosmetic issue.
+- When the user asks for a score, distance to target journal, generated-paper readiness, publication gap, or Codex Goal context progress, produce a target-journal scorecard before rewriting. Report the score as a heuristic gap diagnosis, not as an acceptance probability.
 - When the reference state is `thin` or `uneven`, produce a reference coverage map and insertion plan before venue-specific drafting or polish.
 - Coverage is not density. In journal-facing prose, prefer the fewest citations needed to anchor a claim, avoid long citation stacks, and move completeness-oriented support into Methods, SI, or a reference coverage artifact when possible.
 - Recover before restarting. For long-horizon work, read the latest trustworthy checkpoint, task packet, memory note, or session log before taking a new step.
@@ -109,7 +110,7 @@ The `doctor` pass is an internal control step, not a user-facing heading require
 - requested output contract
 - mode: `normal` or `campaign`
 - gates required: `root_cause`, `quality`, `coverage`, `safety`, `transition`, or `none`
-- failure risks such as `context_overload`, `budget_pressure`, `route_collision`, `evidence_gap`, `symptom_fix`, `source_coverage_gap`, `feedback_fragmented`, `reviewer_overcompliance`, `journal_overreach`, `citation_thin`, `coverage_uneven`, `citation_dense`, `parameter_guessing`, `parameter_provenance_gap`, `supplement_drift`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, `checkpoint_stale`, or `merge_conflict`
+- failure risks such as `context_overload`, `budget_pressure`, `route_collision`, `evidence_gap`, `symptom_fix`, `source_coverage_gap`, `feedback_fragmented`, `reviewer_overcompliance`, `journal_overreach`, `journal_score_gap`, `citation_thin`, `coverage_uneven`, `citation_dense`, `parameter_guessing`, `parameter_provenance_gap`, `supplement_drift`, `internal_trace_leak`, `heading_style_drift`, `equation_format_drift`, `campaign_drift`, `checkpoint_stale`, or `merge_conflict`
 
 Use `templates/research_task_packet.md` when the work needs a compact control object.
 
@@ -220,6 +221,7 @@ When the task becomes tangled, recover with the smallest reliable move:
 - `feedback_fragmented`: normalize comments into an action table before entering `revise`.
 - `reviewer_overcompliance`: verify whether the requested change is scientifically correct, journal-appropriate, and compatible with prior decisions before implementing; push back or narrow the response when the comment is wrong or overreaching.
 - `journal_overreach`: judge the current evidence tier first, then discuss the stretch target separately.
+- `journal_score_gap`: produce or refresh the target-journal scorecard, identify blocking caps, compute the score gap, and turn the top score-limiting dimensions into the next Codex Goal-compatible repair loop.
 - `citation_thin`: build a reference coverage map and insertion plan before doing more journal-specific polish.
 - `figure_accounting_drift`: reconcile the statistical basis across figure panels, captions, source data, methods, and headline text before styling or journal retargeting.
 - `coverage_uneven`: identify the unsupported claim buckets, insert the missing literature, and only then resume manuscript-level rewriting.
@@ -246,6 +248,7 @@ Before finalizing, check these invariants:
 - required source items from the task packet are covered, deferred with reason, or marked impossible under current evidence
 - all strong claims are tied to user-provided evidence or clearly labeled heuristics
 - every manuscript-facing parameter, coefficient, threshold, conversion factor, rate, prior, weight, scenario bound, sample-size assumption, and sensitivity range has parameter provenance or is explicitly marked as non-final placeholder text
+- target-journal scorecard outputs include evidence basis, score confidence, blocking caps, gap to target, and rescore conditions, and do not present the score as an acceptance probability
 - journal-targeted outputs have plausible citation coverage, selective citation density, and reference formatting for the venue
 - all main-text Supplementary Information pointers resolve to actual notes, tables, figures, formulas, thresholds, sensitivity/validation summaries, or dataset provenance entries with matching numbering and terminology
 - editor- or reviewer-facing outputs contain no internal workspace paths, local filenames, code variables, commands, script/tool names, or project-management residue unless the user explicitly requests a technical appendix that names them
@@ -264,6 +267,7 @@ Before finalizing, check these invariants:
 - Use `references/evolution-loop.md` when the task spans multiple iterations, needs a checkpoint, or should distill reusable research memory instead of only solving the immediate prompt.
 - Use `references/adjudication.md` and `references/paradigm-audit.md` for research-direction convergence and risk scanning.
 - Use `references/manuscript-heuristics.md`, `references/journal-style-matrix.md`, and `references/abstract-workflow.md` when the task depends on journal-aware or high-standard manuscript writing decisions.
+- Use `references/target-journal-scorecard.md` and `templates/target_journal_scorecard.md` when the user asks for a score, distance to target journal, generated-paper readiness, publication gap, target score, or Codex Goal context submission loop.
 - Use `references/reference-adequacy-audit.md` when the task is near submission, asks what is missing before submission, targets a named journal, or requires package-level rewriting.
 - Use `references/submission-cleanliness-audit.md` when the task is near submission, journal-targeted, package-oriented, or asks for an editor/reviewer-style check.
 - Use `references/journal-structure-audit.md` when the task is near submission, journal-targeted, package-oriented, asks about headings/subheadings, or produces Word/PDF submission files with equations, figures or tables.

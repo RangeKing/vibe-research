@@ -6,6 +6,7 @@ Vibe Research is a cross-platform managed research harness and manuscript-writin
 
 It is designed for work that sits between scientific judgment and writing execution: idea framing, project assessment, de-risking, claim calibration, journal fit, drafting, polish, and feedback-driven revision.
 For near-submission work, it also defaults to a **reference adequacy and coverage check**, so journal-specific rewriting does not proceed on top of thin or uneven citation support.
+When a target journal or Codex Goal target is active, it can produce a **target-journal scorecard** that measures the current package, identifies blocking caps, and turns the score gap into the next repair loop.
 
 ## What This Repository Is
 
@@ -41,6 +42,7 @@ Use this skill when you need help with tasks such as:
 - deciding whether an idea is worth pursuing
 - assessing manuscript readiness
 - checking whether citation count, coverage and formatting plausibly match the target journal
+- scoring the gap between a generated paper/submission package and a target journal
 - identifying the highest-risk evidence gap
 - softening overclaim or causality overreach
 - rewriting titles, abstracts, introductions, results, or discussions
@@ -77,6 +79,8 @@ The main routes are:
 - `/revise`: feedback-driven revision and response strategy
 
 See the route files in [roles/](./roles/) for the narrow behavior of each role.
+
+For score-driven work, use [references/target-journal-scorecard.md](./references/target-journal-scorecard.md) with [templates/target_journal_scorecard.md](./templates/target_journal_scorecard.md). The score is a structured readiness and gap diagnosis, not an acceptance probability.
 
 ## Harness Behavior
 

@@ -13,6 +13,7 @@ Handle feedback-driven modification after reviewer comments, editor letters, col
 - the user needs a major revision plan
 - the user needs a resubmission strategy
 - the user needs collaborator feedback integrated into text or strategy
+- the user wants to rescore a manuscript after review-driven or Codex Goal-compatible repairs
 
 ## Standard output
 
@@ -22,6 +23,7 @@ Handle feedback-driven modification after reviewer comments, editor letters, col
 4. `Best action per comment`
 5. `Response strategy or response text`
 6. `Manuscript-side changes needed`
+7. `Score impact and rescore conditions` when a target-journal scorecard or Codex Goal-compatible loop is active
 
 For complex, multi-reviewer, or selective-journal revisions, also include a compact `Comment-response tracker` when useful:
 
@@ -45,5 +47,6 @@ For complex, multi-reviewer, or selective-journal revisions, also include a comp
 - If no new experiment exists, do not bluff. Narrow the claim and state the boundary honestly.
 - Keep tone professional, specific, and non-defensive.
 - For multi-comment revisions, handle one coupled issue cluster at a time and verify that the response letter, manuscript changes, figures, and SI stay aligned.
+- If a prior target-journal scorecard exists, rescore only dimensions changed by the revision unless the manuscript architecture or target journal changed globally.
 - Do not claim a revision, new analysis, citation, figure panel, supplementary item, or line number unless the user supplied it. Use `AUTHOR_INPUT_NEEDED` or a placeholder instead.
 - For repeated review cycles, end with `what changed`, `what was ruled out`, `what should be reused later`, and `next checkpoint`, and distill reusable reviewer-response patterns into `templates/research_memory.md`.

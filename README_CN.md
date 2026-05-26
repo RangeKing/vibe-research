@@ -6,6 +6,7 @@ Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 mana
 
 它覆盖的是“科研判断 + 写作执行”之间的工作带：研究方向梳理、项目评估、去风险、claim 校准、期刊匹配、正文改写、语言润色，以及基于审稿意见的修改。
 对接近投稿的任务，它还默认要求做一次**参考文献充分性审查**，避免只润色文字和图，却放过 citation coverage、格式顺序和关键 claim 无支撑的问题。
+当存在目标期刊或 Codex Goal 模式提供的外部目标时，它也可以生成 **target-journal scorecard**，用分数、封顶阻断项和差距修复循环来衡量当前稿件/投稿包离目标期刊还有多远。
 
 ## 这个仓库是什么
 
@@ -41,6 +42,7 @@ Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 mana
 - 判断一个 idea 是否值得继续做
 - 评估稿件当前是否接近投稿
 - 检查参考文献数量、覆盖面和期刊适配是否达标
+- 为生成的论文或投稿包打分，估计距离目标期刊要求的差距
 - 找出最关键的证据缺口
 - 降低 overclaim 或因果表述过强的问题
 - 重写标题、摘要、引言、结果、讨论等部分
@@ -77,6 +79,8 @@ Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 mana
 - `/revise`：基于反馈的修改与回复策略
 
 每个 route 的窄职责定义见 [roles/](./roles/)。
+
+分数驱动的工作使用 [references/target-journal-scorecard.md](./references/target-journal-scorecard.md) 和 [templates/target_journal_scorecard.md](./templates/target_journal_scorecard.md)。这个分数是结构化 readiness / gap 诊断，不是录用概率预测。
 
 ## Harness 工作方式
 

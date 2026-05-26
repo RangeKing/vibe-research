@@ -5,6 +5,7 @@ task:
   objective: ""
   frontier: ""
   campaign_mode: true | false
+  codex_goal_context: none | supplied | inferred | unknown
   stage: idea | results | draft | near_submission | revision | resubmission
   route: framing | assess | de-risk | claim | draft | journal | polish | revise
   session_state: none | packet | checkpoint | memory | session_log | mixed
@@ -18,6 +19,11 @@ task:
     triggers:
       - deadline | sunk_cost | reviewer_anxiety | journal_ambition | just_polish | external_feedback | other
   target_journal: ""
+  target_score:
+    bar: ""
+    source: heuristic | user_defined | journal_specific | unknown
+    current_score: ""
+    journal_score_gap: ""
   bottleneck: ""
   inputs:
     artifacts:
@@ -79,6 +85,15 @@ task:
     needed: true | false
     artifact: none | reference_coverage_map
     priority_buckets:
+      - ""
+  scorecard_plan:
+    needed: true | false
+    artifact: none | target_journal_scorecard
+    evidence_basis: complete_package | manuscript_only | partial_artifact | verbal_summary | unknown
+    score_confidence: high | medium | low | unknown
+    blocking_caps:
+      - ""
+    dimensions_to_rescore:
       - ""
   deliverable: ""
   merge_target: none | coordinator_synthesis | checkpoint_update | memory_update

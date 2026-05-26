@@ -10,6 +10,7 @@ Treat yourself as the brain of a managed harness, not only a router. Recover the
 
 - Responsibilities and first-pass diagnosis
 - Campaign mode and task packet discipline
+- Codex Goal context and scorecard loops
 - Scope control, role escalation, wake rules, and merge
 - Failure recovery, distillation, and output discipline
 
@@ -26,6 +27,7 @@ Treat yourself as the brain of a managed harness, not only a router. Recover the
 9. Gate near-submission and journal-targeted work on citation adequacy and parameter provenance, not only prose quality.
 10. Preserve traceability from source requirements to final output when the task includes reviewer comments, journal constraints, figure claims, SI pointers, or explicit user decisions.
 11. Resist shortcut pressure. Deadlines, reviewer anxiety, sunk-cost drafts, and target-journal ambition should trigger stricter verification, not premature polish.
+12. When the user asks for a score, distance to target journal, or Codex Goal progress, use a target-journal scorecard as the measurement layer before proposing repairs.
 
 ## First-pass diagnosis
 
@@ -37,6 +39,8 @@ Always classify the task on these dimensions:
 - Evidence quality: strong, partial, weak, or unknown
 - Citation state: adequate, thin, uneven, or unknown
 - Parameter provenance: complete, partial, missing, unknown, or not_applicable
+- Target-journal score state: none, needed, current, stale, or blocked
+- Codex Goal context: none, supplied, inferred, or unknown
 - Required deliverable: assessment, rewrite, plan, strategy, response letter, or package copy
 - Mode: `normal` or `campaign`
 - Session state: none, packet, checkpoint, memory, session_log, or mixed
@@ -74,6 +78,21 @@ In campaign mode, the coordinator must:
 5. Verify that required source items survived into the artifact or were explicitly deferred.
 6. Distill reusable lessons into a checkpoint, memory artifact, or session log before closeout.
 
+## Codex Goal Context
+
+Use this section only to cooperate with Codex's external Goal mode or a user-supplied target. Do not create a separate internal goal mode inside the skill.
+
+When Codex Goal context is present:
+
+1. Treat the external goal as an input constraint: target journal or tier, content type, target score or heuristic bar, artifact basis, and stop condition.
+2. Load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md` for the measurement artifact.
+3. Score only what was actually inspected. Mark evidence basis and confidence before giving numbers.
+4. Apply blocking caps for unsupported claims, invented support, parameter provenance gaps, figure/SI drift, reference inadequacy, internal trace leakage, or missing submission-package statements.
+5. Convert the score gap into a repair loop: top blocker, required evidence or author input, expected score impact, verification command or audit, and rescore condition.
+6. Save the current score, score gap, blockers, and next repair objective into the task packet or checkpoint when continuation is likely.
+
+Do not optimize for the score by strengthening unsupported claims. If the score gap reflects journal overreach, recommend retargeting, narrowing the claim, or changing the manuscript type.
+
 ## Task packet discipline
 
 When the task is broad, multi-stage, or handed to another hand, make a compact packet with:
@@ -84,6 +103,7 @@ When the task is broad, multi-stage, or handed to another hand, make a compact p
 - route
 - session state
 - evidence basis
+- target-journal score goal when Codex Goal context is supplied
 - source coverage requirements
 - gate types and blocking checks
 - explicit inputs
@@ -204,6 +224,7 @@ When campaign state exists, prefer this order:
 - If the problem is "This sounds too strong", use `claim`.
 - If the problem is "Write or rewrite the text", use `draft`.
 - If the problem is "Where should this go?", use `journal`.
+- If the problem is "How far is this from the target journal?", use `assess -> journal` with the target-journal scorecard unless the user only wants venue selection.
 - If the problem is "Make this text cleaner without changing the scientific position", use `polish`.
 - If the problem is "We received comments or a decision letter", use `revise`.
 
@@ -234,6 +255,7 @@ If the user presents 3 or more competing directions, structures, or strategy opt
 - `feedback_fragmented`: normalize reviewer/editor/collaborator comments into action items before rewriting.
 - `reviewer_overcompliance`: verify the feedback against the evidence and journal context; revise only the correct parts and push back or narrow claims when the requested change is wrong.
 - `journal_overreach`: separate current fit from aspirational fit.
+- `journal_score_gap`: generate or refresh the target-journal scorecard, apply caps, identify the top score-limiting dimensions, and checkpoint the next Codex Goal-compatible repair loop.
 - `citation_thin`: stop polishing, build a coverage map, insert the missing literature, then resume venue-specific revision.
 - `campaign_drift`: recover the latest checkpoint, restate the frontier, and reject irrelevant historical residue.
 - `checkpoint_stale`: compare the checkpoint with the newest artifact, preserve only the latest trustworthy state, and record discarded assumptions.

@@ -1,4 +1,4 @@
 interface:
   display_name: "Vibe Research"
   short_description: "Manuscript research harness with bilingual prompts"
-  default_prompt: "Use $vibe-research to wake from the checkpoint or task packet below, recover the active frontier, and execute the highest-leverage next step. 也可直接用中文发起，例如：从这个 checkpoint 继续，并给出下一步。"
+  default_prompt: "Use $vibe-research to wake from the checkpoint or task packet below, recover the active frontier, and execute the highest-leverage next step. If Codex supplies a Goal target or target journal score, treat it as external context and produce or refresh the target-journal scorecard first. 也可直接用中文发起，例如：评估距离目标期刊还有多少差距。"

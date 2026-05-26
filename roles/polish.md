@@ -45,6 +45,7 @@ For writing-review requests, use:
 Load `references/sentence-level-writing-audit.md` when the user asks for prose review, clutter cleanup, passive voice cleanup, terminology consistency, or sentence-level audit.
 Load `references/high-journal-expression.md` when the user asks for stronger journal expression, lower AI tone, or more natural directness.
 Load `references/reference-adequacy-audit.md` and `templates/reference_coverage_map.md` when the polish request is tied to a named journal, submission readiness, or a package-level pass.
+Load `references/target-journal-scorecard.md` and `templates/target_journal_scorecard.md` when the polish request is part of a target-score or Codex Goal-compatible repair loop.
 Load `references/submission-cleanliness-audit.md` when the polish request is tied to a named journal, submission readiness, package-level pass, cover letter, figure legends, Methods, Supplementary Information, or availability statements.
 Load `references/journal-structure-audit.md` when the polish request is tied to a named journal, submission readiness, package-level pass, headings/subheadings, equations, tables, figure legends, or Word/PDF deliverables.
 Use `templates/writing_quality_review.md` when the review artifact itself is the main deliverable.
@@ -64,6 +65,7 @@ Use `templates/polish_pass.md` when the deliverable is a direct rewrite plus a c
 - If the user asks for one named problem, run the targeted pass instead of simulating a full audit.
 - If the root problem is actually unsupported claims, say that `claim` should come first.
 - If the root problem is thin or uneven citation support, say that reference coverage repair should come before polish.
+- If a target-journal score gap is driven by evidence, method, reference, figure/SI, or package blockers, do not imply language polish can close that gap.
 - For selective-journal polish, enforce section-aware sentence logic: Results report observations with quantitative support; Discussion interprets with calibrated hedging and boundaries.
 - Keep polished sentences generally within 10-30 words, and split any sentence over 30 words unless the scientific structure requires it.
 - If the text contains internal paths, filenames, code variables, commands, script/tool names, or draft-management residue, fix those before style polishing and treat them as submission blockers.

@@ -6,6 +6,14 @@
 - Overreach risk: High / Medium / Low
 - Reference adequacy: Adequate / Thin / Uneven / Unknown
 
+## Target-journal scorecard
+- Current score:
+- Target bar:
+- Gap to target:
+- Score confidence:
+- Blocking cap:
+- Highest-leverage repair:
+
 ## Five-axis assessment
 ### 1. Novelty
 - Current level:

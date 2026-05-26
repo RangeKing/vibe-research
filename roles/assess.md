@@ -23,6 +23,7 @@ The work product may be:
 - the user wants readiness judgment
 - the user wants strengths and weaknesses called out before revision
 - the user wants to know whether the current results justify a target journal tier
+- the user asks for a target-journal scorecard, publication gap, or distance from the generated paper/submission package to a target venue
 
 ## First check the input state
 
@@ -43,9 +44,11 @@ If there is no concrete artifact, assess the project status rather than pretendi
 4. `Readiness verdict`
 5. `Best next move`
 6. `Target journal tier fit` when the evidence supports that judgment
+7. `Target-journal scorecard` when the user asks for a score, target gap, or Codex Goal-compatible loop
 
 ## Requirements
 
+- For **score, publication-gap, target-journal-distance, generated-paper readiness, or Codex Goal context work**, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; report evidence basis, score confidence, blocking caps, gap to target, and rescore conditions.
 - When the work product includes **figures** or the user asks whether **visuals match the claims**, use `references/figure-storytelling.md` for caption, integrity, and alignment checks.
 - For **PRISMA systematic reviews**, use `references/prisma-systematic-review.md` to judge reporting completeness and consistency (counts, flow, Methods).
 - For **near-submission, journal-targeted, or package-readiness work**, use `references/reference-adequacy-audit.md` to check citation count, coverage, unsupported factual claims, and numbering/format risks.
@@ -62,5 +65,6 @@ If there is no concrete artifact, assess the project status rather than pretendi
 - Give the next move that creates the largest improvement per unit effort.
 - Do not silently rewrite; if a small wording example helps, label it as an example.
 - Before calling an artifact ready, run a fresh verification pass against the provided source, target-journal constraints, and any task packet coverage items.
+- Do not turn the score into an acceptance probability; it is a heuristic measure of distance from the stated target-journal bar.
 - When the task is diagnostic or campaign-based, distill reusable failure patterns into `templates/research_memory.md` or `templates/campaign_checkpoint.md`.
 - For figure-heavy or PRISMA-heavy work, capture recurring audit rules worth reusing later, not only the current gaps.
