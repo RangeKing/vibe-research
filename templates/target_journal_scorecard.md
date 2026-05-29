@@ -1,5 +1,11 @@
 # Target-Journal Scorecard
 
+## Artifact update
+- Canonical file: target_journal_scorecard.md
+- Last updated:
+- Updated from prior scorecard: none / target_journal_scorecard.md / highest numbered legacy scorecard / other
+- Update rule: refresh this file in place; do not create target_journal_scorecard_vN.md files unless the user explicitly asks for an archive snapshot
+
 ## Target and evidence basis
 - Target journal / tier:
 - Content type:
@@ -7,6 +13,8 @@
 - Score confidence: High / Medium / Low
 - Official guidance checked: Yes / No / Not available
 - This score is not an acceptance probability: yes
+- Current evidence inspected: 5-10 bullets max; link or name detailed audits instead of pasting a work log
+- Meaningful change since prior score:
 
 ## Overall score
 - Current score:
@@ -15,18 +23,24 @@
 - Readiness band: Not target-ready / Major repair / Focused repair / Near target / At heuristic bar
 - Verdict:
 
+## Score history
+| Date | Score | Active cap | Changed dimensions | Top blocker | Next verification |
+|---|---:|---|---|---|---|
+|  |  |  |  |  |  |
+
 ## Score by dimension
 | Dimension | Max | Score | Evidence basis | Main gap | Repair priority |
 |---|---:|---:|---|---|---|
-| Problem significance and journal audience fit | 12 |  |  |  | High / Medium / Low |
-| Novelty and contribution clarity | 12 |  |  |  | High / Medium / Low |
-| Evidence depth and result strength | 16 |  |  |  | High / Medium / Low |
-| Methods, statistics, reproducibility and parameter provenance | 14 |  |  |  | High / Medium / Low |
+| Problem significance and journal audience fit | 11 |  |  |  | High / Medium / Low |
+| Novelty and contribution clarity | 11 |  |  |  | High / Medium / Low |
+| Evidence depth and result strength | 15 |  |  |  | High / Medium / Low |
+| Methods, statistics, reproducibility and parameter provenance | 13 |  |  |  | High / Medium / Low |
 | Claim calibration and limitations | 10 |  |  |  | High / Medium / Low |
-| Literature positioning and reference adequacy | 10 |  |  |  | High / Medium / Low |
-| Figures, tables, source data and SI alignment | 10 |  |  |  | High / Medium / Low |
+| Literature positioning and reference adequacy | 9 |  |  |  | High / Medium / Low |
+| Figures, tables, source data and SI alignment | 8 |  |  |  | High / Medium / Low |
+| Figure quality and visual communication | 8 |  |  |  | High / Medium / Low |
 | Manuscript architecture and writing quality | 8 |  |  |  | High / Medium / Low |
-| Submission package cleanliness and journal format | 8 |  |  |  | High / Medium / Low |
+| Submission package cleanliness and journal format | 7 |  |  |  | High / Medium / Low |
 
 ## Blocking caps
 | Cap | Applies? | Why | Fix before rescore |
@@ -37,6 +51,7 @@
 | Overclaim relative to evidence | Yes / No |  |  |
 | Methods, statistics, reproducibility, or parameter provenance gap | Yes / No |  |  |
 | Figure/table/source-data/SI accounting drift | Yes / No |  |  |
+| Figure readability or production-layout failure | Yes / No |  |  |
 | Reference coverage gap | Yes / No |  |  |
 | Internal trace or package-format blocker | Yes / No |  |  |
 | Missing required submission-package statement | Yes / No |  |  |

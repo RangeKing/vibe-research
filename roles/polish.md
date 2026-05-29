@@ -48,6 +48,7 @@ Load `references/reference-adequacy-audit.md` and `templates/reference_coverage_
 Load `references/target-journal-scorecard.md` and `templates/target_journal_scorecard.md` when the polish request is part of a target-score or Codex Goal-compatible repair loop.
 Load `references/submission-cleanliness-audit.md` when the polish request is tied to a named journal, submission readiness, package-level pass, cover letter, figure legends, Methods, Supplementary Information, or availability statements.
 Load `references/journal-structure-audit.md` when the polish request is tied to a named journal, submission readiness, package-level pass, headings/subheadings, equations, tables, figure legends, or Word/PDF deliverables.
+Load `references/figure-storytelling.md` when polishing figure captions, figure legends, or figure files, including production-layout checks for rendered text and whitespace.
 Use `templates/writing_quality_review.md` when the review artifact itself is the main deliverable.
 Use `templates/polish_pass.md` when the deliverable is a direct rewrite plus a compact list of the main editorial moves.
 

@@ -20,6 +20,20 @@ Before polishing a figure set or caption package, define:
 
 Panels that repeat the same scientific question should be combined, moved to supplementary material, or dropped.
 
+## Production layout contract
+
+When creating or editing figure files, treat visual legibility as part of the scientific contract. A figure that clips labels, overlaps text, or wastes most of its canvas is not ready even if the data are correct.
+
+Use this workflow before delivery:
+
+1. Sketch the panel grid first: figure size, panel bounds, reserved margins, legend zones, and caption/footnote zones.
+2. Give every text element a container. Titles, panel labels, legends, axis labels, annotations, and footnotes should have a known maximum width and line count before coordinates are finalized.
+3. Prefer plotting libraries with layout engines (`constrained_layout`, `tight_layout`, `GridSpec`, faceting, or equivalent) for standard charts. If hand-writing SVG, build reusable helpers such as `wrap_text`, `text_box`, `panel_frame`, and `legend_rows` instead of emitting long single-line `<text>` nodes.
+4. Keep text-density budgets explicit: figure title <= 70 characters, panel titles <= 45 characters, legend labels <= 32 characters or wrapped, footnotes <= 2 lines per panel, and no single rendered text line wider than its panel.
+5. Balance whitespace by resizing panels or simplifying content. Do not solve overflow by shrinking all fonts below legible size; shorten labels, wrap them, move detail to captions, or split the figure.
+6. Render the final figure to a raster preview and inspect it at the target aspect ratio. Verify that no right/bottom edge is clipped, panel titles fit, axis tick labels do not collide, legends remain inside their zones, and source-data caveats are readable.
+7. If the figure is SVG with direct text nodes, run `scripts/svg_layout_smoke_check.py` on the SVGs and fix warnings before delivery. Treat the script as a smoke test: passing it does not replace visual inspection, but failing it means layout risk remains.
+
 ## Captions
 
 - **What**: experimental setup, sample, n, units, scale bars, statistical test names (not just “p < 0.05” without context).

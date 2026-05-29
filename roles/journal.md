@@ -26,8 +26,9 @@ Judge where the work fits, why it fits, why it may fail there, and how to positi
 ## Rules
 
 - Judge fit based on problem importance, evidential depth, scope, audience, and presentation.
-- For scoring, gap diagnosis, generated-paper readiness, or Codex Goal context work, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; make the score a repair-prioritization tool, not a publication probability.
+- For scoring, gap diagnosis, generated-paper readiness, or Codex Goal context work, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; update the canonical `target_journal_scorecard.md` in place when working in a project directory; make the score a repair-prioritization tool, not a publication probability.
 - Treat the target-journal scorecard as the gap measurement layer, not as a promise of acceptance.
+- When figures are part of the package, keep the scorecard's figure-alignment dimension separate from the figure-quality dimension so visual communication problems receive their own repair priority.
 - Before recommending a selective venue or journal-specific rewrite, check whether the manuscript has plausible citation coverage, reference formatting, section structure, heading policy and display-format readiness for that venue; use `references/reference-adequacy-audit.md` and `references/journal-structure-audit.md`.
 - Do not confuse polish problems with scientific fit problems.
 - Provide at least one safer fallback venue when the main target looks over-ambitious.

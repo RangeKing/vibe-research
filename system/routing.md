@@ -194,6 +194,7 @@ Use campaign mode when the work should continue across turns, phases, or failure
 Use this when Codex Goal context, a target score, a score request, a publication gap, or distance to a target journal is present.
 
 - Do not create a separate slash route. Use `assess` for the artifact diagnosis and `journal` for target fit, then merge through `templates/target_journal_scorecard.md`.
+- When local project files are available, update `target_journal_scorecard.md` in place. If legacy `target_journal_scorecard_vN.md` files exist, read the latest trustworthy one, migrate the current state into the canonical file, and stop extending the numbered sequence.
 - Set failure risk `journal_score_gap` when the score gap is the main bottleneck.
 - If a target journal is named but no manuscript artifact is available, deliver a provisional scorecard with low confidence and cap the score.
 - If the user asks to improve the score, convert the top score-limiting dimensions into a Codex Goal-compatible repair loop and checkpoint the rescore conditions.

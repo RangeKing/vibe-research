@@ -48,14 +48,15 @@ If there is no concrete artifact, assess the project status rather than pretendi
 
 ## Requirements
 
-- For **score, publication-gap, target-journal-distance, generated-paper readiness, or Codex Goal context work**, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; report evidence basis, score confidence, blocking caps, gap to target, and rescore conditions.
-- When the work product includes **figures** or the user asks whether **visuals match the claims**, use `references/figure-storytelling.md` for caption, integrity, and alignment checks.
+- For **score, publication-gap, target-journal-distance, generated-paper readiness, or Codex Goal context work**, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; update the canonical `target_journal_scorecard.md` in place when working in a project directory; report evidence basis, score confidence, blocking caps, gap to target, and rescore conditions.
+- When the work product includes **figures** or the user asks whether **visuals match the claims**, use `references/figure-storytelling.md` for caption, integrity, alignment, and production-layout checks.
 - For **PRISMA systematic reviews**, use `references/prisma-systematic-review.md` to judge reporting completeness and consistency (counts, flow, Methods).
 - For **near-submission, journal-targeted, or package-readiness work**, use `references/reference-adequacy-audit.md` to check citation count, coverage, unsupported factual claims, and numbering/format risks.
 - For **Methods, equations, models, scenarios, sensitivity analyses, or any value-bearing manuscript text**, check parameter provenance: value, unit, source or derivation, scope match, support grade, and whether the parameter needs sensitivity testing.
 - For **near-submission, journal-targeted, or package-readiness work**, use `references/submission-cleanliness-audit.md` to check for internal workspace paths, local filenames, code variables, commands, scripts, draft-management notes and other manuscript-facing residue. Treat any hit in editor/reviewer-facing text as a blocker.
 - For **near-submission, journal-targeted, or package-readiness work**, use `references/journal-structure-audit.md` to check section rules, subheading length/style, Discussion heading policy, and whether equations/display items are rendered in formal output formats.
 - For **figure-heavy, near-submission work**, explicitly check whether figure panels, legends, source-data files, methods equations, and headline numbers share one statistical basis; if they do not, flag this before discussing styling.
+- For **target-journal scorecards with figures**, score figure scientific alignment separately from figure quality and visual communication. Do not let correct source data hide unreadable labels, clipped text, cramped legends, excessive whitespace, or unrendered layout failures.
 - When the user asks for **writing quality** rather than scientific readiness, redirect to `polish` and use `references/sentence-level-writing-audit.md` for sentence-level editorial checks.
 - Prioritize structural gaps over cosmetic issues.
 - Separate evidence problems from writing problems.

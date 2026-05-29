@@ -24,6 +24,7 @@ EXPECTED_FILES = [
     "templates/research_memory.md",
     "templates/polish_pass.md",
     "templates/writing_quality_review.md",
+    "scripts/svg_layout_smoke_check.py",
 ]
 
 
@@ -303,11 +304,17 @@ def validate_target_journal_scorecard_surface(root: Path) -> None:
             "This score is not an acceptance probability",
             "Blocking caps",
             "Codex Goal compatibility",
+            "Artifact update policy",
+            "target_journal_scorecard.md",
+            "Figure quality and visual communication",
         ],
         "templates/target_journal_scorecard.md": [
+            "Artifact update",
             "Overall score",
+            "Score history",
             "Gap to target",
             "Blocking caps",
+            "Figure readability or production-layout failure",
             "Codex Goal next actions",
         ],
         "templates/research_task_packet.md": [
@@ -359,6 +366,55 @@ def validate_target_journal_scorecard_surface(root: Path) -> None:
         fail("target-journal scorecard must not define an internal goal mode: " + "; ".join(forbidden_hits))
 
 
+def validate_target_journal_scorecard_points(root: Path) -> None:
+    for rel in ["references/target-journal-scorecard.md", "templates/target_journal_scorecard.md"]:
+        text = load_text(root / rel)
+        points: list[int] = []
+        in_dimension_table = False
+        for line in text.splitlines():
+            if line.startswith("| Axis | Points |") or line.startswith("| Dimension | Max |"):
+                in_dimension_table = True
+                continue
+            if in_dimension_table and not line.startswith("|"):
+                break
+            if not in_dimension_table:
+                continue
+            cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+            if len(cells) < 2 or cells[1] in {"Points", "Max", "---:"}:
+                continue
+            if cells[1].isdigit():
+                points.append(int(cells[1]))
+        if sum(points) != 100:
+            fail(f"{rel} scorecard dimension points must sum to 100, got {sum(points)}")
+
+
+def validate_figure_layout_surface(root: Path) -> None:
+    required_terms = {
+        "SKILL.md": [
+            "production-layout",
+            "text wrapping",
+            "rendered legibility",
+        ],
+        "references/figure-storytelling.md": [
+            "Production layout contract",
+            "wrap_text",
+            "scripts/svg_layout_smoke_check.py",
+            "Render the final figure",
+        ],
+        "scripts/svg_layout_smoke_check.py": [
+            "long unwrapped text",
+            "horizontal canvas bounds",
+            "possible text overlap",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing figure layout terms: {', '.join(missing)}")
+
+
 def main() -> None:
     root = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     if not root.exists() or not root.is_dir():
@@ -373,6 +429,8 @@ def main() -> None:
     validate_managed_harness_surface(root)
     validate_parameter_provenance_surface(root)
     validate_target_journal_scorecard_surface(root)
+    validate_target_journal_scorecard_points(root)
+    validate_figure_layout_surface(root)
     print(f"OK: {root}")
 
 

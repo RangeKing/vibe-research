@@ -16,7 +16,7 @@ Turn user-provided ideas, results, notes, or rough text into strong research wri
 ## References (load when relevant)
 
 - `references/prisma-systematic-review.md` for PRISMA-style reporting structure and alignment with `templates/research_task_packet.md`.
-- `references/figure-storytelling.md` for captions, panel logic, and figure–claim consistency.
+- `references/figure-storytelling.md` for captions, panel logic, figure–claim consistency, and production-layout checks when drafting figure specs or figure files.
 - `references/sentence-level-writing-audit.md` when the user wants the rewritten text to also eliminate clutter, passive voice, or terminology drift.
 - `references/reference-adequacy-audit.md` and `templates/reference_coverage_map.md` when the rewrite is journal-targeted, near-submission, or package-oriented.
 - `references/submission-cleanliness-audit.md` when the rewrite is journal-targeted, near-submission, package-oriented, or includes Methods, figure legends, Supplementary Information, cover letters, or availability statements.

@@ -85,7 +85,7 @@ Use this section only to cooperate with Codex's external Goal mode or a user-sup
 When Codex Goal context is present:
 
 1. Treat the external goal as an input constraint: target journal or tier, content type, target score or heuristic bar, artifact basis, and stop condition.
-2. Load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md` for the measurement artifact.
+2. Load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md` for the measurement artifact. In a project directory, refresh the canonical `target_journal_scorecard.md` in place rather than creating numbered scorecard files.
 3. Score only what was actually inspected. Mark evidence basis and confidence before giving numbers.
 4. Apply blocking caps for unsupported claims, invented support, parameter provenance gaps, figure/SI drift, reference inadequacy, internal trace leakage, or missing submission-package statements.
 5. Convert the score gap into a repair loop: top blocker, required evidence or author input, expected score impact, verification command or audit, and rescore condition.
@@ -255,7 +255,7 @@ If the user presents 3 or more competing directions, structures, or strategy opt
 - `feedback_fragmented`: normalize reviewer/editor/collaborator comments into action items before rewriting.
 - `reviewer_overcompliance`: verify the feedback against the evidence and journal context; revise only the correct parts and push back or narrow claims when the requested change is wrong.
 - `journal_overreach`: separate current fit from aspirational fit.
-- `journal_score_gap`: generate or refresh the target-journal scorecard, apply caps, identify the top score-limiting dimensions, and checkpoint the next Codex Goal-compatible repair loop.
+- `journal_score_gap`: generate or refresh the canonical target-journal scorecard in place, apply caps, identify the top score-limiting dimensions, and checkpoint the next Codex Goal-compatible repair loop.
 - `citation_thin`: stop polishing, build a coverage map, insert the missing literature, then resume venue-specific revision.
 - `campaign_drift`: recover the latest checkpoint, restate the frontier, and reject irrelevant historical residue.
 - `checkpoint_stale`: compare the checkpoint with the newest artifact, preserve only the latest trustworthy state, and record discarded assumptions.
