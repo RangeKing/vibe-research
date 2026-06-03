@@ -397,6 +397,7 @@ def validate_figure_layout_surface(root: Path) -> None:
         ],
         "references/figure-storytelling.md": [
             "Production layout contract",
+            "hard text boundary",
             "wrap_text",
             "scripts/svg_layout_smoke_check.py",
             "Render the final figure",
@@ -405,6 +406,7 @@ def validate_figure_layout_surface(root: Path) -> None:
             "long unwrapped text",
             "horizontal canvas bounds",
             "possible text overlap",
+            "panel bounds",
         ],
     }
 

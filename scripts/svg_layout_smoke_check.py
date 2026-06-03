@@ -9,6 +9,10 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
+Box = tuple[float, float, float, float]
+TextBox = tuple[int, str, float, float, float, float]
+
+
 def local_name(tag: str) -> str:
     return tag.split("}", 1)[-1]
 
@@ -54,6 +58,61 @@ def has_wrapping(node: ET.Element) -> bool:
     return any(local_name(child.tag) == "tspan" for child in node)
 
 
+def parse_rect(node: ET.Element) -> Box | None:
+    x = parse_float(node.attrib.get("x")) or 0.0
+    y = parse_float(node.attrib.get("y")) or 0.0
+    width = parse_float(node.attrib.get("width"))
+    height = parse_float(node.attrib.get("height"))
+    if width is None or height is None:
+        return None
+    return (x, y, x + width, y + height)
+
+
+def find_panel_boxes(root: ET.Element, canvas: Box) -> list[Box]:
+    canvas_left, canvas_top, canvas_right, canvas_bottom = canvas
+    canvas_w = canvas_right - canvas_left
+    canvas_h = canvas_bottom - canvas_top
+    panels: list[Box] = []
+    for node in root.iter():
+        if local_name(node.tag) != "rect":
+            continue
+        box = parse_rect(node)
+        if box is None:
+            continue
+        left, top, right, bottom = box
+        width = right - left
+        height = bottom - top
+        fill = node.attrib.get("fill", "").lower()
+        stroke = node.attrib.get("stroke", "").lower()
+        if width < 180 or height < 120:
+            continue
+        if width >= canvas_w * 0.95 and height >= canvas_h * 0.95:
+            continue
+        if fill not in {"#ffffff", "white"}:
+            continue
+        if stroke in {"", "none"}:
+            continue
+        panels.append(box)
+    return panels
+
+
+def point_inside(box: Box, x: float, y: float, pad: float = 0.0) -> bool:
+    left, top, right, bottom = box
+    return left - pad <= x <= right + pad and top - pad <= y <= bottom + pad
+
+
+def box_area(box: Box) -> float:
+    left, top, right, bottom = box
+    return max(0.0, right - left) * max(0.0, bottom - top)
+
+
+def assign_panel(panels: list[Box], x: float, y: float) -> Box | None:
+    containing = [box for box in panels if point_inside(box, x, y, pad=2.0)]
+    if not containing:
+        return None
+    return min(containing, key=box_area)
+
+
 def check_svg(path: Path) -> list[str]:
     try:
         root = ET.parse(path).getroot()
@@ -67,14 +126,16 @@ def check_svg(path: Path) -> list[str]:
     min_x, min_y, width, height = viewbox
     max_x = min_x + width
     max_y = min_y + height
+    canvas = (min_x, min_y, max_x, max_y)
     margin = max(12.0, min(width, height) * 0.01)
     warnings: list[str] = []
+    panels = find_panel_boxes(root, canvas)
 
     text_nodes = [node for node in root.iter() if local_name(node.tag) == "text"]
     if not text_nodes:
         warnings.append(f"{path}: no text nodes found; verify labels after raster render")
 
-    boxes: list[tuple[int, str, float, float, float, float]] = []
+    boxes: list[TextBox] = []
     for idx, node in enumerate(text_nodes, start=1):
         content = re.sub(r"\s+", " ", text_content(node))
         if not content:
@@ -115,6 +176,19 @@ def check_svg(path: Path) -> list[str]:
             warnings.append(
                 f"{path}: text #{idx} may exceed vertical canvas bounds: {content[:100]!r}"
             )
+        panel = assign_panel(panels, x, y)
+        if panel is not None:
+            panel_left, panel_top, panel_right, panel_bottom = panel
+            panel_tolerance = 2.0
+            if (
+                left < panel_left - panel_tolerance
+                or right > panel_right + panel_tolerance
+                or top < panel_top - panel_tolerance
+                or bottom > panel_bottom + panel_tolerance
+            ):
+                warnings.append(
+                    f"{path}: text #{idx} may exceed panel bounds: {content[:100]!r}"
+                )
 
     for i, box_a in enumerate(boxes):
         idx_a, text_a, left_a, top_a, right_a, bottom_a = box_a
@@ -139,6 +213,8 @@ def check_svg(path: Path) -> list[str]:
     rects = [node for node in root.iter() if local_name(node.tag) == "rect"]
     if len(rects) <= 1:
         warnings.append(f"{path}: few panel rectangles found; verify panel grid and whitespace manually")
+    if not panels:
+        warnings.append(f"{path}: no panel rectangles detected; panel-bound text overflow cannot be checked")
 
     return warnings
 
