@@ -26,6 +26,7 @@ EXPECTED_FILES = [
     "templates/writing_quality_review.md",
     "scripts/svg_layout_smoke_check.py",
     "scripts/docx_equation_smoke_check.py",
+    "scripts/figure_whitespace_smoke_check.py",
 ]
 
 
@@ -399,6 +400,7 @@ def validate_figure_layout_surface(root: Path) -> None:
         "SKILL.md": [
             "production-layout",
             "text wrapping",
+            "rendered PNG/SVG whitespace balance",
             "rendered legibility",
         ],
         "references/figure-storytelling.md": [
@@ -406,13 +408,31 @@ def validate_figure_layout_surface(root: Path) -> None:
             "hard text boundary",
             "wrap_text",
             "scripts/svg_layout_smoke_check.py",
+            "scripts/figure_whitespace_smoke_check.py",
             "Render the final figure",
+            "content bounding-box imbalance",
         ],
         "scripts/svg_layout_smoke_check.py": [
             "long unwrapped text",
             "horizontal canvas bounds",
             "possible text overlap",
             "panel bounds",
+        ],
+        "scripts/figure_whitespace_smoke_check.py": [
+            "content_bbox",
+            "large {side} whitespace margin",
+            "content occupies only",
+        ],
+        "roles/assess.md": [
+            "figure_whitespace_smoke_check.py",
+            "delivered figure is raster",
+        ],
+        "roles/draft.md": [
+            "content bounding-box balance",
+            "third of the canvas blank",
+        ],
+        "references/target-journal-scorecard.md": [
+            "large rendered whitespace imbalance",
         ],
     }
 

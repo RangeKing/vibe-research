@@ -120,7 +120,7 @@ Apply caps after summing the axis scores. Explain every cap.
 - A formula-bearing Word `.docx` submission has equations rendered only as plain text, or zero verified Office Math objects in the relevant main/SI files: cap at 80.
 - Readiness score is based mainly on package-cleanliness checks such as word counts, file presence and path scans rather than scientific reproducibility: cap at 75 until a full scorecard is run.
 - Figure, table, source-data or SI accounting drift affecting headline claims: cap at 65.
-- Serious figure readability or production-layout failure in main display items: cap at 75 until labels, legends, whitespace, and rendered previews are fixed.
+- Serious figure readability or production-layout failure in main display items, including large rendered whitespace imbalance: cap at 75 until labels, legends, whitespace, and rendered previews are fixed.
 - Missing or clearly inadequate reference coverage for a selective target: cap at 75.
 - Internal trace leakage, local filenames, draft-management residue, or package-format blockers in editor-facing text: cap at 80.
 - Missing cover letter, data/code availability, ethics/competing-interest statements, or required package statements: cap at 85.

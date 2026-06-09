@@ -32,8 +32,8 @@ Use this workflow before delivery:
 4. Treat each panel rectangle as a hard text boundary. Except for the global figure title, every text node should belong to a panel, plot area, legend box, or footnote box. Do not place text by fixed x increments when the label width is unknown; compute the label's container width first, wrap or shorten it, then place it.
 5. Keep text-density budgets explicit: figure title <= 70 characters, panel titles <= 45 characters, legend labels <= 32 characters or wrapped, footnotes <= 2 lines per panel, and no single rendered text line wider than its panel.
 6. Balance whitespace by resizing panels or simplifying content. Do not solve overflow by shrinking all fonts below legible size; shorten labels, wrap them, move detail to captions, or split the figure.
-7. Render the final figure to a raster preview and inspect it at the target aspect ratio. Verify that no right/bottom edge is clipped, panel titles fit, axis tick labels do not collide, legends remain inside their zones, and source-data caveats are readable.
-8. If the figure is SVG with direct text nodes, run `scripts/svg_layout_smoke_check.py` on the SVGs and fix warnings before delivery. Treat the script as a smoke test: passing it does not replace visual inspection, but failing it means layout risk remains.
+7. Render the final figure to a raster preview and inspect it at the target aspect ratio. Verify that no right/bottom edge is clipped, panel titles fit, axis tick labels do not collide, legends remain inside their zones, source-data caveats are readable, and the plotted content is not stranded on one side of the canvas.
+8. Run smoke checks on the delivered visual format before delivery. For SVGs with direct text nodes, run `scripts/svg_layout_smoke_check.py`. For PNG previews or final raster figures, run `scripts/figure_whitespace_smoke_check.py` to detect large side margins, content bounding-box imbalance, and wasted canvas. Treat the scripts as smoke tests: passing them does not replace visual inspection, but failing them means layout risk remains.
 
 ## Captions
 
