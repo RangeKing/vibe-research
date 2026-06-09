@@ -25,6 +25,7 @@ EXPECTED_FILES = [
     "templates/polish_pass.md",
     "templates/writing_quality_review.md",
     "scripts/svg_layout_smoke_check.py",
+    "scripts/docx_equation_smoke_check.py",
 ]
 
 
@@ -283,6 +284,7 @@ def validate_target_journal_scorecard_surface(root: Path) -> None:
             "target-journal scorecard",
             "Codex Goal context",
             "journal_score_gap",
+            "Methods/SI reproducibility gate",
         ],
         "system/coordinator.md": [
             "Codex Goal context",
@@ -307,6 +309,8 @@ def validate_target_journal_scorecard_surface(root: Path) -> None:
             "Artifact update policy",
             "target_journal_scorecard.md",
             "Figure quality and visual communication",
+            "High-score gates",
+            "Methods and SI are too thin",
         ],
         "templates/target_journal_scorecard.md": [
             "Artifact update",
@@ -316,6 +320,8 @@ def validate_target_journal_scorecard_surface(root: Path) -> None:
             "Blocking caps",
             "Figure readability or production-layout failure",
             "Codex Goal next actions",
+            "Methods/SI reproducibility gate",
+            "Word equation objects missing",
         ],
         "templates/research_task_packet.md": [
             "codex_goal_context",
@@ -417,6 +423,50 @@ def validate_figure_layout_surface(root: Path) -> None:
             fail(f"{rel} is missing figure layout terms: {', '.join(missing)}")
 
 
+def validate_methods_si_reproducibility_surface(root: Path) -> None:
+    required_terms = {
+        "references/supplementary-information-audit.md": [
+            "Reviewer-Reproducible Methods Gate",
+            "Data inputs",
+            "Preprocessing",
+            "Notation",
+            "Equations",
+            "Output crosswalk",
+            "scripts/docx_equation_smoke_check.py",
+        ],
+        "references/journal-structure-audit.md": [
+            "zero Office Math objects",
+            "scripts/docx_equation_smoke_check.py",
+        ],
+        "references/manuscript-heuristics.md": [
+            "zero Office Math objects",
+            "references/supplementary-information-audit.md",
+        ],
+        "roles/assess.md": [
+            "package-cleanliness checks",
+            "Office Math objects",
+        ],
+        "roles/draft.md": [
+            "formal equations/predicates",
+            "Office Math",
+        ],
+        "roles/journal.md": [
+            "Methods/SI reproducibility gate",
+            "thin Methods",
+        ],
+        "scripts/docx_equation_smoke_check.py": [
+            "oMath",
+            "formula_like_hits",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing Methods/SI reproducibility terms: {', '.join(missing)}")
+
+
 def main() -> None:
     root = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     if not root.exists() or not root.is_dir():
@@ -433,6 +483,7 @@ def main() -> None:
     validate_target_journal_scorecard_surface(root)
     validate_target_journal_scorecard_points(root)
     validate_figure_layout_surface(root)
+    validate_methods_si_reproducibility_surface(root)
     print(f"OK: {root}")
 
 

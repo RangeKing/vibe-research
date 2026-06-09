@@ -32,8 +32,17 @@ For Word/PDF submission packages:
 - Equations should be inserted as formal equation objects where feasible, such as Word Office Math in `.docx`, not only plain-text arithmetic lines.
 - Equation numbering should be consistent across main text and Supplementary Information.
 - Variables in explanatory prose should match the displayed equations.
+- If the manuscript or SI contains value-bearing methods, scoring rules, screening classes, thresholds, sensitivity tests, or validation formulas, a `.docx` package with zero Office Math objects is a display-format warning and can be a readiness blocker.
 - Tables and figure legends should not be regenerated from stale strings that bypass the cleaned manuscript text.
 - After building the final file, inspect the delivered package, not only the source Markdown, because build scripts can reintroduce formatting drift.
+
+Quick check for `.docx` packages:
+
+```bash
+python3 scripts/docx_equation_smoke_check.py path/to/main.docx path/to/supplementary_information.docx
+```
+
+This smoke check reports Office Math object counts and Word table counts. It does not prove the equations are scientifically correct, but it prevents accidentally shipping formula-bearing Methods/SI as plain paragraphs.
 
 ## Output Contract
 

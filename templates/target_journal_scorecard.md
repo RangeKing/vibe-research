@@ -23,6 +23,16 @@
 - Readiness band: Not target-ready / Major repair / Focused repair / Near target / At heuristic bar
 - Verdict:
 
+## Methods/SI reproducibility gate
+- Gate status: Pass / Partial / Fail / Not checked
+- Step-by-step reproducibility from data inputs to figures/tables/claims: Yes / Partial / No
+- Formal equations or logical predicates present for all scoring, classes, rankings, sensitivity and validation rules: Yes / Partial / No / Not applicable
+- Thresholds, coefficients, class boundaries and missing-data rules tabulated with provenance: Yes / Partial / No / Not applicable
+- Sensitivity and validation outputs inspectable: Yes / Partial / No / Not applicable
+- Word equation format checked when `.docx` is the target: Yes / No / Not applicable
+- Office Math object status for `.docx`: Pass / Fail / Not checked / Not applicable
+- Score implication:
+
 ## Score history
 | Date | Score | Active cap | Changed dimensions | Top blocker | Next verification |
 |---|---:|---|---|---|---|
@@ -50,6 +60,10 @@
 | Unsupported core result or invented support | Yes / No |  |  |
 | Overclaim relative to evidence | Yes / No |  |  |
 | Methods, statistics, reproducibility, or parameter provenance gap | Yes / No |  |  |
+| Methods/SI not step-by-step reproducible | Yes / No |  |  |
+| Missing formal equations, predicates, thresholds, or coefficient tables | Yes / No |  |  |
+| Word equation objects missing for formula-bearing DOCX | Yes / No / N/A |  |  |
+| Superficial package-readiness scoring only | Yes / No |  |  |
 | Figure/table/source-data/SI accounting drift | Yes / No |  |  |
 | Figure readability or production-layout failure | Yes / No |  |  |
 | Reference coverage gap | Yes / No |  |  |

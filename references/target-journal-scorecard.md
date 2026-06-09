@@ -94,6 +94,18 @@ Gap to target = target bar minus current score. Interpret the gap:
 
 If the user gives a custom target score, use it and state that it is user-defined.
 
+## High-score gates
+
+A package cannot score at or above 90/100, or 9/10, merely because it has the expected files, acceptable word counts, no visible internal paths, and complete figure/source-data names. High scores require a scientific reproducibility gate:
+
+- Methods and SI let a reader reproduce the workflow step by step from data inputs to figures, tables and headline claims.
+- Formal equations or logical predicates exist for scores, ordinal classes, ranking rules, adequacy matrices, sensitivity readouts and validation checks.
+- Parameter provenance, thresholds, weights, class boundaries and missing-data rules are tabulated.
+- Sensitivity and validation outputs are inspectable, not only described as a "logic check".
+- If the target files are `.docx`, methods/SI formulas are Word Office Math objects where formulas are part of the work; a formula-bearing package with zero `m:oMath` objects cannot pass the high-score gate.
+
+If this gate is not checked, mark score confidence no higher than medium. If it fails, apply the relevant cap before reporting the score.
+
 ## Blocking caps
 
 Apply caps after summing the axis scores. Explain every cap.
@@ -103,6 +115,10 @@ Apply caps after summing the axis scores. Explain every cap.
 - Unsupported core result, fabricated reference/data/parameter, or unresolved parameter provenance gap in a central claim: cap at 40 until fixed.
 - Main claim stronger than available evidence: cap at 60.
 - Serious methods opacity, missing validation, missing uncertainty treatment, or non-reproducible analysis basis: cap at 70.
+- Methods and SI are too thin for step-by-step reviewer reproduction, even if package files are present: cap at 70.
+- A quantitative, ordinal, screening, ranking or sensitivity-based package lacks formal equations/predicates and threshold/coefficient tables: cap at 75.
+- A formula-bearing Word `.docx` submission has equations rendered only as plain text, or zero verified Office Math objects in the relevant main/SI files: cap at 80.
+- Readiness score is based mainly on package-cleanliness checks such as word counts, file presence and path scans rather than scientific reproducibility: cap at 75 until a full scorecard is run.
 - Figure, table, source-data or SI accounting drift affecting headline claims: cap at 65.
 - Serious figure readability or production-layout failure in main display items: cap at 75 until labels, legends, whitespace, and rendered previews are fixed.
 - Missing or clearly inadequate reference coverage for a selective target: cap at 75.
@@ -132,6 +148,7 @@ When this scorecard is triggered, return:
 - `Target and evidence basis`
 - `Overall score`
 - `Score history`
+- `Methods/SI reproducibility gate`
 - `Gap to target`
 - `Score by dimension`
 - `Blocking caps`

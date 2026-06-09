@@ -87,7 +87,7 @@ When Codex Goal context is present:
 1. Treat the external goal as an input constraint: target journal or tier, content type, target score or heuristic bar, artifact basis, and stop condition.
 2. Load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md` for the measurement artifact. In a project directory, refresh the canonical `target_journal_scorecard.md` in place rather than creating numbered scorecard files.
 3. Score only what was actually inspected. Mark evidence basis and confidence before giving numbers.
-4. Apply blocking caps for unsupported claims, invented support, parameter provenance gaps, figure/SI drift, reference inadequacy, internal trace leakage, or missing submission-package statements.
+4. Apply blocking caps for unsupported claims, invented support, parameter provenance gaps, Methods/SI reproducibility gaps, figure/SI drift, reference inadequacy, internal trace leakage, equation-format drift, or missing submission-package statements.
 5. Convert the score gap into a repair loop: top blocker, required evidence or author input, expected score impact, verification command or audit, and rescore condition.
 6. Save the current score, score gap, blockers, and next repair objective into the task packet or checkpoint when continuation is likely.
 

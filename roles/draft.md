@@ -22,6 +22,7 @@ Turn user-provided ideas, results, notes, or rough text into strong research wri
 - `references/submission-cleanliness-audit.md` when the rewrite is journal-targeted, near-submission, package-oriented, or includes Methods, figure legends, Supplementary Information, cover letters, or availability statements.
 - `references/journal-structure-audit.md` when the rewrite is journal-targeted, near-submission, package-oriented, or changes headings, section structure, equations, tables or figure legends.
 - `references/target-journal-scorecard.md` and `templates/target_journal_scorecard.md` when the rewrite is part of a Codex Goal-compatible loop or is intended to close a measured target-journal score gap.
+- `references/supplementary-information-audit.md` when drafting or repairing Methods, Supplementary Information, formulas, thresholds, sensitivity tests, validation logic, dataset provenance, or a Word submission package.
 
 ## Standard output
 
@@ -43,6 +44,7 @@ For substantial work, use a `draft -> verify -> distill` loop and preserve reusa
 - If the user asks to improve a target-journal score, rewrite only after the scorecard identifies which dimensions can honestly improve through writing versus evidence, methods, references, figures, SI, or package repair.
 - If the target journal is named and citation support is thin or uneven, stop and build the reference coverage map before performing venue-specific rewriting.
 - If a draft introduces or rewrites numerical parameters, coefficients, thresholds, conversion factors, rates, priors, weights, scenario bounds, sample-size assumptions, or sensitivity ranges, verify parameter provenance before using those values in final manuscript prose.
+- For Methods/SI repairs, draft the reproducibility structure first: data inputs, preprocessing, notation, formal equations/predicates, thresholds, sensitivity/validation, and output crosswalk. If the target is `.docx`, preserve equations in a form that the Word build can convert to Office Math.
 - Before treating rewritten journal-facing text as final, remove internal workspace paths, local filenames, code variables, commands, script/tool names and draft-management residue.
 - Before treating rewritten journal-facing text as final, check every heading against the target journal's section policy and convert overlong sentence-like subheadings into short topical labels.
 - If the evidence is incomplete, label the text as a structure, placeholder draft, or example wording instead of final copy.

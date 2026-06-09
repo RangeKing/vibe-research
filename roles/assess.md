@@ -55,6 +55,7 @@ If there is no concrete artifact, assess the project status rather than pretendi
 - For **Methods, equations, models, scenarios, sensitivity analyses, or any value-bearing manuscript text**, check parameter provenance: value, unit, source or derivation, scope match, support grade, and whether the parameter needs sensitivity testing.
 - For **near-submission, journal-targeted, or package-readiness work**, use `references/submission-cleanliness-audit.md` to check for internal workspace paths, local filenames, code variables, commands, scripts, draft-management notes and other manuscript-facing residue. Treat any hit in editor/reviewer-facing text as a blocker.
 - For **near-submission, journal-targeted, or package-readiness work**, use `references/journal-structure-audit.md` to check section rules, subheading length/style, Discussion heading policy, and whether equations/display items are rendered in formal output formats.
+- For **near-submission or high-score work**, use `references/supplementary-information-audit.md` to check the Methods/SI reproducibility gate. Do not assign 90/100 or 9/10 when Methods/SI are only narrative summaries, formal equations are missing for value-bearing logic, or Word `.docx` formulas are not verified as Office Math objects.
 - For **figure-heavy, near-submission work**, explicitly check whether figure panels, legends, source-data files, methods equations, and headline numbers share one statistical basis; if they do not, flag this before discussing styling.
 - For **target-journal scorecards with figures**, score figure scientific alignment separately from figure quality and visual communication. Do not let correct source data hide unreadable labels, clipped text, cramped legends, excessive whitespace, or unrendered layout failures.
 - When the user asks for **writing quality** rather than scientific readiness, redirect to `polish` and use `references/sentence-level-writing-audit.md` for sentence-level editorial checks.
@@ -66,6 +67,7 @@ If there is no concrete artifact, assess the project status rather than pretendi
 - Give the next move that creates the largest improvement per unit effort.
 - Do not silently rewrite; if a small wording example helps, label it as an example.
 - Before calling an artifact ready, run a fresh verification pass against the provided source, target-journal constraints, and any task packet coverage items.
+- Do not accept a package-readiness score that is based only on word counts, required-file presence, source-table presence, figure existence, and path scans; those are package-cleanliness checks, not a target-journal scorecard.
 - Do not turn the score into an acceptance probability; it is a heuristic measure of distance from the stated target-journal bar.
 - When the task is diagnostic or campaign-based, distill reusable failure patterns into `templates/research_memory.md` or `templates/campaign_checkpoint.md`.
 - For figure-heavy or PRISMA-heavy work, capture recurring audit rules worth reusing later, not only the current gaps.

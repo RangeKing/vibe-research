@@ -30,6 +30,7 @@ Judge where the work fits, why it fits, why it may fail there, and how to positi
 - Treat the target-journal scorecard as the gap measurement layer, not as a promise of acceptance.
 - When figures are part of the package, keep the scorecard's figure-alignment dimension separate from the figure-quality dimension so visual communication problems receive their own repair priority.
 - Before recommending a selective venue or journal-specific rewrite, check whether the manuscript has plausible citation coverage, reference formatting, section structure, heading policy and display-format readiness for that venue; use `references/reference-adequacy-audit.md` and `references/journal-structure-audit.md`.
+- Before accepting a high target-journal score, check the Methods/SI reproducibility gate with `references/supplementary-information-audit.md`. A selective-journal package with thin Methods, pointer-only SI, absent formulas, or unverified Word equation objects should be capped even if the cover letter, figures, source tables and word counts look complete.
 - Do not confuse polish problems with scientific fit problems.
 - Provide at least one safer fallback venue when the main target looks over-ambitious.
 - If the evidence is too thin for a precise recommendation, say what is missing.
