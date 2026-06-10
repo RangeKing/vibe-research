@@ -80,7 +80,7 @@ Vibe Research 是一个面向 Codex、Claude Code 和 OpenClaw 的跨平台 mana
 
 每个 route 的窄职责定义见 [roles/](./roles/)。
 
-分数驱动的工作使用 [references/target-journal-scorecard.md](./references/target-journal-scorecard.md) 和 [templates/target_journal_scorecard.md](./templates/target_journal_scorecard.md)。这个分数是结构化 readiness / gap 诊断，不是录用概率预测。
+分数驱动的工作使用 [references/target-journal-scorecard.md](./references/target-journal-scorecard.md) 和 [templates/target_journal_scorecard.md](./templates/target_journal_scorecard.md)。这个分数是结构化 readiness / gap 诊断，不是录用概率预测。评分刻度刻意从严：0-59 表示不可投稿，60 仅是勉强可投，80-89 表示大概率送审但会收到大量实质性意见，90+ 应当罕见，100 基本只保留给审稿人挑不出实质性问题的稿件。
 
 ## Harness 工作方式
 

@@ -80,7 +80,7 @@ The main routes are:
 
 See the route files in [roles/](./roles/) for the narrow behavior of each role.
 
-For score-driven work, use [references/target-journal-scorecard.md](./references/target-journal-scorecard.md) with [templates/target_journal_scorecard.md](./templates/target_journal_scorecard.md). The score is a structured readiness and gap diagnosis, not an acceptance probability.
+For score-driven work, use [references/target-journal-scorecard.md](./references/target-journal-scorecard.md) with [templates/target_journal_scorecard.md](./templates/target_journal_scorecard.md). The score is a structured readiness and gap diagnosis, not an acceptance probability. Scoring is deliberately strict: 0-59 means not submission-ready, 60 is barely submission-ready, 80-89 means likely review with many substantive comments, 90+ is rare, and 100 is effectively reserved for a manuscript reviewers would struggle to criticize.
 
 ## Harness Behavior
 

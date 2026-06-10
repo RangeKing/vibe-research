@@ -47,6 +47,6 @@ For complex, multi-reviewer, or selective-journal revisions, also include a comp
 - If no new experiment exists, do not bluff. Narrow the claim and state the boundary honestly.
 - Keep tone professional, specific, and non-defensive.
 - For multi-comment revisions, handle one coupled issue cluster at a time and verify that the response letter, manuscript changes, figures, and SI stay aligned.
-- If a prior target-journal scorecard exists, rescore only dimensions changed by the revision unless the manuscript architecture or target journal changed globally.
+- If a prior target-journal scorecard exists, rescore only dimensions changed by the revision unless the manuscript architecture or target journal changed globally. Raise a dimension only when its specific blocker was verifiably fixed; keep the strict band calibration and caps from `references/target-journal-scorecard.md` unchanged across review cycles.
 - Do not claim a revision, new analysis, citation, figure panel, supplementary item, or line number unless the user supplied it. Use `AUTHOR_INPUT_NEEDED` or a placeholder instead.
 - For repeated review cycles, end with `what changed`, `what was ruled out`, `what should be reused later`, and `next checkpoint`, and distill reusable reviewer-response patterns into `templates/research_memory.md`.

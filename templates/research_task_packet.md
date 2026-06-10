@@ -23,6 +23,7 @@ task:
     bar: ""
     source: heuristic | user_defined | journal_specific | unknown
     current_score: ""
+    current_band: not_submission_ready | barely_submission_ready | uncertain_editorial_handling | likely_review | very_strong | near_perfect | unknown
     journal_score_gap: ""
   bottleneck: ""
   inputs:

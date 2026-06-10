@@ -200,6 +200,7 @@ Use this when Codex Goal context, a target score, a score request, a publication
 - If the user asks to improve the score, convert the top score-limiting dimensions into a Codex Goal-compatible repair loop and checkpoint the rescore conditions.
 - If the score gap is driven by evidence, methods, Methods/SI reproducibility, parameter provenance, figures, SI, references or package blockers, fix those before `draft` or `polish`.
 - Treat word counts, file presence, source-table presence, figure existence and path scans as package-cleanliness checks only. They cannot justify a score at or above 90/100 without the Methods/SI reproducibility gate.
+- Enforce the strict band calibration from `references/target-journal-scorecard.md` on every scoring pass: fatal flaws cap below 60, major unresolved flaws cap below 80, 90+ requires only minor reviewer-level issues, and the report must include band meaning, main reasons, blockers to the next band, and fixes to climb.
 
 ## Many-hands rules
 

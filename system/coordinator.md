@@ -87,9 +87,10 @@ When Codex Goal context is present:
 1. Treat the external goal as an input constraint: target journal or tier, content type, target score or heuristic bar, artifact basis, and stop condition.
 2. Load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md` for the measurement artifact. In a project directory, refresh the canonical `target_journal_scorecard.md` in place rather than creating numbered scorecard files.
 3. Score only what was actually inspected. Mark evidence basis and confidence before giving numbers.
-4. Apply blocking caps for unsupported claims, invented support, parameter provenance gaps, Methods/SI reproducibility gaps, figure/SI drift, reference inadequacy, internal trace leakage, equation-format drift, or missing submission-package statements.
-5. Convert the score gap into a repair loop: top blocker, required evidence or author input, expected score impact, verification command or audit, and rescore condition.
-6. Save the current score, score gap, blockers, and next repair objective into the task packet or checkpoint when continuation is likely.
+4. Score strictly against the calibrated bands: 0-59 not submission-ready, 60-69 barely submission-ready, 70-79 uncertain editorial handling, 80-89 likely review with many comments, 90-99 very strong and rare, 100 effectively reserved. Fatal flaws cap below 60, major unresolved flaws cap below 80, fluent prose earns no credit outside the writing axis, and uncertain scores round down.
+5. Apply blocking caps for unsupported claims, invented support, overclaiming, internal inconsistency, weak novelty, parameter provenance gaps, Methods/SI reproducibility gaps, figure/SI drift, reference inadequacy, weak discussion, internal trace leakage, equation-format drift, or missing submission-package statements.
+6. Convert the score gap into a repair loop: top blocker, required evidence or author input, expected score impact, verification command or audit, and rescore condition. Always report the band meaning, main reasons, blockers to the next band, and the fixes needed to climb.
+7. Save the current score, score gap, blockers, and next repair objective into the task packet or checkpoint when continuation is likely.
 
 Do not optimize for the score by strengthening unsupported claims. If the score gap reflects journal overreach, recommend retargeting, narrowing the claim, or changing the manuscript type.
 

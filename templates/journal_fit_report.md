@@ -8,10 +8,12 @@
 
 ## Target-journal scorecard
 - Current score:
+- Score band meaning:
 - Target bar:
 - Gap to target:
 - Score confidence:
 - Blocking cap:
+- Blockers to next band:
 - Highest-leverage repair:
 
 ## Five-axis assessment

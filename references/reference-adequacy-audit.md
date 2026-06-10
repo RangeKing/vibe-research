@@ -18,13 +18,13 @@ Use this audit before journal-specific rewriting, submission-package prep, resub
 Selective journals often reject manuscripts that are conceptually interesting but under-cited, unevenly cited, or citation-thin in exactly the places editors check first:
 
 - opening problem framing
-- field significance and food-system relevance
-- key sector statistics
+- field significance and sector or societal relevance
+- key field or sector statistics
 - closest methodological precedents
-- comparison against adjacent datasets or mapping papers
+- comparison against adjacent datasets, methods, or competing papers
 - numerical parameters, thresholds, coefficients, conversion factors, priors, rates, weights, scenario bounds, and sensitivity ranges
 - limitation and risk framing
-- region-specific or livelihood claims
+- population-, region-, or system-specific claims
 
 Low reference count is not the only failure mode. More common is **coverage imbalance**: a manuscript may cite a few recent papers yet still leave major claim categories unsupported.
 
@@ -61,7 +61,7 @@ Also classify parameter provenance:
 These are heuristics, not hard rules:
 
 - Full selective-journal research manuscript: anything below roughly `15` references is usually a red flag unless the paper is unusually narrow or short.
-- Full Article/Analysis/Resource targeted to journals such as `Nature Food`: expect a plausible working band around `25-50`, with coherent coverage across framing, methods, comparison set, and implications.
+- Full Article/Analysis/Resource targeted to a selective journal (for example a Nature-family or flagship field venue): expect a plausible working band around `25-50`, with coherent coverage across framing, methods, comparison set, and implications.
 - Section-level rewrite or pre-submission memo: count matters less than whether all factual claims and positioning moves are supported.
 
 Never invent a target count as a journal rule if the journal only gives a recommendation or upper bound.
@@ -73,13 +73,13 @@ Check whether the manuscript has enough support in each relevant bucket:
 1. **Problem framing**
    Does the opening explain why the question matters using real field literature, not only a statistic report?
 2. **Sector significance**
-   Are core industry, production, trade, nutrition, or food-system claims supported?
+   Are core industry, application, policy, or societal-relevance claims supported?
 3. **Closest prior work**
    Are the main methodological or dataset predecessors cited, especially the nearest competing papers?
 4. **Journal bridge**
    For a target venue, are there citations that connect the manuscript to the journal's audience and discourse?
 5. **Regional or social claims**
-   If the text makes claims about livelihoods, women, smallholders, or geography-specific importance, is there region-appropriate support?
+   If the text makes claims about specific populations, stakeholder groups, regions, or geography-specific importance, is there context-appropriate support?
 6. **Limitations and boundary conditions**
    Are visibility limits, uncertainty sources, and known sector constraints grounded in literature rather than only author assertion?
 7. **Methods and validation**
@@ -110,8 +110,8 @@ Do not use self-estimated values as manuscript evidence. A parameter can enter f
 
 - only citing global reports and almost no peer-reviewed literature
 - citing methods papers but not field-importance papers
-- citing global food-system papers but not seaweed-sector papers
-- citing broad seaweed reviews but not the closest mapping papers
+- citing broad field-level papers but not the specific subfield or sector literature the claims depend on
+- citing broad reviews but not the closest competing or precedent papers
 - using one citation to support several distinct claims with different scopes
 - strong discussion claims that are not matched by literature in the introduction
 - figures making comparative or contextual claims that the reference list does not support

@@ -18,9 +18,12 @@
 
 ## Overall score
 - Current score:
+- Score band: 0-59 not submission-ready / 60-69 barely submission-ready / 70-79 uncertain editorial handling / 80-89 likely review with many comments / 90-99 very strong (rare) / 100 near-perfect (effectively reserved)
+- Score band meaning:
+- Main reasons for the score: 3-6 bullets tied to inspected evidence
 - Target bar:
 - Gap to target:
-- Readiness band: Not target-ready / Major repair / Focused repair / Near target / At heuristic bar
+- Anti-inflation check: fluent writing not credited beyond the writing axis / unsupported claims earned no evidence credit / no compensation across axes / lowest cap applied / uncertain scores rounded down
 - Verdict:
 
 ## Methods/SI reproducibility gate
@@ -53,22 +56,42 @@
 | Submission package cleanliness and journal format | 7 |  |  |  | High / Medium / Low |
 
 ## Blocking caps
-| Cap | Applies? | Why | Fix before rescore |
-|---|---|---|---|
-| No concrete artifact | Yes / No |  |  |
-| Missing target journal or tier | Yes / No |  |  |
-| Unsupported core result or invented support | Yes / No |  |  |
-| Overclaim relative to evidence | Yes / No |  |  |
-| Methods, statistics, reproducibility, or parameter provenance gap | Yes / No |  |  |
-| Methods/SI not step-by-step reproducible | Yes / No |  |  |
-| Missing formal equations, predicates, thresholds, or coefficient tables | Yes / No |  |  |
-| Word equation objects missing for formula-bearing DOCX | Yes / No / N/A |  |  |
-| Superficial package-readiness scoring only | Yes / No |  |  |
-| Figure/table/source-data/SI accounting drift | Yes / No |  |  |
-| Figure readability or production-layout failure | Yes / No |  |  |
-| Reference coverage gap | Yes / No |  |  |
-| Internal trace or package-format blocker | Yes / No |  |  |
-| Missing required submission-package statement | Yes / No |  |  |
+| Cap | Severity | Cap value | Applies? | Why | Fix before rescore |
+|---|---|---:|---|---|---|
+| Unsupported core result or invented support | Fatal | 40 | Yes / No |  |  |
+| No concrete artifact | Fatal | 45 | Yes / No |  |  |
+| Overclaim on a central claim relative to evidence | Fatal | 55 | Yes / No |  |  |
+| Internal inconsistency or figure/table/source-data/SI accounting drift on headline claims | Fatal | 55 | Yes / No |  |  |
+| Central analysis methods too opaque to assess | Fatal | 55 | Yes / No |  |  |
+| Three or more distinct major flaws active | Fatal | 59 | Yes / No |  |  |
+| Methods, statistics, validation, or parameter provenance gap | Major | 65 | Yes / No |  |  |
+| Methods/SI not step-by-step reproducible | Major | 65 | Yes / No |  |  |
+| Missing target journal or tier | Major | 70 | Yes / No |  |  |
+| Weak or unclear novelty versus closest prior work | Major | 70 | Yes / No |  |  |
+| Missing formal equations, predicates, thresholds, or coefficient tables | Major | 70 | Yes / No |  |  |
+| Reference coverage or literature positioning gap | Major | 70 | Yes / No |  |  |
+| Superficial package-readiness scoring only | Major | 70 | Yes / No |  |  |
+| Weak, missing, or boilerplate Discussion or limitations | Major | 75 | Yes / No |  |  |
+| Figure readability or production-layout failure | Major | 75 | Yes / No |  |  |
+| Word equation objects missing for formula-bearing DOCX | Package | 80 | Yes / No / N/A |  |  |
+| Internal trace or package-format blocker | Package | 80 | Yes / No |  |  |
+| Missing required submission-package statement | Package | 85 | Yes / No |  |  |
+
+## Blockers to the next band
+- Current band:
+- Next band:
+- Most important blockers preventing the next band:
+  1. 
+  2. 
+  3. 
+
+## Path to higher bands
+List only the rungs above the current score.
+- To reach 60 (barely submission-ready):
+- To reach 70 (plausible editorial handling):
+- To reach 80 (likely sent for review):
+- To reach 90 (only minor reviewer-level issues; requires no major unresolved flaw):
+- To reach 100 (reviewers would struggle to find meaningful criticism; effectively reserved):
 
 ## Highest-leverage repairs
 1. 
@@ -96,3 +119,4 @@
 - Rescore only changed dimensions when:
 - Full rescore required when:
 - Do not raise score until:
+- Band calibration kept unchanged across iterations: yes

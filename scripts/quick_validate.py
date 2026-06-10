@@ -27,6 +27,8 @@ EXPECTED_FILES = [
     "scripts/svg_layout_smoke_check.py",
     "scripts/docx_equation_smoke_check.py",
     "scripts/figure_whitespace_smoke_check.py",
+    "scripts/figure_code_smoke_check.py",
+    "scripts/figure_scale_smoke_check.py",
 ]
 
 
@@ -373,6 +375,130 @@ def validate_target_journal_scorecard_surface(root: Path) -> None:
         fail("target-journal scorecard must not define an internal goal mode: " + "; ".join(forbidden_hits))
 
 
+def validate_score_calibration_surface(root: Path) -> None:
+    """Check that the strict score-band calibration is present and consistent everywhere."""
+    band_tokens = ["0-59", "60-69", "70-79", "80-89", "90-99"]
+
+    required_terms = {
+        "references/target-journal-scorecard.md": [
+            "## Score bands and calibration",
+            "## Conservative scoring defaults",
+            "## Anti-inflation guardrails",
+            "## Calibration anchors",
+            "Not submission-ready",
+            "Barely submission-ready",
+            "Fluent writing alone never raises the score",
+            "Any fatal flaw caps the total below 60",
+            "Any major unresolved flaw caps the total below 80",
+            "Strong sections do not compensate for fatal flaws",
+            "must not score above 60",
+            "must not score above 70",
+            "must not score above 80",
+            "must not score above 90",
+            "95+ is possible only",
+            "100 is effectively reserved",
+            "report the lower one",
+            "Blockers to the next band",
+            "Path to higher bands",
+            "Main reasons for the score",
+            "Score band meaning",
+        ],
+        "templates/target_journal_scorecard.md": [
+            "Score band meaning",
+            "Main reasons for the score",
+            "Anti-inflation check",
+            "Blockers to the next band",
+            "Path to higher bands",
+            "To reach 60",
+            "To reach 70",
+            "To reach 80",
+            "To reach 90",
+            "To reach 100",
+        ],
+        "SKILL.md": [
+            "0-59 not submission-ready",
+            "90-99 very strong and rare",
+            "fatal flaw caps the total below 60",
+            "major unresolved flaw caps it below 80",
+            "blockers to the next band",
+        ],
+        "roles/assess.md": [
+            "strict band calibration",
+            "anti-inflation guardrails",
+            "blockers preventing the next band",
+        ],
+        "roles/journal.md": [
+            "strict band calibration",
+            "blockers to the next band",
+        ],
+        "system/coordinator.md": [
+            "0-59 not submission-ready",
+            "uncertain scores round down",
+        ],
+        "system/routing.md": [
+            "strict band calibration",
+            "fatal flaws cap below 60",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing strict score-calibration terms: {', '.join(missing)}")
+
+    for rel in ["references/target-journal-scorecard.md", "templates/target_journal_scorecard.md"]:
+        text = load_text(root / rel)
+        missing_bands = [band for band in band_tokens if band not in text]
+        if missing_bands:
+            fail(f"{rel} is missing score-band tokens: {', '.join(missing_bands)}")
+
+    # Cap values in the template must respect band semantics:
+    # fatal < 60, major < 80, package-level < 90.
+    severity_limits = {"Fatal": 60, "Major": 80, "Package": 90}
+    template_text = load_text(root / "templates/target_journal_scorecard.md")
+    cap_rows = 0
+    for line in template_text.splitlines():
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) >= 3 and cells[1] in severity_limits and cells[2].isdigit():
+            cap_rows += 1
+            cap_value = int(cells[2])
+            limit = severity_limits[cells[1]]
+            if cap_value >= limit:
+                fail(
+                    f"templates/target_journal_scorecard.md cap `{cells[0]}` has severity "
+                    f"{cells[1]} but cap value {cap_value} >= {limit}"
+                )
+    if cap_rows < 10:
+        fail(
+            "templates/target_journal_scorecard.md blocking-caps table must classify caps as "
+            f"Fatal/Major/Package with numeric cap values, found only {cap_rows} classified rows"
+        )
+
+    # Lenient scoring language must never come back.
+    forbidden_terms = [
+        "score generously",
+        "be generous with the score",
+        "round the score up",
+        "default to a high score",
+        "90 = good",
+        "95 = excellent",
+        "99 = almost ready",
+        "almost ready to submit, score",
+        "reward fluent writing",
+    ]
+    forbidden_hits: list[str] = []
+    for path in sorted(root.rglob("*.md")):
+        if ".git" in path.parts:
+            continue
+        text = load_text(path)
+        for term in forbidden_terms:
+            if term in text:
+                forbidden_hits.append(f"{path.relative_to(root)}: {term}")
+    if forbidden_hits:
+        fail("inflated-scoring language found: " + "; ".join(forbidden_hits))
+
+
 def validate_target_journal_scorecard_points(root: Path) -> None:
     for rel in ["references/target-journal-scorecard.md", "templates/target_journal_scorecard.md"]:
         text = load_text(root / rel)
@@ -401,6 +527,9 @@ def validate_figure_layout_surface(root: Path) -> None:
             "production-layout",
             "text wrapping",
             "rendered PNG/SVG whitespace balance",
+            "map aspect",
+            "color-scale/data-range fit",
+            "footer collision",
             "rendered legibility",
         ],
         "references/figure-storytelling.md": [
@@ -409,8 +538,15 @@ def validate_figure_layout_surface(root: Path) -> None:
             "wrap_text",
             "scripts/svg_layout_smoke_check.py",
             "scripts/figure_whitespace_smoke_check.py",
+            "scripts/figure_code_smoke_check.py",
+            "scripts/figure_scale_smoke_check.py",
             "Render the final figure",
             "content bounding-box imbalance",
+            "--check-bottom-text",
+            "Geospatial Panels And Color Scales",
+            "aspect=\"auto\"",
+            "unused green legend",
+            "Reserve real space for footnotes",
         ],
         "scripts/svg_layout_smoke_check.py": [
             "long unwrapped text",
@@ -422,17 +558,35 @@ def validate_figure_layout_surface(root: Path) -> None:
             "content_bbox",
             "large {side} whitespace margin",
             "content occupies only",
+            "check-bottom-text",
+        ],
+        "scripts/figure_code_smoke_check.py": [
+            "global lon-lat imshow",
+            "fixed 1-5 green-yellow-red risk scale",
+            "low fig.text",
+            "aspect=aspect",
+        ],
+        "scripts/figure_scale_smoke_check.py": [
+            "unused_low",
+            "low-color semantics",
+            "observed values use only",
         ],
         "roles/assess.md": [
             "figure_whitespace_smoke_check.py",
+            "figure_code_smoke_check.py",
+            "figure_scale_smoke_check.py",
             "delivered figure is raster",
         ],
         "roles/draft.md": [
             "content bounding-box balance",
             "third of the canvas blank",
+            "semantic palettes",
+            "fig.text",
         ],
         "references/target-journal-scorecard.md": [
             "large rendered whitespace imbalance",
+            "distorted map aspect",
+            "misleading unused semantic colorbar segments",
         ],
     }
 
@@ -502,6 +656,7 @@ def main() -> None:
     validate_parameter_provenance_surface(root)
     validate_target_journal_scorecard_surface(root)
     validate_target_journal_scorecard_points(root)
+    validate_score_calibration_surface(root)
     validate_figure_layout_surface(root)
     validate_methods_si_reproducibility_surface(root)
     print(f"OK: {root}")

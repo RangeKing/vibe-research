@@ -179,7 +179,52 @@ def is_content(pixel: tuple[int, int, int, int], bg: tuple[int, int, int], thres
     return abs(r - bg[0]) + abs(g - bg[1]) + abs(b - bg[2]) > threshold
 
 
-def check_png(path: Path, *, side_threshold: float, imbalance_threshold: float, color_threshold: int) -> list[str]:
+def is_dark_content(pixel: tuple[int, int, int, int], bg: tuple[int, int, int], threshold: int) -> bool:
+    r, g, b, alpha = pixel
+    if alpha < 16:
+        return False
+    if not is_content(pixel, bg, threshold):
+        return False
+    return r + g + b < 360
+
+
+def bottom_dense_text_bands(
+    width: int,
+    height: int,
+    color_type: int,
+    rows: list[bytes],
+    palette: list[tuple[int, int, int]],
+    transparency: bytes,
+    bg: tuple[int, int, int],
+    color_threshold: int,
+) -> list[tuple[int, int, int]]:
+    start_y = int(height * 0.90)
+    row_counts: list[tuple[int, int]] = []
+    for y in range(start_y, height):
+        count = 0
+        row = rows[y]
+        for x in range(width):
+            if is_dark_content(pixel_rgba(row, x, color_type, palette, transparency), bg, color_threshold):
+                count += 1
+        if count >= max(80, int(width * 0.12)):
+            row_counts.append((y, count))
+
+    bands: list[list[tuple[int, int]]] = []
+    for y, count in row_counts:
+        if not bands or y > bands[-1][-1][0] + 1:
+            bands.append([])
+        bands[-1].append((y, count))
+    return [(band[0][0], band[-1][0], max(count for _, count in band)) for band in bands]
+
+
+def check_png(
+    path: Path,
+    *,
+    side_threshold: float,
+    imbalance_threshold: float,
+    color_threshold: int,
+    check_bottom_text: bool,
+) -> list[str]:
     width, height, color_type, rows, palette, transparency = parse_png(path)
     bg = background_color(width, height, color_type, rows, palette, transparency)
 
@@ -237,6 +282,22 @@ def check_png(path: Path, *, side_threshold: float, imbalance_threshold: float, 
     if content_height < 0.58:
         warnings.append(f"{path}: content occupies only {content_height:.1%} of canvas height")
 
+    if check_bottom_text:
+        for start_y, end_y, max_dark_pixels in bottom_dense_text_bands(
+            width,
+            height,
+            color_type,
+            rows,
+            palette,
+            transparency,
+            bg,
+            color_threshold,
+        ):
+            warnings.append(
+                f"{path}: dense dark text/content band near bottom rows {start_y}-{end_y} "
+                f"({max_dark_pixels} dark pixels in a row); inspect footer, x tick, and axis-label collision"
+            )
+
     return warnings
 
 
@@ -251,6 +312,11 @@ def main() -> int:
         help="minimum side-vs-opposite margin gap that triggers review",
     )
     parser.add_argument("--color-threshold", type=int, default=36, help="RGB distance from background counted as content")
+    parser.add_argument(
+        "--check-bottom-text",
+        action="store_true",
+        help="also warn on dense bottom text bands that may indicate footer/tick collisions",
+    )
     args = parser.parse_args()
 
     warnings: list[str] = []
@@ -268,6 +334,7 @@ def main() -> int:
                     side_threshold=args.side_threshold,
                     imbalance_threshold=args.imbalance_threshold,
                     color_threshold=args.color_threshold,
+                    check_bottom_text=args.check_bottom_text,
                 )
             )
         except (OSError, PngDecodeError, zlib.error, struct.error) as exc:

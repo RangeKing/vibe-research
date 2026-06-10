@@ -28,10 +28,12 @@
 
 ## Target-journal scorecard
 - Current score:
+- Score band meaning:
 - Target bar:
 - Gap to target:
 - Score confidence:
 - Blocking caps:
+- Blockers to next band:
 - Next rescore condition:
 
 ## Best next move
