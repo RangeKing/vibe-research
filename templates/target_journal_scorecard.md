@@ -16,6 +16,21 @@
 - Current evidence inspected: 5-10 bullets max; link or name detailed audits instead of pasting a work log
 - Meaningful change since prior score:
 
+## Content-type identity gate
+- Claimed content type: Article / Analysis / Review / Perspective / Resource / Other
+- Content type actually supported by inspected evidence:
+- Article original-research gate: Pass / Partial / Fail / Not applicable
+- Article identity evidence: original data or model outputs / new comparative analysis only / framework or synthesis / unclear
+- If stronger when reframed as Analysis, separate Analysis ceiling:
+- Editorial viability benchmark: none / user-provided / external-AI / reviewer-editor / prior scorecard
+- External benchmark reconciliation:
+  - Benchmark score and content type:
+  - Local score before cap:
+  - Missed blocker or cap:
+  - Adopted cap:
+  - Why a higher local score is justified, if claimed:
+- Score implication:
+
 ## Overall score
 - Current score:
 - Score band: 0-59 not submission-ready / 60-69 barely submission-ready / 70-79 uncertain editorial handling / 80-89 likely review with many comments / 90-99 very strong (rare) / 100 near-perfect (effectively reserved)
@@ -63,7 +78,9 @@
 | Overclaim on a central claim relative to evidence | Fatal | 55 | Yes / No |  |  |
 | Internal inconsistency or figure/table/source-data/SI accounting drift on headline claims | Fatal | 55 | Yes / No |  |  |
 | Central analysis methods too opaque to assess | Fatal | 55 | Yes / No |  |  |
+| Content type mismatch | Fatal | 58 | Yes / No |  |  |
 | Three or more distinct major flaws active | Fatal | 59 | Yes / No |  |  |
+| Article identity not supported by original research | Major | 65 | Yes / No / N/A |  |  |
 | Methods, statistics, validation, or parameter provenance gap | Major | 65 | Yes / No |  |  |
 | Methods/SI not step-by-step reproducible | Major | 65 | Yes / No |  |  |
 | Missing target journal or tier | Major | 70 | Yes / No |  |  |

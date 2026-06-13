@@ -33,6 +33,7 @@ Decide whether the user has provided:
 2. only a verbal summary
 3. a target journal tier
 4. external feedback or none
+5. content-type identity, such as Article versus Analysis, and whether the current package actually satisfies that format
 
 If there is no concrete artifact, assess the project status rather than pretending to assess a manuscript line by line.
 
@@ -49,6 +50,8 @@ If there is no concrete artifact, assess the project status rather than pretendi
 ## Requirements
 
 - For **score, publication-gap, target-journal-distance, generated-paper readiness, or Codex Goal context work**, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; update the canonical `target_journal_scorecard.md` in place when working in a project directory; report evidence basis, score confidence, blocking caps, gap to target, and rescore conditions.
+- For **named content-type assessments**, run the content-type identity gate before the numeric score. For a Nature-family Article, use the Article original-research gate: the package must present a substantial novel research study rather than only a synthesis, framework, ordinal screen, or repackaged existing-data analysis. If it is stronger when reframed as Analysis, score the Article viability separately and do not let the Analysis ceiling inflate the Article score.
+- When the user supplies a stricter external score or critique, treat it as an editorial viability benchmark to reconcile. If the benchmark identifies evidence-grounded flaws, the local score cannot exceed the benchmark's band until the scorecard explains which cap was lifted or why the benchmark does not apply.
 - Score against the strict band calibration: 0-59 not submission-ready, 60-69 barely submission-ready, 70-79 uncertain editorial handling, 80-89 likely review with many comments, 90-99 very strong and rare, 100 effectively reserved. Apply the anti-inflation guardrails: fluent writing alone never raises the score, unsupported claims earn no evidence credit, strong sections do not compensate for fatal flaws, fatal flaws cap below 60, major unresolved flaws cap below 80, and uncertain scores round down.
 - With every score, report the band meaning, the main reasons for the score, the most important blockers preventing the next band, and the concrete fixes required to reach 60, 70, 80, 90, or 100 where relevant. A bare number is an incomplete deliverable.
 - When the work product includes **figures** or the user asks whether **visuals match the claims**, use `references/figure-storytelling.md` for caption, integrity, alignment, and production-layout checks.

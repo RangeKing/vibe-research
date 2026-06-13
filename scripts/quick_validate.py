@@ -499,6 +499,52 @@ def validate_score_calibration_surface(root: Path) -> None:
         fail("inflated-scoring language found: " + "; ".join(forbidden_hits))
 
 
+def validate_editorial_viability_surface(root: Path) -> None:
+    """Prevent Article-vs-Analysis content-type mismatches from scoring as high readiness."""
+    required_terms = {
+        "SKILL.md": [
+            "content-type identity",
+            "editorial viability benchmark",
+            "Article original-research gate",
+        ],
+        "system/coordinator.md": [
+            "content-type identity",
+            "editorial viability benchmark",
+        ],
+        "roles/assess.md": [
+            "Article original-research gate",
+            "editorial viability benchmark",
+        ],
+        "roles/journal.md": [
+            "content-type identity",
+            "editorial viability benchmark",
+        ],
+        "references/target-journal-scorecard.md": [
+            "Content-type identity gate",
+            "Article original-research gate",
+            "editorial viability benchmark",
+            "external benchmark reconciliation",
+            "reframed as Analysis",
+            "cap at 58",
+            "cap at 65",
+        ],
+        "templates/target_journal_scorecard.md": [
+            "Content-type identity gate",
+            "Article original-research gate",
+            "Editorial viability benchmark",
+            "External benchmark reconciliation",
+            "Content type mismatch",
+            "Article identity not supported by original research",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing editorial-viability calibration terms: {', '.join(missing)}")
+
+
 def validate_target_journal_scorecard_points(root: Path) -> None:
     for rel in ["references/target-journal-scorecard.md", "templates/target_journal_scorecard.md"]:
         text = load_text(root / rel)
@@ -657,6 +703,7 @@ def main() -> None:
     validate_target_journal_scorecard_surface(root)
     validate_target_journal_scorecard_points(root)
     validate_score_calibration_surface(root)
+    validate_editorial_viability_surface(root)
     validate_figure_layout_surface(root)
     validate_methods_si_reproducibility_surface(root)
     print(f"OK: {root}")

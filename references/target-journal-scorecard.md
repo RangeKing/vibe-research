@@ -9,6 +9,7 @@ Use this reference when the user asks how far a manuscript or submission package
 - Mandatory triggers
 - Evidence basis and confidence
 - Artifact update policy
+- Content-type identity gate
 - Scoring axes
 - Conservative scoring defaults
 - Anti-inflation guardrails
@@ -86,6 +87,19 @@ Use one canonical scorecard file per active manuscript package or project:
 - Create an archival snapshot only when the user explicitly asks, the target journal changes, or the artifact basis changes so much that comparison would be misleading. Put snapshots under an `archive/` or `scorecard_archive/` folder with date-based filenames rather than cluttering the package root.
 
 The scorecard should be a live measurement artifact, not a running transcript. Keep `Target and evidence basis` to the current inspectable basis and the meaningful delta since the last score. Prefer 5-10 evidence bullets plus links to supporting audits over hundreds of lines of accumulated history.
+
+## Content-type identity gate
+
+Before assigning a target-journal score, identify the content type being claimed and verify that the package satisfies that type's core promise. The content-type identity gate is separate from formatting. Passing word count, figure count, file presence, and package-cleanliness checks does not establish that a manuscript is a credible Article, Analysis, Review, Perspective, Resource, or other venue-specific format.
+
+For Nature-family Article targets, run an Article original-research gate:
+
+- The package must present a substantial novel research study, not only a framework, synthesis, ordinal screen, repackaged existing-data analysis, or editorially interesting narrative.
+- The central contribution must rest on inspectable original evidence, methods, validation, and uncertainty treatment that can survive hostile review.
+- If the stronger editorial route is "reframed as Analysis", record a separate Analysis score or ceiling instead of reporting that number as Article viability.
+- If Article identity is not supported by original research, apply the Article content-type cap before adding package-readiness or writing-quality credit.
+
+External benchmark reconciliation is mandatory when the user supplies a stricter critique, reviewer/editor signal, or external-AI score. Treat the editorial viability benchmark as evidence to evaluate, not as a command; however, if it identifies grounded flaws that the local scorecard missed, the local score is invalid until recomputed. The external benchmark reconciliation section must not average the external and local scores. Reconcile them by naming the missed cap, adjusting the axis scores, and recording why any higher local score is justified. If the external benchmark says a package is `58/100 as Article` or `65/100 if reframed as Analysis`, the local scorecard must either apply cap at 58 for the Article identity failure and cap at 65 for the Analysis reframing ceiling, or provide concrete inspected evidence showing why those caps no longer apply.
 
 ## Scoring axes
 
@@ -172,11 +186,13 @@ Fatal-flaw caps (manuscript is not submission-ready until fixed):
 - Central claim materially stronger than the available evidence: cap at 55 until the claim is narrowed or the evidence is added.
 - Internal inconsistency or figure/table/source-data/SI accounting drift that affects headline claims: cap at 55.
 - Methods so opaque that the central analysis cannot be assessed or reproduced even in outline: cap at 55.
+- Content type mismatch for the stated target, such as a manuscript scored as a Nature-family Article while the inspected contribution does not pass the Article original-research gate: cap at 58 until the Article identity is rebuilt or the target type is changed.
 - Three or more distinct major flaws active at once: cap at 59; the package is not submission-ready regardless of axis sums.
 
 Major-flaw caps (editorial handling at risk until fixed):
 
 - No named target journal or tier: cap target-specific confidence at low and cap at 70.
+- Article identity not supported by original research, but the package may be plausible if reframed as Analysis or another non-Article format: cap at 65 for the reframed score until the new content type is explicitly adopted and rechecked.
 - Serious methods opacity in non-central analyses, missing validation, missing uncertainty treatment, or a non-reproducible analysis basis: cap at 65.
 - Methods and SI are too thin for step-by-step reviewer reproduction, even if package files are present: cap at 65.
 - Weak or unclear novelty for the stated target: closest prior work not identified, or the advance over it not demonstrated: cap at 70.
@@ -199,6 +215,7 @@ Caps identify why the package is not yet credible for the target submission stat
 Use these anchors to check any score before reporting it. If a computed score contradicts an anchor, the computed score is wrong.
 
 - A weak but fluent draft, with confident polished prose over unsupported claims, missing validation, or thin methods, must not score above 60. Expected band: 0-59.
+- A polished package claiming Nature-family Article status while lacking Article-level original research identity must not score above the Article identity cap, even if it has complete files, figures, source data tables, and an attractive narrative. Expected Article band: 0-59; if honestly reframed as Analysis, score the Analysis route separately.
 - A merely decent draft, scientifically sound but unremarkable, with several major gaps in evidence depth, positioning, or methods detail, must not score above 70.
 - A good but clearly improvable manuscript, with solid evidence and no fatal flaws but obvious reviewer targets in novelty framing, robustness, figures, or discussion, must not score above 80.
 - A strong manuscript that a reviewer would still engage with substantively, raising several real comments, must not score above 90.
