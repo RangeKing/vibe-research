@@ -1,0 +1,2 @@
+claim_id	exact claim	location	required figure panel	observed visual evidence	source-data file/column	effect size	n/denominator	uncertainty	allowed wording	forbidden wording	verdict
+C1		Title / Abstract / Results / Caption / Cover letter	Fig. Xa		source_data.tsv/column				qualified metric wording	overclaim wording	proven_visibly / supported_but_not_visible / source_data_only / ambiguous / contradicted_by_figure / unsupported

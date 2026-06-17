@@ -40,16 +40,44 @@ If there is no concrete artifact, assess the project status rather than pretendi
 ## Default output contract
 
 1. `Current state`
-2. `Strengths worth preserving`
-3. `Top gaps / risks`
-4. `Readiness verdict`
-5. `Best next move`
-6. `Target journal tier fit` when the evidence supports that judgment
-7. `Target-journal scorecard` when the user asks for a score, target gap, or Codex Goal-compatible loop
+2. `Central claim and credibility status`
+3. `Validation class and uncertainty boundary`
+4. `Story spine diagnosis` when the artifact is a manuscript, report, proposal, or project plan
+5. `Figure/table claim support` when display items exist
+6. `Strengths worth preserving`
+7. `Top gaps / risks`
+8. `Likely reviewer objections`
+9. `Readiness verdict`
+10. `Best next move`
+11. `Target journal tier fit` when the evidence supports that judgment
+12. `Target-journal scorecard` when the user asks for a score, target gap, or Codex Goal-compatible loop
+
+## High-impact assessment output contract
+
+When Nature, Science, Cell, Nature Climate Change, Nature Sustainability, Nature Communications, PNAS, or rigorous editor/reviewer assessment mode is triggered, the default output is:
+
+1. `Desk-rejection verdict`
+2. `Fatal or score-capping flaws`
+3. `Central claim versus main-figure audit`
+4. `Reviewer panel objections`
+5. `Figure-by-figure scientific-function score`
+6. `Claim-boundary corrections`
+7. `Missing analyses / validation / uncertainty`
+8. `Essential revision roadmap`
+9. `Revised score with caps applied`
+10. `What must be fixed before prose polish is allowed`
+
+Do not begin with strengths in high-impact mode. Mention strengths only after the rejection risks and active caps.
 
 ## Requirements
 
 - For **score, publication-gap, target-journal-distance, generated-paper readiness, or Codex Goal context work**, load `references/target-journal-scorecard.md` and use `templates/target_journal_scorecard.md`; update the canonical `target_journal_scorecard.md` in place when working in a project directory; report evidence basis, score confidence, blocking caps, gap to target, and rescore conditions.
+- For **central claims, substantial results, figure/table support, story coherence, validation strength, or readiness judgment**, load `references/research-credibility-story-kernel.md` and use `templates/claim_boundary_card.md`, `templates/credibility_validation_ladder.md`, `templates/story_spine.md`, `templates/figure_table_claim_gate.md`, `templates/reviewer_red_team_matrix.md`, and `templates/score_cap_card.md` as needed.
+- For **every main result**, answer what is proven, what is only suggested, what is explicitly not proven, what wording is allowed, what wording is prohibited without new evidence, what display item/source supports the allowed wording, and what contradiction would invalidate the claim.
+- Before calling a result robust, validated, compelling, ready, strong, or high-confidence, check traceability, denominator/effect size, uncertainty propagation, validation strength, contradiction guard, and scope honesty. If any gate fails, downgrade the result or mark it diagnostic/exploratory/preliminary.
+- When scoring, include a score cap card. Do not reward polish, package completeness, reproducible code, complete metadata, or clean internal consistency if the central claim lacks close validation and figure/table support.
+- For **high-impact journal assessments**, run `references/claim_figure_truth_table.md` before assigning any score. Do not proceed from visual polish to high readiness if the main figures do not visibly prove the title/abstract claim. If the package has audit artifacts, run `scripts/high_impact_submission_gate.py` before reporting score >=90.
+- For **Nature Climate Change or Nature-family climate packages**, use `references/nature-climate-change-editorial-gate.md`, `templates/ncc_desk_rejection_memo.md`, `templates/reviewer_panel_card.md`, and `templates/display_item_budget.md` before score increases or submission-readiness claims.
 - For **named content-type assessments**, run the content-type identity gate before the numeric score. For a Nature-family Article, use the Article original-research gate: the package must present a substantial novel research study rather than only a synthesis, framework, ordinal screen, or repackaged existing-data analysis. If it is stronger when reframed as Analysis, score the Article viability separately and do not let the Analysis ceiling inflate the Article score.
 - When the user supplies a stricter external score or critique, treat it as an editorial viability benchmark to reconcile. If the benchmark identifies evidence-grounded flaws, the local score cannot exceed the benchmark's band until the scorecard explains which cap was lifted or why the benchmark does not apply.
 - Score against the strict band calibration: 0-59 not submission-ready, 60-69 barely submission-ready, 70-79 uncertain editorial handling, 80-89 likely review with many comments, 90-99 very strong and rare, 100 effectively reserved. Apply the anti-inflation guardrails: fluent writing alone never raises the score, unsupported claims earn no evidence credit, strong sections do not compensate for fatal flaws, fatal flaws cap below 60, major unresolved flaws cap below 80, and uncertain scores round down.
@@ -63,8 +91,12 @@ If there is no concrete artifact, assess the project status rather than pretendi
 - For **near-submission or high-score work**, use `references/supplementary-information-audit.md` to check the Methods/SI reproducibility gate. Do not assign 90/100 or 9/10 when Methods/SI are only narrative summaries, formal equations are missing for value-bearing logic, or Word `.docx` formulas are not verified as Office Math objects.
 - For **figure-heavy, near-submission work**, explicitly check whether figure panels, legends, source-data files, methods equations, and headline numbers share one statistical basis; if they do not, flag this before discussing styling.
 - For **rendered PNG figures or raster previews**, run `scripts/figure_whitespace_smoke_check.py` or equivalent canvas-balance inspection. Do not rely only on SVG text-boundary checks when the delivered figure is raster.
+- For **uploaded or rendered figures**, do not rely only on filenames, captions, scripts, source-data tables, or figure-generation logs. Inspect the rendered visual and answer: what conclusion the figure visually implies, whether that implication matches the manuscript claim, which panel an editor would cite as the central result, whether the most important claim is visible without Methods reconstruction, and whether uncertainty, denominators, and evidence boundaries are visually present. If the rendered implication conflicts with manuscript wording, treat the figure as the source of truth and revise the claim or redesign the figure.
+- For **figures or tables carrying central results**, apply the five-second central-result test with `templates/figure_table_claim_gate.md`. If a key display item mainly shows provenance, inputs, workflow, decorative context, a dense dashboard, or a component inventory, it cannot carry the central claim until redesigned.
 - For **map panels, heatmaps, or generated plotting code**, check map/data aspect, semantic color-scale use, and footer collision. When source files and source-data tables are available, use `scripts/figure_code_smoke_check.py` and `scripts/figure_scale_smoke_check.py` before accepting the figure-quality score.
 - For **target-journal scorecards with figures**, score figure scientific alignment separately from figure quality and visual communication. Do not let correct source data hide unreadable labels, clipped text, cramped legends, excessive whitespace, or unrendered layout failures.
+- For **interdisciplinary high-impact packages**, simulate at least four specialist reviewers plus one figure editor. The final verdict uses the harshest unresolved specialist objection as the score cap.
+- For **substantial assessment even outside high-impact mode**, simulate hostile-but-fair reviewers: gatekeeper reader, domain specialist, methods/statistics reviewer, data/reproducibility reviewer, skeptical generalist, and application/decision reviewer. Classify objections as evidence gap, framing gap, methods gap, citation gap, communication issue, or reviewer overreach.
 - When the user asks for **writing quality** rather than scientific readiness, redirect to `polish` and use `references/sentence-level-writing-audit.md` for sentence-level editorial checks.
 - Prioritize structural gaps over cosmetic issues.
 - Separate evidence problems from writing problems.

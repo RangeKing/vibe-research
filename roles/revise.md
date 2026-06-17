@@ -21,9 +21,10 @@ Handle feedback-driven modification after reviewer comments, editor letters, col
 2. `Root cause per major concern`
 3. `Revision priorities`
 4. `Best action per comment`
-5. `Response strategy or response text`
-6. `Manuscript-side changes needed`
-7. `Score impact and rescore conditions` when a target-journal scorecard or Codex Goal-compatible loop is active
+5. `Claim-boundary consequences`
+6. `Response strategy or response text`
+7. `Manuscript-side changes needed`
+8. `Score impact and rescore conditions` when a target-journal scorecard or Codex Goal-compatible loop is active
 
 For complex, multi-reviewer, or selective-journal revisions, also include a compact `Comment-response tracker` when useful:
 
@@ -40,6 +41,9 @@ For complex, multi-reviewer, or selective-journal revisions, also include a comp
 - Work from the comments outward. Do not treat this as ordinary polish.
 - Read the full feedback set before drafting any response. Coupled comments often share one root cause.
 - For each major concern, identify whether the source problem is evidence, claim strength, method transparency, figure/SI accounting, citation coverage, structure, or prose.
+- When feedback challenges credibility, overclaiming, validation, figures/tables, uncertainty, or implications, use `references/research-credibility-story-kernel.md`, `templates/claim_boundary_card.md`, `templates/reviewer_red_team_matrix.md`, and `templates/figure_table_claim_gate.md`.
+- For each major objection, state whether it reveals a real evidence gap, framing gap, methods gap, citation gap, communication issue, or reviewer overreach.
+- If a response cannot add new evidence, narrow the claim boundary and say what is no longer claimed instead of defending the old wording rhetorically.
 - Verify comments against the actual manuscript, data, journal rules, and prior user decisions before accepting them. External feedback is not automatically correct.
 - Preserve editor instructions and reviewer comments with stable IDs before drafting responses. Use IDs such as `E.1`, `R1.1`, and `R2.1`.
 - Distinguish between revise, soften, clarify, and defer.

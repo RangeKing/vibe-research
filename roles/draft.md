@@ -23,6 +23,9 @@ Turn user-provided ideas, results, notes, or rough text into strong research wri
 - `references/journal-structure-audit.md` when the rewrite is journal-targeted, near-submission, package-oriented, or changes headings, section structure, equations, tables or figure legends.
 - `references/target-journal-scorecard.md` and `templates/target_journal_scorecard.md` when the rewrite is part of a Codex Goal-compatible loop or is intended to close a measured target-journal score gap.
 - `references/supplementary-information-audit.md` when drafting or repairing Methods, Supplementary Information, formulas, thresholds, sensitivity tests, validation logic, dataset provenance, or a Word submission package.
+- `references/research-credibility-story-kernel.md`, `templates/story_spine.md`, `templates/claim_boundary_card.md`, `templates/figure_table_claim_gate.md`, and `templates/score_cap_card.md` when drafting or rewriting around a central claim, result, figure/table, abstract, title, conclusion, or implication.
+- `references/claim_language_boundary.md` before rewriting titles, abstracts, captions, or cover letters for high-impact journals.
+- `references/claim_figure_truth_table.md` when the rewrite strengthens or changes a title/abstract claim that should be visible in a main figure.
 
 ## Standard output
 
@@ -37,12 +40,18 @@ For substantial work, use a `draft -> verify -> distill` loop and preserve reusa
 ## Rules
 
 - Fix the argumentative structure before polishing sentences.
+- Reconstruct the story spine before substantial rewriting: misleading default, real problem, boundary, new separation, central answer, mechanism, credibility check, boundary again, and implication. If the spine is missing, deliver a rewritten outline before paragraph-level prose.
 - Identify paper type before drafting: mechanism, method, resource, device, model, clinical, materials, computational, systematic review, or interdisciplinary.
 - Use section jobs explicitly: Abstract = mini-paper; Introduction = field scale to unresolved gap; Results = evidence ladder; Discussion = meaning, relation, constraints; Conclusion = contribution, evidence, implication, boundary.
 - Keep the prose restrained and specific.
 - If the target journal is named, calibrate breadth, density, and mechanism emphasis to that journal tier.
 - If the user asks to improve a target-journal score, rewrite only after the scorecard identifies which dimensions can honestly improve through writing versus evidence, methods, references, figures, SI, or package repair. Under the strict calibration, writing quality is a small axis: rewriting prose cannot lift a manuscript over a fatal-flaw or major-flaw cap, so do not promise score gains from drafting alone.
 - If the target journal is named and citation support is thin or uneven, stop and build the reference coverage map before performing venue-specific rewriting.
+- Before rewriting a title or abstract for a high-impact journal, load the claim-language boundary table. Do not improve rhetorical force by dropping qualifiers such as diagnostic, ordinal, proxy-based, model fraction, bounded coefficient, denominator, uncertainty, or scenario.
+- Before rewriting any title, abstract, conclusion, highlight, cover letter, response, or executive summary, run an anti-overclaim check: does the sentence imply stronger evidence than exists, convert proxy/diagnostic evidence into outcome evidence, erase denominator/uncertainty/scope, make a domain-level claim from subgroup evidence, or imply validation where only support exists? If yes, soften the claim or add the missing boundary.
+- Do not write a central-answer sentence unless it contains or clearly points to effect size, denominator, uncertainty, comparison basis, and scope when those are relevant to the result.
+- Do not draft around a main-figure contradiction. If `references/claim_figure_truth_table.md` marks an abstract-level claim as `source_data_only`, `ambiguous`, `contradicted_by_figure`, or `unsupported`, first revise the claim boundary or redesign the figure; prose polish cannot lift that cap.
+- If the key figure/table cannot pass the five-second central-result test, draft a figure/table redesign plan or claim-softening plan before writing stronger Results or Abstract language.
 - If a draft introduces or rewrites numerical parameters, coefficients, thresholds, conversion factors, rates, priors, weights, scenario bounds, sample-size assumptions, or sensitivity ranges, verify parameter provenance before using those values in final manuscript prose.
 - For Methods/SI repairs, draft the reproducibility structure first: data inputs, preprocessing, notation, formal equations/predicates, thresholds, sensitivity/validation, and output crosswalk. If the target is `.docx`, preserve equations in a form that the Word build can convert to Office Math.
 - When drafting or regenerating figure files, verify the delivered raster preview for content bounding-box balance and large side margins; do not accept a plot that fixes labels by leaving a third of the canvas blank.

@@ -22,3 +22,17 @@ Codex uses the root `SKILL.md` as the canonical instructions and `agents/openai.
 - Keep merge local to the coordinator and merge from structured artifacts, not from chat narration.
 - Keep Codex-specific logic out of the root skill body unless it changes the actual reasoning workflow.
 - If you update the skill name, description, or default prompt, regenerate `agents/openai.yaml`.
+
+## High-impact package generation note
+
+When Codex uses this skill to generate a manuscript package for Nature, Science, Cell, Nature Climate Change, Nature Sustainability, Nature Communications, PNAS, or a comparable selective venue, it must not stop after producing files. It must run the high-impact adversarial audit against its own output:
+
+- rendered figure inspection;
+- claim-figure truth table;
+- Article vs Analysis gate;
+- reviewer panel cards;
+- scorecard with caps;
+- desk-rejection memo;
+- revision roadmap.
+
+The audit must be allowed to lower the readiness score generated earlier by the same workflow. Package completeness, DOCX validation, source-data manifests, or a project AGENT.md cannot prove high-impact readiness without this audit.

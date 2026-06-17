@@ -20,6 +20,10 @@
 - Claimed content type: Article / Analysis / Review / Perspective / Resource / Other
 - Content type actually supported by inspected evidence:
 - Article original-research gate: Pass / Partial / Fail / Not applicable
+- Article vs Analysis forced decision: Article / Analysis / Other / Not applicable
+- Constructed, ordinal, diagnostic, proxy-based, or threshold-weighted central metric: Yes / No
+- Mostly existing public datasets: Yes / No
+- Headline claim conditional on index design, thresholds, component weights, or source-data reconciliation: Yes / No
 - Article identity evidence: original data or model outputs / new comparative analysis only / framework or synthesis / unclear
 - If stronger when reframed as Analysis, separate Analysis ceiling:
 - Editorial viability benchmark: none / user-provided / external-AI / reviewer-editor / prior scorecard
@@ -31,6 +35,17 @@
   - Why a higher local score is justified, if claimed:
 - Score implication:
 
+## High-impact adversarial audit
+- Desk-rejection memo: Pass / Partial / Fail / Not applicable
+- Claim-figure-source-data truth table: Pass / Partial / Fail / Not applicable
+- Rendered figure inspection: Pass / Partial / Fail / Not applicable
+- Hostile reviewer panel: Pass / Partial / Fail / Not applicable
+- Display-item budget: Pass / Partial / Fail / Not applicable
+- Score cap table: Pass / Partial / Fail / Not applicable
+- Self-generated package anti-rationalization rule applied: Yes / No / Not applicable
+- `scripts/high_impact_submission_gate.py` result when audit artifacts exist: Pass / Fail / Not run / Not applicable
+- Score implication:
+
 ## Overall score
 - Current score:
 - Score band: 0-59 not submission-ready / 60-69 barely submission-ready / 70-79 uncertain editorial handling / 80-89 likely review with many comments / 90-99 very strong (rare) / 100 near-perfect (effectively reserved)
@@ -40,6 +55,26 @@
 - Gap to target:
 - Anti-inflation check: fluent writing not credited beyond the writing axis / unsupported claims earned no evidence credit / no compensation across axes / lowest cap applied / uncertain scores rounded down
 - Verdict:
+
+## Research credibility and validation class gate
+- Central claim:
+- Unit of claim:
+- Direct evidence:
+- Indirect evidence:
+- Validation class: physical_or_empirical_outcome_validation / process_direction_validation / component_support_validation / monitoring_or_observability_check / diagnostic_consistency_only
+- Missing validation class:
+- Weakest inference link:
+- Wording calibrated to evidence: Yes / Partial / No
+- Score implication:
+
+## Score cap card
+- Current score:
+- Score meaning:
+- Main strengths:
+- Hard caps:
+- Blockers to next band:
+- Fastest credible improvement:
+- What would not raise the score:
 
 ## Methods/SI reproducibility gate
 - Gate status: Pass / Partial / Fail / Not checked
@@ -76,6 +111,7 @@
 | Unsupported core result or invented support | Fatal | 40 | Yes / No |  |  |
 | No concrete artifact | Fatal | 45 | Yes / No |  |  |
 | Overclaim on a central claim relative to evidence | Fatal | 55 | Yes / No |  |  |
+| Abstract/main-figure contradiction | Fatal | 55 | Yes / No |  |  |
 | Internal inconsistency or figure/table/source-data/SI accounting drift on headline claims | Fatal | 55 | Yes / No |  |  |
 | Central analysis methods too opaque to assess | Fatal | 55 | Yes / No |  |  |
 | Content type mismatch | Fatal | 58 | Yes / No |  |  |
@@ -86,10 +122,14 @@
 | Missing target journal or tier | Major | 70 | Yes / No |  |  |
 | Weak or unclear novelty versus closest prior work | Major | 70 | Yes / No |  |  |
 | Missing formal equations, predicates, thresholds, or coefficient tables | Major | 70 | Yes / No |  |  |
+| Central result source-data-only or visually ambiguous | Major | 70 | Yes / No |  |  |
+| Self-generated package score not independently recomputed | Major | 70 | Yes / No |  |  |
+| Ordinal diagnostic synthesis claiming Article identity | Major | 70 | Yes / No |  |  |
 | Reference coverage or literature positioning gap | Major | 70 | Yes / No |  |  |
 | Superficial package-readiness scoring only | Major | 70 | Yes / No |  |  |
 | Weak, missing, or boilerplate Discussion or limitations | Major | 75 | Yes / No |  |  |
 | Figure readability or production-layout failure | Major | 75 | Yes / No |  |  |
+| Display-item economy failure | Package | 80 | Yes / No |  |  |
 | Word equation objects missing for formula-bearing DOCX | Package | 80 | Yes / No / N/A |  |  |
 | Internal trace or package-format blocker | Package | 80 | Yes / No |  |  |
 | Missing required submission-package statement | Package | 85 | Yes / No |  |  |

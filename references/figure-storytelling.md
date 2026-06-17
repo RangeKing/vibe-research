@@ -2,6 +2,20 @@
 
 Use this reference when **figures, panels, or captions** must support the manuscript’s argument without overclaiming, and when reviewers or collaborators flag **misalignment** between visuals and text.
 
+## Navigation
+
+- Main message
+- Figure contract
+- Five-second central-result test
+- High-impact figure argument gate
+- Main-figure scoring rubric
+- Production layout contract
+- Geospatial Panels And Color Scales
+- Captions
+- Alignment with main-text claims
+- Integrity and common pitfalls
+- When to escalate routes
+
 ## Main message
 
 - Each figure should have **one primary message** the reader can state in one sentence.
@@ -13,12 +27,71 @@ Use this reference when **figures, panels, or captions** must support the manusc
 Before polishing a figure set or caption package, define:
 
 - the one-sentence conclusion the figure must defend
+- the claim boundary the figure can and cannot support
 - the evidence chain from each panel to that conclusion
 - the unique scientific job of each panel
-- source data, `n`, error bars, statistical tests, and image-integrity notes
+- metric name, unit/class, comparison basis, effect size, denominator, uncertainty or robustness marker, scope labels, source data, `n`, error bars, statistical tests, and image-integrity notes
 - export or production needs, including editable text and journal format constraints when known
 
 Panels that repeat the same scientific question should be combined, moved to supplementary material, or dropped.
+
+## Five-second central-result test
+
+A reader should be able to identify the central result within five seconds from the key figure or table.
+
+Every main figure/table should expose:
+
+- one sentence message
+- metric name and unit/class
+- comparison basis
+- effect size
+- denominator
+- uncertainty interval or robustness marker
+- scope labels such as scenario, condition, subgroup, dataset, horizon, intervention, or model
+- source or method traceability
+- claim supported
+- claim boundary
+
+If a main figure/table only shows provenance, inputs, workflow, decorative maps, dense dashboards, or component inventories, it cannot carry the central claim unless redesigned. Use `templates/figure_table_claim_gate.md` when a display item carries a central claim.
+
+## High-impact figure argument gate
+
+For selective journals, evaluate figures as arguments, not displays.
+
+Each figure must pass all five tests:
+
+1. **Question test**: What precise scientific question does this figure answer?
+2. **Answer test**: Can a skeptical editor state the answer from the figure alone within 10 seconds?
+3. **Evidence test**: Are effect size, uncertainty, denominator and comparator visible?
+4. **Hierarchy test**: Does the most important result dominate the visual hierarchy?
+5. **Claim-boundary test**: Does the caption state what the figure does not prove?
+
+Failure handling:
+
+- If the figure is mostly provenance, move it to Extended Data or Supplementary Information.
+- If the figure needs prose to explain the main conclusion, redesign it.
+- If the figure contradicts the abstract, revise the claim before styling.
+- If the figure combines more than two scientific jobs, split or demote panels.
+
+## Main-figure scoring rubric
+
+Score each figure out of 100:
+
+- Scientific job clarity: 15
+- Central-claim support: 20
+- Quantitative effect size visibility: 15
+- Uncertainty / model agreement / n visibility: 15
+- Visual hierarchy: 10
+- Panel economy: 10
+- Caption/source-data/method alignment: 10
+- Production quality: 5
+
+Rules:
+
+- Any central figure <80 blocks a manuscript score >=90.
+- Any figure <70 must be redesigned or moved to Supplementary Information.
+- Any figure with a direct claim contradiction caps the manuscript at 55.
+- A figure cannot pass only by being visually clean.
 
 ## Production layout contract
 

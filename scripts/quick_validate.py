@@ -16,9 +16,27 @@ EXPECTED_FILES = [
     "references/high-journal-expression.md",
     "references/reference-adequacy-audit.md",
     "references/target-journal-scorecard.md",
+    "references/research-credibility-story-kernel.md",
+    "references/claim_figure_truth_table.md",
+    "references/claim_language_boundary.md",
+    "references/nature-climate-change-editorial-gate.md",
     "references/sentence-level-writing-audit.md",
     "templates/research_task_packet.md",
     "templates/target_journal_scorecard.md",
+    "templates/claim_boundary_card.md",
+    "templates/credibility_validation_ladder.md",
+    "templates/story_spine.md",
+    "templates/figure_table_claim_gate.md",
+    "templates/reviewer_red_team_matrix.md",
+    "templates/score_cap_card.md",
+    "templates/claim_figure_truth_table.tsv",
+    "templates/abstract_claim_boundary.tsv",
+    "templates/display_item_budget.md",
+    "templates/figure_scientific_scores.tsv",
+    "templates/reviewer_panel_card.md",
+    "templates/ncc_desk_rejection_memo.md",
+    "templates/score_caps.md",
+    "templates/high_impact_audit_manifest.md",
     "templates/reference_coverage_map.md",
     "templates/campaign_checkpoint.md",
     "templates/research_memory.md",
@@ -29,6 +47,7 @@ EXPECTED_FILES = [
     "scripts/figure_whitespace_smoke_check.py",
     "scripts/figure_code_smoke_check.py",
     "scripts/figure_scale_smoke_check.py",
+    "scripts/high_impact_submission_gate.py",
 ]
 
 
@@ -687,6 +706,256 @@ def validate_methods_si_reproducibility_surface(root: Path) -> None:
             fail(f"{rel} is missing Methods/SI reproducibility terms: {', '.join(missing)}")
 
 
+def validate_high_impact_adversarial_surface(root: Path) -> None:
+    required_terms = {
+        "SKILL.md": [
+            "High-impact journal adversarial mode",
+            "default verdict is rejection",
+            "claim-figure-source-data truth table",
+            "Self-generated package anti-rationalization",
+            "scripts/high_impact_submission_gate.py",
+        ],
+        "roles/assess.md": [
+            "High-impact assessment output contract",
+            "Desk-rejection verdict",
+            "Central claim versus main-figure audit",
+            "rendered visual",
+            "harshest unresolved specialist objection",
+        ],
+        "roles/draft.md": [
+            "references/claim_language_boundary.md",
+            "Do not improve rhetorical force by dropping qualifiers",
+            "source_data_only",
+            "contradicted_by_figure",
+        ],
+        "roles/claim.md": [
+            "references/claim_language_boundary.md",
+            "rendered main figure",
+            "ordinal diagnostic ranks",
+        ],
+        "roles/journal.md": [
+            "references/nature-climate-change-editorial-gate.md",
+            "Article vs Analysis forced decision",
+            "display-item budget",
+        ],
+        "references/target-journal-scorecard.md": [
+            "Self-generated package anti-rationalization rule",
+            "Article vs Analysis forced decision",
+            "Abstract/main-figure contradiction",
+            "Central result source-data-only",
+            "Display-item economy",
+            "scripts/high_impact_submission_gate.py",
+        ],
+        "templates/target_journal_scorecard.md": [
+            "High-impact adversarial audit",
+            "Claim-figure-source-data truth table",
+            "Self-generated package anti-rationalization rule applied",
+            "Abstract/main-figure contradiction",
+            "Central result source-data-only or visually ambiguous",
+            "Display-item economy failure",
+        ],
+        "references/figure-storytelling.md": [
+            "High-impact figure argument gate",
+            "Main-figure scoring rubric",
+            "Any central figure <80 blocks a manuscript score >=90",
+            "A figure cannot pass only by being visually clean",
+        ],
+        "references/claim_figure_truth_table.md": [
+            "Claim-Figure-Source-Data Truth Table",
+            "contradicted_by_figure",
+            "source_data_only",
+            "Article cap 55",
+            "Article cap 70",
+        ],
+        "references/claim_language_boundary.md": [
+            "Claim Language Boundary",
+            "ordinal diagnostic rank",
+            "forbidden verbs",
+        ],
+        "references/nature-climate-change-editorial-gate.md": [
+            "Desk-Rejection First",
+            "Article vs Analysis Forced Decision",
+            "Reviewer Panel Rule",
+            "Display-Item Economy",
+        ],
+        "templates/reviewer_panel_card.md": [
+            "carbon-cycle / global carbon budget",
+            "figure editor",
+            "Severity: fatal / major / moderate / minor",
+        ],
+        "templates/display_item_budget.md": [
+            "Display Item Budget",
+            "A six-figure package must not contain more than one provenance figure",
+        ],
+        "templates/ncc_desk_rejection_memo.md": [
+            "Content-type identity verdict:",
+            "Article vs Analysis decision:",
+            "What the rendered figure visually implies",
+        ],
+        "templates/high_impact_audit_manifest.md": [
+            "audits/claim_figure_truth_table.tsv",
+            "audits/figure_scientific_scores.tsv",
+            "scripts/high_impact_submission_gate.py",
+        ],
+        "scripts/high_impact_submission_gate.py": [
+            "claim_figure_truth_table.tsv",
+            "figure_scientific_scores.tsv",
+            "major_issue_count",
+            "contradicted_by_figure",
+            "active cap",
+        ],
+        "platforms/codex/README.md": [
+            "High-impact package generation note",
+            "claim-figure truth table",
+            "desk-rejection memo",
+            "The audit must be allowed to lower the readiness score",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing high-impact adversarial terms: {', '.join(missing)}")
+
+
+def validate_research_credibility_kernel_surface(root: Path) -> None:
+    required_terms = {
+        "SKILL.md": [
+            "Research credibility and story kernel",
+            "physical_or_empirical_outcome_validation",
+            "process_direction_validation",
+            "component_support_validation",
+            "monitoring_or_observability_check",
+            "diagnostic_consistency_only",
+            "five-second central-result test",
+            "story spine",
+            "score cap reasons",
+            "validation_class_confusion",
+            "claim_boundary_gap",
+            "uncertainty_propagation_gap",
+            "figure_table_claim_gap",
+        ],
+        "references/research-credibility-story-kernel.md": [
+            "Claim-level credibility validation",
+            "Evidence-to-claim boundary discipline",
+            "Result credibility gates",
+            "Story-spine reconstruction",
+            "Central-result figure/table gate",
+            "Red-team reviewer simulation",
+            "Score discipline",
+            "Anti-overclaim rewrite checks",
+            "Minimum useful output",
+        ],
+        "roles/assess.md": [
+            "Central claim and credibility status",
+            "Validation class and uncertainty boundary",
+            "templates/claim_boundary_card.md",
+            "templates/reviewer_red_team_matrix.md",
+            "five-second central-result test",
+            "score cap card",
+        ],
+        "roles/claim.md": [
+            "Claim boundary card",
+            "Validation class",
+            "unit of claim",
+            "physical_or_empirical_outcome_validation",
+            "diagnostic_consistency_only",
+            "component support as whole-system validation",
+        ],
+        "roles/draft.md": [
+            "templates/story_spine.md",
+            "anti-overclaim check",
+            "effect size, denominator, uncertainty",
+            "five-second central-result test",
+        ],
+        "roles/de-risk.md": [
+            "Weakest inference link",
+            "Validation upgrade plan",
+            "Reviewer red-team matrix",
+            "templates/credibility_validation_ladder.md",
+        ],
+        "roles/revise.md": [
+            "Claim-boundary consequences",
+            "templates/reviewer_red_team_matrix.md",
+            "evidence gap, framing gap, methods gap, citation gap, communication issue, or reviewer overreach",
+        ],
+        "roles/journal.md": [
+            "central claim is credible at the claim level",
+            "templates/score_cap_card.md",
+            "heuristic gap diagnosis",
+        ],
+        "references/figure-storytelling.md": [
+            "Five-second central-result test",
+            "templates/figure_table_claim_gate.md",
+            "claim boundary",
+        ],
+        "references/target-journal-scorecard.md": [
+            "Research credibility and validation class gate",
+            "templates/credibility_validation_ladder.md",
+            "score cap card",
+        ],
+        "templates/claim_boundary_card.md": [
+            "Supported wording",
+            "Unsupported wording",
+            "Failure/contradiction trigger",
+        ],
+        "templates/credibility_validation_ladder.md": [
+            "physical_or_empirical_outcome_validation",
+            "component_support_validation",
+            "diagnostic_consistency_only",
+        ],
+        "templates/story_spine.md": [
+            "Misleading default",
+            "Central answer",
+            "Credibility check",
+            "Boundary again",
+        ],
+        "templates/figure_table_claim_gate.md": [
+            "one_sentence_message",
+            "effect_size",
+            "denominator",
+            "visual_or_structural_failure",
+        ],
+        "templates/reviewer_red_team_matrix.md": [
+            "Gatekeeper reader",
+            "Methods/statistics reviewer",
+            "Application/decision reviewer",
+        ],
+        "templates/score_cap_card.md": [
+            "Hard caps",
+            "Blockers to next band",
+            "What would not raise the score",
+        ],
+        "templates/research_assessment.md": [
+            "Central claim and credibility status",
+            "Story spine diagnosis",
+            "Score cap card",
+        ],
+        "templates/claim_audit.md": [
+            "Claim boundary card",
+            "Validation class",
+            "Failure/contradiction trigger",
+        ],
+        "templates/claims_evidence_map.md": [
+            "unit_of_claim",
+            "validation_class",
+            "five_second_central_result_test",
+        ],
+        "templates/evidence_register.md": [
+            "Validation class",
+            "Uncertainty excluded",
+            "Scope boundary",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing research credibility kernel terms: {', '.join(missing)}")
+
+
 def main() -> None:
     root = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     if not root.exists() or not root.is_dir():
@@ -706,6 +975,8 @@ def main() -> None:
     validate_editorial_viability_surface(root)
     validate_figure_layout_surface(root)
     validate_methods_si_reproducibility_surface(root)
+    validate_high_impact_adversarial_surface(root)
+    validate_research_credibility_kernel_surface(root)
     print(f"OK: {root}")
 
 
