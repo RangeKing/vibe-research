@@ -956,6 +956,54 @@ def validate_research_credibility_kernel_surface(root: Path) -> None:
             fail(f"{rel} is missing research credibility kernel terms: {', '.join(missing)}")
 
 
+def validate_contribution_first_narrative_surface(root: Path) -> None:
+    """Ensure uncertainty supports the strongest defensible story instead of replacing it."""
+    required_terms = {
+        "SKILL.md": [
+            "strongest defensible scientific product",
+            "confidence architecture",
+            "limitation triage",
+            "direct observation, model prediction, sensitivity analysis, extrapolation",
+            "historical samples and modern variables",
+        ],
+        "references/research-credibility-story-kernel.md": [
+            "Contribution-first narrative",
+            "Core result product",
+            "confidence architecture",
+            "Limitation triage",
+            "Model, scenario, and spatial story rules",
+            "historical samples and modern variables",
+            "Editor pull test",
+            "Reviewer attack test",
+        ],
+        "roles/assess.md": [
+            "strongest defensible scientific product",
+            "confidence architecture",
+            "limitation triage",
+        ],
+        "roles/draft.md": [
+            "strongest defensible scientific product",
+            "confidence architecture",
+            "direct observation, model prediction, sensitivity analysis, extrapolation",
+        ],
+        "roles/framing.md": [
+            "Core result product",
+            "confidence architecture",
+        ],
+        "templates/story_spine.md": [
+            "Strongest defensible scientific product",
+            "Confidence architecture",
+            "Direct observation / model prediction / sensitivity / extrapolation boundary",
+        ],
+    }
+
+    for rel, terms in required_terms.items():
+        text = load_text(root / rel)
+        missing = [term for term in terms if term not in text]
+        if missing:
+            fail(f"{rel} is missing contribution-first narrative terms: {', '.join(missing)}")
+
+
 def main() -> None:
     root = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     if not root.exists() or not root.is_dir():
@@ -977,6 +1025,7 @@ def main() -> None:
     validate_methods_si_reproducibility_surface(root)
     validate_high_impact_adversarial_surface(root)
     validate_research_credibility_kernel_surface(root)
+    validate_contribution_first_narrative_surface(root)
     print(f"OK: {root}")
 
 

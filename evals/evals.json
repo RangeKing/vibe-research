@@ -1,0 +1,23 @@
+{
+  "skill_name": "vibe-research",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "A user has a spatial prediction manuscript with sparse field samples, covariates, uncertainty maps, and external validation. They ask: \"Can you rewrite the title, abstract ending, and Results headings for a Nature Sustainability style Analysis? Please don't make it sound like a data-cleaning report, but don't overclaim the maps as direct observations.\"",
+      "expected_output": "The response should lead with the strongest defensible scientific product, identify a core result product such as a confidence-graded prediction or risk map, separate direct observations from model predictions and extrapolated regions, and keep uncertainty visible as confidence architecture rather than the main story.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "A user says: \"Our restoration scenario only improves some regions, and reviewers keep focusing on uncertainty. Help me restructure the Discussion so the paper has a stronger high-impact story without hiding limitations.\"",
+      "expected_output": "The response should frame baseline state, scenario change, heterogeneous response, risk-class transfer, mechanism, and management boundary; limitations should be triaged rather than used to globally downgrade the manuscript.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "A user has sediment cores and historical samples from different decades but only modern remote-sensing and socioeconomic variables. They ask for stronger mechanism and driver language in the abstract and captions.",
+      "expected_output": "The response should check temporal alignment, distinguish long-term constraints from time-matched driver evidence, block unsupported mechanism claims from unmatched modern variables, and still propose a contribution-first story if one is defensible.",
+      "files": []
+    }
+  ]
+}

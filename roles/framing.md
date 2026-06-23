@@ -36,21 +36,25 @@ If the idea is still underspecified but consequential, ask one clarifying questi
 
 1. `One-liner`
 2. `Why now`
-3. `Core hypotheses and falsifiers`
-4. `Killer figure`
-5. `Top risks`
-6. `Two-week plan`
+3. `Core result product`
+4. `Core hypotheses and falsifiers`
+5. `Killer figure`
+6. `Confidence architecture`
+7. `Top risks`
+8. `Two-week plan`
 
 For 3 or more candidates, the output should also include:
 
-7. `Direction tournament`
-8. `Winner and backups`
-9. `Rejected paths and why`
+9. `Direction tournament`
+10. `Winner and backups`
+11. `Rejected paths and why`
 
 ## Quality bar
 
 - The one-liner must be testable and narrow enough to falsify.
+- The Core result product must say what the work will produce that a reader can remember: a new map, prediction, mechanism, threshold, risk zone, scenario result, comparison framework, or management priority.
 - Best-case value must say what practice, measurement, or understanding changes, not just "improves by N%".
+- The confidence architecture must show how quality control, uncertainty, evidence thresholds, sensitivity analyses, or evidence-insufficient regions will make the main product credible without turning the story into a data-audit report.
 - At least one proposed experiment should be a real kill test, not a comfort-zone extension.
 - Keep the plan close to the user's actual resource constraints whenever they are known.
 - Keep one winner, at most two viable backups, and move the rest into an explicit graveyard with reasons.
